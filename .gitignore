@@ -1,0 +1,10 @@
+scenarios
+plots
+results
+thesis/out
+
+__pycache__/
+
+launch.json
+settings.json
+checklist.py

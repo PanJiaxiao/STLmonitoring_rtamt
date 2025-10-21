@@ -1,0 +1,194 @@
+\chapter{Background and State of the Art}\label{ch:background}
+
+%TODO design concepts good word? gesucht ist ein genereller begriff für evolutionäre algos
+This chapter briefly describes the current state of the art for testing autonomous vehicles
+and introduces the most common design concepts.
+The second section gives an overview about the technologies used for the realisation of this thesis and also
+the implementation of the MPP\@.
+
+
+\section{Background}\label{sec:background}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/helper-visualizations/reactive-planner-sampling}
+    \caption{Regular interval sampling compared to the set-based sampling of the Reactive
+    Planner\cite{wursching2021sampling}.}
+    \label{fig:diagrams:sampling-visualization}
+\end{figure}
+
+\subsection{Sampling-based Motion Planning}\label{subsec:sampling-based-motion-planning}
+Basically, motion planning deals with solving the problem of moving an object from a starting
+point to a destination point using a sequence of valid actions.
+This makes motion planning a core component of autonomous vehicles and since
+the problem to be solved is non-trivial, there are several different approaches used in planners,
+e.g.\ graph search-based planners, interpolating curve planners or sampling-based planners\cite{gonzalez2015review}.
+
+In this thesis, a Sampling-Based Motion Planner is used.
+These planners generate a variety of random valid, and in some algorithms also invalid,
+trajectories that approach or reach the goal.
+The best trajectory is then selected from this set of possible trajectories.
+The generation and selection of trajectories varies from algorithm to algorithm.
+In \autoref{fig:diagrams:sampling-visualization} (a) the generated trajectories and the selected
+best trajectory are shown.\\
+Sampling-based planners are not always guaranteed to reach the goal
+and the paths found are often suboptimal, but an advantage is that path finding is fast
+compared to other MPAs\cite{karaman2011sampling,elbanhawi2014sampling}.
+
+\subsection{CommonRoad}\label{subsec:commonroad}
+The newly developed MPP is based on the \CommonRoad~framework, which is short for the descriptive name
+\textit{composable benchmarks for motion planning on roads}\footnote{\url{https://commonroad.in.tum.de/} Date: \FootDate}.
+The goal of \CommonRoad~is to give researchers a platform to compare their MPAs and be able to generate reproducible
+results for others, furthermore this also saves time for all kind of simulation preparations\cite{althoff2017commonroad}.
+Using this framework, research on testing MPAs has already been
+conducted, and the studies have shown that \CommonRoad~can be used to generate a variety of
+critical scenarios for testing\cite{Klischat2019a, klischat2019generating, Klischat2020c}.
+All these exemplary researches are testing an MPA and trying to make it take faulty actions by generating
+more and more critical scenarios.
+The criticality in these studies comes from using an evolutionary algorithm\cite{klischat2019generating}
+or combining the simulation with another tool to generate
+realistic traffic participants\cite{Klischat2019a, Klischat2020c}.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/helper-visualizations/scenario-visualization}
+    \caption{Scenario with several dynamic obstacles(blue) and a planning problem(green) on a
+    four way intersection with the goal(yellow) to perform a turn to the right\footnotemark.}
+    \label{fig:diagrams:scenario-visualization}
+\end{figure}
+\footnotetext{Scenario DEU\_Muc-16\_1\_I-1-1 from https://commonroad.in.tum.de/scenarios; Date: \FootDate}
+
+\subsubsection{Scenario}\label{subsubsec:scenario}
+An initial scenario consists of a road network, also called lanelets or lanelet network, a set of planning problems
+and optionally dynamic or static obstacles.
+With an MPA a scenario can be simulated over a configured amount of time
+steps and each traffic participant progresses accordingly to the time steps.
+For this thesis dynamic and static obstacles are not in use and instead multiple planning problems are being used.
+Also traffic signs and other details associated with the road network are not used.
+%TODO what is a single lanelet
+
+
+\subsubsection{State of Ego Vehicle}\label{subsubsec:state}
+A state describes position, velocity, angle, acceleration and other more detailed information of the
+ego vehicle at a given time step.
+The more detailed information in the state is only relevant to the planner but not to the implementation of the
+MPP\@.
+
+
+\subsubsection{Planning Problem}\label{subsubsec:planningproblem}
+A Planning Problem consists of an initial state, which is a regular state (\ref{subsubsec:state}), and a goal area.
+The goal area can be located at any point in the road network of the scenario and can have any size or
+valid two-dimensional shape.
+The validation of whether a goal can be reached from the initial state must be implemented separately
+and is not predefined by \CommonRoad.
+The scenario visualization of \autoref{fig:diagrams:scenario-visualization} shows the initial state of
+a \PlanningProblem~as a green arrow and the goal area as a yellow rectangle.
+
+Apart from that, a goal does not have to be an area, but can also have a range requirement for velocity, time
+steps or lanelets.
+However, this case is not used in this work because the focus
+is on the interactions and these goal definitions are not beneficial for this.
+
+
+\subsubsection{Trajectory}\label{subsubsec:trajectory}
+A trajectory is considered as a sequence of states, each state being incrementally
+one time step greater than its predecessor, gaps in the time sequence are invalid.
+A trajectory can have any length and starts with the current time step of the simulation.
+
+As the simulation advances with each time step, new trajectories must be computed repeatedly by each planner
+and in the case of the MPP also shared with the other planners.
+
+\subsubsection{Dynamic/Static Obstacles}\label{subsubsec:dynamic-obstacles}
+In the \CommonRoad~domain, dynamic obstacles are cars with a trajectory predetermined for a complete scenario,
+the cars are only included in the scenario during the specified trajectory,
+outside the time interval they are not present at all.
+In the scenario visualization of \autoref{fig:diagrams:scenario-visualization}
+the blue cars represent dynamic obstacles.
+
+Static obstacles, on the other hand, have no trajectory
+and are in the same place in the scenario throughout the simulation.
+
+\subsubsection{CommonRoad Tool Set}\label{subsubsec:tool-set}
+\CommonRoad~offers different tools to work with scenarios and build software on top of the \CommonRoad~framework.
+One of those tools is the \CommonRoad~Scenario Designer, which can be used to view and sketch scenarios, this
+helps with easy creation of simple test case scenarios during development.
+
+
+\subsubsection{Reactive Planner}\label{subsubsec:reactive-planner}
+For testing, developing and later also evaluating the novel multi planning platform an MPA is needed.
+Therefore, the planner from\cite{wursching2021sampling} is used.
+This planner has been developed on the \CommonRoad~platform, which allows a good integration into the MPP\@.
+The current state of the planner mainly focuses on highway scenarios.
+
+This planner takes a new approach to calculating trajectories by reducing the search space of a sampling-based planner
+to produce only sets that can be reached without collision.
+As a result, this approach can reduce the number of samples needed and drastically reduce the computation
+time of the planner to find a feasible trajectory, which is very effective especially in critical situations\cite{wursching2021sampling}.
+The visualization of \autoref{fig:diagrams:sampling-visualization} (b) clearly shows the improvements in trajectories,
+with less off-road and collision-free trajectories compared to an interval sampling approach.
+
+
+\subsubsection{Collision Checker}\label{subsubsec:collision-checker}
+The tool Collision Checker\footnote{\url{https://commonroad.in.tum.de/docs/commonroad-drivability-checker/doxygen/html/index.html} Date: \FootDate},
+also provided by \CommonRoad,
+is an elementary component of the Reactive Planner and the MPP, as it
+checks whether geometric shapes collide and can also be applied to dynamic/static objects.
+The Collision Checker works by adding all objects of a scenario to itself
+and can then check whether collisions are present,
+this is particularly relevant for the MPP, as collision checks are required at every time step of a simulation.
+It is also heavily used by the Reactive Planner to compute the next trajectories as collision-free as possible.
+
+
+\subsection{Evolutionary Algorithm}\label{subsec:evolutionary-algorithm}
+To generate improved scenarios, an evolutionary algorithm is used to obtain
+more critical situations in the simulations.
+An evolutionary algorithm typically operates with a population of individuals that compete with
+each other in certain resources, this competition then increases the fitness
+of the population, i.e.\ the population improves in obtaining the resources\cite{eiben2015evolutionary}.
+With fitness and random mutations on the individuals of a population, better populations can be created.
+
+In this work, individuals are represented by \PlanningProblems, each of which has a Reactive Planner assigned to it;
+these occur in a scenario and are therefore the population.
+The resources in this case are the defined critical metrics and are generated by the planners in a simulation.
+The resources determine how good a simulation of a scenario is.
+To improve the simulations, fitness functions are defined that lead the planners to more critical situations.
+Between simulations, the initial states of the planning problems are mutated.
+
+\subsection{Evaluation of Evolutionary Algorithms}\label{subsec:evaluation-of-evolutionary-algorithms}
+To compare the fitness functions of the evolutionary algorithm, the procedure from\cite{arcuri2014hitchhiker} is used.
+This research serves as a guideline for the statistical evaluation of randomized algorithms and is widely accepted
+amongst researchers.
+
+For this purpose, the A12 effect mass and the corresponding p-value for each result are reported and
+computed according to\cite{arcuri2014hitchhiker}.
+The values of the A12 effect mass represent the difference between two populations and
+can be interpreted as follows\cite{vargha2000critique}:
+\begin{itemize}
+    \setlength\itemsep{-0.7em}
+    \item Big: A12 >= 0.71
+    \item Medium: A12 >=0.64
+    \item Small: A12 >= 0.56
+\end{itemize}
+
+
+\section{State of the Art}\label{sec:state-of-the-art}
+
+\subsection{Testing Autonomous Vehicles}\label{subsec:testing-autonomous-vehicles}
+
+AD is becoming increasingly complex and therefore needs to be tested more effectively.
+Since autonomous vehicles cannot be tested like conventional vehicles, they must be
+tested in a large number of realistic and diverse driving scenarios.
+To achieve this, the tests are often carried out in realistic simulations.
+In most studies, autonomous vehicles are tested individually in a simulation,
+where other traffic participants or road networks are virtually generated\cite{huang2016autonomous}.
+This allows a quick execution of a large number of different scenarios and saves a lot of time compared
+to manual scenario selection.
+In order to guarantee not only quantity but also quality of the scenarios, the generation is often
+combined with an evolutionary algorithm, as in these examples\cite{klischat2019generating,gambi2019automatically,li2020av},
+this saves a lot of time and the unnecessary execution of duplicate or uninteresting tests.
+Therefore, newly generated scenarios are evaluated by a fitness function and modified until a critical behaviour
+of the autonomous vehicle is found, which can be, for example, leaving the road as in\cite{gambi2019automatically}.
+Approaches like these are designed to find a specific type of misbehaviour and are finished when a critical behaviour is found.
+%TODO more info needed
+%TODO add info especially about MPAs or testing MPA

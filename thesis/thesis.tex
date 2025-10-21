@@ -1,0 +1,199 @@
+% !TeX spellcheck = en_US
+% !TeX encoding = UTF-8
+
+% COMPILE WITH:
+% `latexmk`
+% You need lualatex and biber (in all TeXLive distributions)
+
+\documentclass[
+    numbers=noenddot,
+    %listof=totoc,
+    parskip=half-,
+    fontsize=12pt,
+    paper=a4,
+    oneside,
+    titlepage,
+    bibliography=totoc,
+    chapterprefix=false,
+%    draft
+]{scrbook}
+
+% use lualatex or xelatex
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage[doublespacing]{setspace}
+
+% better language support
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguage{german}
+
+\usepackage{tocbasic}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{tabularx,ragged2e}
+\newcolumntype{b}{X}
+\newcolumntype{m}{>{\hsize=.5\hsize}X}
+\newcolumntype{s}{>{\hsize=.35\hsize}X}
+\newcommand\mc[1]{\multicolumn{1}{@{}C@{}}{#1}}
+\hyphenation{infra-structure}
+
+\usepackage[]{scrlayer-scrpage}
+
+% better bibliography (biblatex style)
+% use biber to compile
+\usepackage[citestyle=numeric, bibstyle=numeric, sorting=none, backend=biber, language=english, backref=true, maxcitenames=2]{biblatex}
+
+% better quotes
+% use \enquote{text}
+\usepackage[autostyle,english=american,german=quotes]{csquotes}
+\addbibresource{bibliography.bib}
+
+% appendix
+\usepackage[titletoc]{appendix}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{amsmath}
+\usepackage{cleveref}
+\usepackage[linesnumbered,ruled]{algorithm2e}
+%\usepackage[justification=justified]{caption}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.6,0.6,0.6}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    language=Python,
+    showstringspaces=false,
+    captionpos=b,
+    keepspaces=true,
+    basicstyle=\linespread{1.2}\footnotesize,
+    numbers=left,
+    numbersep=5pt,
+    backgroundcolor=\color{backcolour},
+    numberstyle=\tiny\color{codegray},
+    keywordstyle=\color{magenta},
+    commentstyle=\color{codegreen},
+    stringstyle=\color{codepurple},
+    breaklines=true,
+    breakatwhitespace=false,
+    showtabs=false,
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\newcommand{\CommonRoad}{\textsc{CommonRoad}}
+% algorithms
+\newcommand{\MaxDanger}{\texttt{max\_danger}}
+\newcommand{\MaxInteractions}{\texttt{max\_interactions}}
+\newcommand{\Random}{\texttt{random}}
+% metrics
+\newcommand{\EM}{\texttt{emergency\_maneuvers}}
+\newcommand{\Goals}{\texttt{goals\_not\_reached}}
+\newcommand{\Interactions}{\texttt{interactions}}
+\newcommand{\Collisions}{\texttt{collisions}}
+
+\newcommand{\CollisionChecker}{\texttt{CollisionChecker}}
+\newcommand{\PlanningProblem}{\texttt{PlanningProblem}}
+\newcommand{\PlanningProblems}{\texttt{PlanningProblems}}
+
+\newcommand{\PValue}{p-value}
+\newcommand{\FootDate}{23.09.2022}
+
+% where to put all images and figures
+\graphicspath{{images/}}
+
+% YOUR PACKAGES
+
+
+% Title
+\title{Automatic Interaction Testing for Motion Planning Systems}
+
+% Author
+\author{Tobias Ziegler}
+
+% Date
+\date{\today}
+
+% CHOOSE ACCORDINGLY
+%\newcommand{\thesisType}{Bachelorarbeit}
+\newcommand{\thesisType}{Masterarbeit}
+
+\definecolor{codegray}{gray}{0.9}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{scrheadings}
+
+\begin{document}
+%\emergencystretch 3em
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+% CHOOSE ACCORDINGLY
+\include{includes/MA-titlepage}
+
+\tableofcontents
+\newpage
+
+% -- ABSTRACT
+\include{includes/abstract}
+\newpage
+
+% -- Acknowledgements (optional)
+%\include{includes/acknowledgements}
+%\newpage
+
+% -- List of figures
+%\thispagestyle{empty}
+%\cleardoublepage
+%\listoffigures
+%\newpage
+
+% -- List of tables
+%\thispagestyle{empty}
+%\cleardoublepage
+%\listoftables
+%\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+
+% -- Chapters
+% following IMRaD structure
+% adjust for your liking
+\include{chapters/introduction}
+\include{chapters/background}
+\include{chapters/methodology}
+\include{chapters/evaluation}
+\include{chapters/conclusion-future-work}
+
+% -- Appendix (optional)
+\begin{appendices}
+    \input{appendix.tex}
+\end{appendices}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+
+% -- Bibliography
+\printbibliography
+
+% -- Eidesstattliche Erklärung (= Affadavit)
+\include{includes/eidesstattlicheErklaerung}
+
+
+\end{document}

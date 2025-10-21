@@ -1,0 +1,26 @@
+% !TeX spellcheck = en_US
+% !TeX encoding = UTF-8
+\chapter*{Abstract}
+
+As motion planning is an essential part of autonomous driving and autonomous vehicles (AVs) in general,
+it must be thoroughly tested in order
+to meet the high safety requirements.
+Testing in this domain is mostly done within simulations on predefined scenarios with specific
+parts of a road network and traffic participants following a predefined trajectory, the goal for instance
+may be, to test
+a motion planning algorithm (MPA) in many diverse and challenging scenarios and make the planner perform safety
+critical maneuvers.
+One of the main problems of this approach is how to generate many
+critical and difficult scenarios.\\
+To overcome this issue, testing is often automated to generate many difficult scenarios.
+With the focus on the generation of scenarios, one aspect is neglected and that is the interaction of AVs with
+each other, which can lead to unpredictable interactions that can also end in accidents.
+Since more and more AVs will be on the roads in the future and there are already first experiments
+with AVs as driverless taxis, this topic is becoming increasingly important.\\
+In this thesis a new approach of scenario generation is proposed: A system, based on the \CommonRoad~framework,
+is developed to automatically simulate multiple instances of the same MPA in a single scenario.
+The system then relies on the interactions between the multiple MPA instances to generate critical scenarios.
+To drive the simulations forward, this system is combined with an evolutionary algorithm that mutates the scenario under
+test in between simulations.
+The experiments show that the interaction-based system, in combination with mutation algorithms, is
+able to find several critical scenarios that lead to faulty interactions between planners.

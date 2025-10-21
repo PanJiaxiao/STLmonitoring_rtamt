@@ -1,0 +1,2514 @@
+data1
+data2
+"
+position= [ 18.40705069 -25.83017404]
+orientation= 2.130305144017087
+velocity= 5.260114505058423
+yaw_rate= -3.300658375695686e-06
+acceleration= 0.14870972706805424
+time_step= 2
+"
+"
+position= [3.9959989 4.7485269]
+orientation= -2.5788657605070053
+velocity= 11.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 2
+"
+"
+position= [ 18.12740921 -25.38365098]
+orientation= 2.13030389375854
+velocity= 5.278120045513141
+yaw_rate= -1.5099345315606834e-06
+acceleration= 0.20994314308433135
+time_step= 3
+"
+"
+position= [3.10393362 4.18585245]
+orientation= -2.5788657605070053
+velocity= 10.546956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 3
+"
+"
+position= [ 17.84667756 -24.93538635]
+orientation= 2.130303495128489
+velocity= 5.300703616890034
+yaw_rate= -5.595668282996604e-08
+acceleration= 0.24094947055247812
+time_step= 4
+"
+"
+position= [2.2541585  3.64985272]
+orientation= -2.5788657605070053
+velocity= 10.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 4
+"
+"
+position= [ 17.56466911 -24.48508292]
+orientation= 2.1303037631168023
+velocity= 5.3261541766844
+yaw_rate= -6.991646016171275e-07
+acceleration= 0.267282911819487
+time_step= 5
+"
+"
+position= [1.44667356 3.14052773]
+orientation= -2.5788657605070053
+velocity= 9.546956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 5
+"
+"
+position= [ 17.28124399 -24.03251757]
+orientation= 2.1303036075910984
+velocity= 5.354004436430612
+yaw_rate= 1.00083751446508e-07
+acceleration= 0.2889434687319596
+time_step= 6
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 6
+"
+"
+position= [ 16.99630019 -23.57752726]
+orientation= 2.130303755270209
+velocity= 5.383069850481586
+yaw_rate= 4.3057617934411274e-07
+acceleration= 0.29202610511547644
+time_step= 7
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 7
+"
+"
+position= [ 16.7098072  -23.12006347]
+orientation= 2.130304052370388
+velocity= 5.412341916019318
+yaw_rate= 6.533599005751618e-07
+acceleration= 0.2930764984671597
+time_step= 8
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 8
+"
+"
+position= [ 16.4217594  -22.66011736]
+orientation= 2.130304446093108
+velocity= 5.441617408740584
+yaw_rate= 7.832202961479246e-07
+acceleration= 0.29209464878573776
+time_step= 9
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 9
+"
+"
+position= [ 16.13216968 -22.19770957]
+orientation= 2.1303048436762606
+velocity= 5.470263104607223
+yaw_rate= 6.752007216763252e-07
+acceleration= 0.28074475904974977
+time_step= 10
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 10
+"
+"
+position= [ 15.84108987 -21.73292286]
+orientation= 2.1303051856095387
+velocity= 5.497751458651084
+yaw_rate= 5.728527676452985e-07
+acceleration= 0.26894781233028753
+time_step= 11
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 11
+"
+"
+position= [ 15.54858263 -21.26585718]
+orientation= 2.1303054744498895
+velocity= 5.524037765173851
+yaw_rate= 4.7647625376302015e-07
+acceleration= 0.2567038086279418
+time_step= 12
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 12
+"
+"
+position= [ 15.2547171  -20.79662291]
+orientation= 2.130305698285786
+velocity= 5.548846207679042
+yaw_rate= 3.3687231824680376e-07
+acceleration= 0.23953282402786022
+time_step= 13
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 13
+"
+"
+position= [ 14.95957994 -20.32535833]
+orientation= 2.130305852973257
+velocity= 5.571957886489843
+yaw_rate= 2.2373523298694604e-07
+acceleration= 0.22276853474034516
+time_step= 14
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 14
+"
+"
+position= [ 14.66326015 -19.85220551]
+orientation= 2.13030595180769
+velocity= 5.593413471137567
+yaw_rate= 1.3406020277016472e-07
+acceleration= 0.2064109407664953
+time_step= 15
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 15
+"
+"
+position= [ 14.36584641 -19.37730598]
+orientation= 2.1303060077153093
+velocity= 5.613151793612923
+yaw_rate= 6.827025044032711e-08
+acceleration= 0.18848626689151507
+time_step= 16
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 16
+"
+"
+position= [ 14.06743187 -18.90080845]
+orientation= 2.130306031268673
+velocity= 5.631136876146053
+yaw_rate= 1.7962332560167828e-08
+acceleration= 0.17134614192196918
+time_step= 17
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 17
+"
+"
+position= [ 13.76810752 -18.42285819]
+orientation= 2.130306030447289
+velocity= 5.647447173627505
+yaw_rate= -1.8739677992587715e-08
+acceleration= 0.15499056585803261
+time_step= 18
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 18
+"
+"
+position= [ 13.46796061 -17.94359449]
+orientation= 2.1303060163057848
+velocity= 5.662137203869204
+yaw_rate= -3.0522130120732604e-08
+acceleration= 0.1389559140428546
+time_step= 19
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 19
+"
+"
+position= [ 13.16707579 -17.46315249]
+orientation= 2.1303059966687563
+velocity= 5.675267531449455
+yaw_rate= -3.8102193398736794e-08
+acceleration= 0.12379651262905061
+time_step= 20
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 20
+"
+"
+position= [ 12.86553351 -16.98166068]
+orientation= 2.1303059737454504
+velocity= 5.686925681408393
+yaw_rate= -4.203097409252897e-08
+acceleration= 0.1095123616166121
+time_step= 21
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 21
+"
+"
+position= [ 12.56340938 -16.49923981]
+orientation= 2.13030610511137
+velocity= 5.6972099422620985
+yaw_rate= 4.6121033643484044e-07
+acceleration= 0.09631078532380881
+time_step= 22
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 22
+"
+"
+position= [ 12.26077358 -16.01600218]
+orientation= 2.130306455356088
+velocity= 5.7062154244464915
+yaw_rate= 7.319602646099732e-07
+acceleration= 0.08393678823061704
+time_step= 23
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 23
+"
+"
+position= [ 11.9576917  -15.53205272]
+orientation= 2.1303069040980023
+velocity= 5.714024885881419
+yaw_rate= 8.111548100776794e-07
+acceleration= 0.07239037033323714
+time_step= 24
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 24
+"
+"
+position= [ 11.65422517 -15.0474895 ]
+orientation= 2.1303071509936014
+velocity= 5.720713289840561
+yaw_rate= 9.585675592450555e-08
+acceleration= 0.06152375686644363
+time_step= 25
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 25
+"
+"
+position= [ 11.35043168 -14.56240425]
+orientation= 2.1303070594236084
+velocity= 5.726358846858513
+yaw_rate= -3.786928947163153e-07
+acceleration= 0.05153343151288309
+time_step= 26
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 26
+"
+"
+position= [ 11.04636438 -14.07688157]
+orientation= 2.1303067561667
+velocity= 5.731049185747265
+yaw_rate= -6.489114045959148e-07
+acceleration= 0.04241939428270103
+time_step= 27
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 27
+"
+"
+position= [ 10.74207172 -13.59099882]
+orientation= 2.1303067665281104
+velocity= 5.734867617013667
+yaw_rate= 5.349355837924474e-07
+acceleration= 0.03409950693095494
+time_step= 28
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 28
+"
+"
+position= [ 10.43759754 -13.10482651]
+orientation= 2.1303072191581744
+velocity= 5.737899142311228
+yaw_rate= 9.301650953757353e-07
+acceleration= 0.026681274908847207
+time_step= 29
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 29
+"
+"
+position= [ 10.1329811 -12.6184276]
+orientation= 2.1303098809994965
+velocity= 5.740233932742765
+yaw_rate= 0.0002087069855786072
+acceleration= 0.020164664402704768
+time_step= 30
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 30
+"
+"
+position= [  9.82822201 -12.1318751 ]
+orientation= 2.1304504349646782
+velocity= 5.74205980961762
+yaw_rate= 0.0001727759737549513
+acceleration= 0.016229326984179577
+time_step= 31
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 31
+"
+"
+position= [  9.52332468 -11.64521841]
+orientation= 2.130544283389416
+velocity= 5.743455359554407
+yaw_rate= 0.00017435870716880886
+acceleration= 0.011558269184327332
+time_step= 32
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 32
+"
+"
+position= [  9.21831634 -11.1584956 ]
+orientation= 2.1306613667908714
+velocity= 5.744346810158561
+yaw_rate= 0.00023156934478717138
+acceleration= 0.006148387309151696
+time_step= 33
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 33
+"
+"
+position= [  8.91321213 -10.67175826]
+orientation= 2.130792682531062
+velocity= 5.744741648423865
+yaw_rate= 0.0002247433666817871
+acceleration= 0.0020347680913268902
+time_step= 34
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 34
+"
+"
+position= [  8.60803404 -10.18504153]
+orientation= 2.1309191215937866
+velocity= 5.744811002268332
+yaw_rate= 0.00021550910622390292
+acceleration= -0.0003613495314436089
+time_step= 35
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 35
+"
+"
+position= [ 8.30279624 -9.69836481]
+orientation= 2.131040906382277
+velocity= 5.744726647002173
+yaw_rate= 0.00020947682724440367
+acceleration= -0.0010395599524787016
+time_step= 36
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 36
+"
+"
+position= [ 7.99750459 -9.21173223]
+orientation= 2.131155034777873
+velocity= 5.744657814149739
+yaw_rate= 1.154792684319964e-05
+acceleration= -0.0003813547573362036
+time_step= 37
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 37
+"
+"
+position= [ 7.69218248 -8.72512353]
+orientation= 2.131154549674192
+velocity= 5.744641524291375
+yaw_rate= -1.8925064776282116e-07
+acceleration= 1.1301548772307567e-05
+time_step= 38
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 38
+"
+"
+position= [ 7.3868605  -8.23851487]
+orientation= 2.1311547021946717
+velocity= 5.744651223185582
+yaw_rate= 5.608860181075991e-07
+acceleration= 0.0001384199463775113
+time_step= 39
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 39
+"
+"
+position= [ 7.08171693 -7.75219083]
+orientation= 2.13115496427907
+velocity= 5.734640392697252
+yaw_rate= 3.5986634531342854e-07
+acceleration= -0.19670982672470635
+time_step= 40
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 40
+"
+"
+position= [ 6.77760906 -7.26751767]
+orientation= 2.131155123026039
+velocity= 5.706038298438351
+yaw_rate= 2.0126056224373817e-07
+acceleration= -0.37168685546455266
+time_step= 41
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 41
+"
+"
+position= [ 6.47546692 -6.78597754]
+orientation= 2.1311552008293795
+velocity= 5.661032062202128
+yaw_rate= 7.763071375522362e-08
+acceleration= -0.5247926662708459
+time_step= 42
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 42
+"
+"
+position= [ 6.17648579 -6.30947531]
+orientation= 2.131155213337261
+velocity= 5.58055800496898
+yaw_rate= -2.7479610876985075e-08
+acceleration= -1.0697539533278873
+time_step= 43
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 43
+"
+"
+position= [ 5.88315061 -5.84197133]
+orientation= 2.1311626134198813
+velocity= 5.450068175828658
+yaw_rate= 0.000811845460822924
+acceleration= -1.5251081250626217
+time_step= 44
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 44
+"
+"
+position= [ 5.59780001 -5.38737392]
+orientation= 2.131606327865604
+velocity= 5.278523290799675
+yaw_rate= 0.0008266702859724361
+acceleration= -1.8908550958758543
+time_step= 45
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 45
+"
+"
+position= [ 5.31817726 -4.9499173 ]
+orientation= 2.1550660887384003
+velocity= 5.113894645885236
+yaw_rate= 0.08712746771930827
+acceleration= -1.3860309429468993
+time_step= 46
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 46
+"
+"
+position= [ 5.02772302 -4.53627383]
+orientation= 2.2164553921296166
+velocity= 5.007719868738231
+yaw_rate= 0.15155834139127095
+acceleration= -0.7129042897694416
+time_step= 47
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 47
+"
+"
+position= [ 4.71163779 -4.15087508]
+orientation= 2.3018517674527916
+velocity= 4.97819946698786
+yaw_rate= 0.185220502539365
+acceleration= 0.12339285666122557
+time_step= 48
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 48
+"
+"
+position= [ 4.36257644 -3.79488189]
+orientation= 2.3892075884351094
+velocity= 4.998778070871353
+yaw_rate= 0.16463507743907954
+acceleration= 0.25854662450033816
+time_step= 49
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 49
+"
+"
+position= [ 3.98350729 -3.46703755]
+orientation= 2.4658625492102577
+velocity= 5.027306458795482
+yaw_rate= 0.14096402913499662
+acceleration= 0.2703439466115247
+time_step= 50
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 50
+"
+"
+position= [ 3.58000071 -3.16518278]
+orientation= 2.530638907143284
+velocity= 5.050715890523362
+yaw_rate= 0.11618389959243933
+acceleration= 0.1544424178652717
+time_step= 51
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 51
+"
+"
+position= [ 3.15673881 -2.88622987]
+orientation= 2.5855064901520666
+velocity= 5.099315737750906
+yaw_rate= 0.097689489356404
+acceleration= 0.7720770233550316
+time_step= 52
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 52
+"
+"
+position= [ 2.71381971 -2.62464582]
+orientation= 2.6280455731239343
+velocity= 5.194017279351127
+yaw_rate= 0.06668956597339144
+acceleration= 1.0625336868971271
+time_step= 53
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 53
+"
+"
+position= [ 2.25301431 -2.37342743]
+orientation= 2.653758854406912
+velocity= 5.303275841427131
+yaw_rate= 0.031069268275974258
+acceleration= 1.081316171438485
+time_step= 54
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 54
+"
+"
+position= [ 1.78008373 -2.12493261]
+orientation= 2.6579381049321738
+velocity= 5.367305766316374
+yaw_rate= -0.013013800654229236
+acceleration= 0.22810466062303744
+time_step= 55
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 55
+"
+"
+position= [ 1.3066301  -1.87220376]
+orientation= 2.641619864801248
+velocity= 5.35551380715901
+yaw_rate= -0.04648709118131512
+acceleration= -0.43276540575782263
+time_step= 56
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 56
+"
+"
+position= [ 0.84309831 -1.60997032]
+orientation= 2.6094495891391456
+velocity= 5.288761950044192
+yaw_rate= -0.0734913721550391
+acceleration= -0.8638111723297153
+time_step= 57
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 57
+"
+"
+position= [ 0.39680392 -1.33436355]
+orientation= 2.5655474972194057
+velocity= 5.203280016265123
+yaw_rate= -0.09294316932051394
+acceleration= -0.8274328457355418
+time_step= 58
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 58
+"
+"
+position= [-0.02897791 -1.04222936]
+orientation= 2.5135939988603515
+velocity= 5.127372494571739
+yaw_rate= -0.10741048665953214
+acceleration= -0.680435818917962
+time_step= 59
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 59
+"
+"
+position= [-0.43277909 -0.73130328]
+orientation= 2.456402586678879
+velocity= 5.070308643037932
+yaw_rate= -0.11599487792675972
+acceleration= -0.4554273815501042
+time_step= 60
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 60
+"
+"
+position= [-0.81399335 -0.40013057]
+orientation= 2.395567688352081
+velocity= 5.034007549314415
+yaw_rate= -0.1236260795009117
+acceleration= -0.26359073112499865
+time_step= 61
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 61
+"
+"
+position= [-1.17211503 -0.04778844]
+orientation= 2.3329565534659364
+velocity= 5.019276852043043
+yaw_rate= -0.1244960617862123
+acceleration= -0.029575471994881974
+time_step= 62
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 62
+"
+"
+position= [-1.50743142  0.32594661]
+orientation= 2.271595568448058
+velocity= 5.028438989740274
+yaw_rate= -0.1189065297598757
+acceleration= 0.20857692011072665
+time_step= 63
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 63
+"
+"
+position= [-1.82015526  0.72121242]
+orientation= 2.2074424767803715
+velocity= 5.056211388124381
+yaw_rate= -0.13344746488151277
+acceleration= 0.36678801272379763
+time_step= 64
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 64
+"
+"
+position= [-2.10781083  1.1395866 ]
+orientation= 2.1385941166798705
+velocity= 5.104493257211523
+yaw_rate= -0.13579415447924592
+acceleration= 0.5914909739072359
+time_step= 65
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 65
+"
+"
+position= [-2.3690072  1.5819071]
+orientation= 2.070534302436384
+velocity= 5.174906898774738
+yaw_rate= -0.12761018271026606
+acceleration= 0.8129503015670425
+time_step= 66
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 66
+"
+"
+position= [-2.60309291  2.04834411]
+orientation= 2.0004075663766767
+velocity= 5.2694416799331325
+yaw_rate= -0.1382324923098439
+acceleration= 1.0863502375690097
+time_step= 67
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 67
+"
+"
+position= [-2.80705458  2.54048901]
+orientation= 1.927365513243009
+velocity= 5.392277878343769
+yaw_rate= -0.13375459515888322
+acceleration= 1.3626144448531474
+time_step= 68
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 68
+"
+"
+position= [-2.97952863  3.05882717]
+orientation= 1.858095008556778
+velocity= 5.538557458929709
+yaw_rate= -0.11848503002114985
+acceleration= 1.557827085164069
+time_step= 69
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 69
+"
+"
+position= [-3.12255009  3.60172211]
+orientation= 1.802064093041626
+velocity= 5.688896280945098
+yaw_rate= -0.08266277159477896
+acceleration= 1.4254443412428088
+time_step= 70
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 70
+"
+"
+position= [-3.24275362  4.16463094]
+orientation= 1.7631371499801693
+velocity= 5.819553210578375
+yaw_rate= -0.05372171758282116
+acceleration= 1.1790551778621472
+time_step= 71
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 71
+"
+"
+position= [-3.34730494  4.74259591]
+orientation= 1.738740944128614
+velocity= 5.921230209929291
+yaw_rate= -0.030040316057034024
+acceleration= 0.8570081204020229
+time_step= 72
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 72
+"
+"
+position= [-3.4431053   5.33055046]
+orientation= 1.728458830245632
+velocity= 5.986782608380285
+yaw_rate= -0.005809947098138319
+acceleration= 0.4965417128022023
+time_step= 73
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 73
+"
+"
+position= [-3.53746879  5.92365149]
+orientation= 1.7308374616873192
+velocity= 6.018346083166115
+yaw_rate= 0.013051149775360324
+acceleration= 0.16810153561795016
+time_step= 74
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 74
+"
+"
+position= [-3.63664496  6.5176106 ]
+orientation= 1.743392413746183
+velocity= 6.020596020439716
+yaw_rate= 0.02816478970535612
+acceleration= -0.08821527824935121
+time_step= 75
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 75
+"
+"
+position= [-3.74569016  7.108918  ]
+orientation= 1.7642307187342756
+velocity= 6.002799537731517
+yaw_rate= 0.04032967234514292
+acceleration= -0.2521210193645575
+time_step= 76
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 76
+"
+"
+position= [-3.86845637  7.69490024]
+orientation= 1.79136265574097
+velocity= 5.969632226464407
+yaw_rate= 0.04992413014040741
+acceleration= -0.3825741523097892
+time_step= 77
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 77
+"
+"
+position= [-4.00766569  8.27331277]
+orientation= 1.823300436881647
+velocity= 5.928740374788624
+yaw_rate= 0.05702928575158601
+acceleration= -0.4254253773490698
+time_step= 78
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 78
+"
+"
+position= [-4.1651665   8.84263462]
+orientation= 1.858567802007368
+velocity= 5.886101579407753
+yaw_rate= 0.06193699182621929
+acceleration= -0.4194823479899762
+time_step= 79
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 79
+"
+"
+position= [-4.34198486  9.4018889 ]
+orientation= 1.895694370855613
+velocity= 5.846140636090929
+yaw_rate= 0.06422125686289126
+acceleration= -0.3746301878370678
+time_step= 80
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 80
+"
+"
+position= [-4.53834944  9.95062551]
+orientation= 1.9331736944295874
+velocity= 5.811932080317724
+yaw_rate= 0.06397853984652181
+acceleration= -0.30702022094669584
+time_step= 81
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 81
+"
+"
+position= [-4.75363077 10.48896304]
+orientation= 1.968769335686696
+velocity= 5.785916687368292
+yaw_rate= 0.0588991499451194
+acceleration= -0.21746027190764117
+time_step= 82
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 82
+"
+"
+position= [-4.98626513 11.01764351]
+orientation= 2.0014399375612957
+velocity= 5.767715954085524
+yaw_rate= 0.05427959646632668
+acceleration= -0.148815658917273
+time_step= 83
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 83
+"
+"
+position= [-5.23468993 11.53742791]
+orientation= 2.031405100819297
+velocity= 5.7555934427210245
+yaw_rate= 0.04972076712160982
+acceleration= -0.09525894799560071
+time_step= 84
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 84
+"
+"
+position= [-5.49750973 12.04899322]
+orientation= 2.058984972331429
+velocity= 5.747996001885227
+yaw_rate= 0.04567379798168904
+acceleration= -0.056475994486867694
+time_step= 85
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 85
+"
+"
+position= [-5.7733338  12.55301778]
+orientation= 2.0834221399656254
+velocity= 5.744050140849121
+yaw_rate= 0.039035748500008204
+acceleration= -0.023585323643673245
+time_step= 86
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 86
+"
+"
+position= [-6.06022964 13.05054301]
+orientation= 2.10352247103614
+velocity= 5.742850566784812
+yaw_rate= 0.030767890610438123
+acceleration= -0.002161949707018114
+time_step= 87
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 87
+"
+"
+position= [-6.35599776 13.54280678]
+orientation= 2.119438585811091
+velocity= 5.74310748537054
+yaw_rate= 0.02355875712448796
+acceleration= 0.006715785698701255
+time_step= 88
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 88
+"
+"
+position= [-6.65834059 14.03113387]
+orientation= 2.1298338869292532
+velocity= 5.743905487358078
+yaw_rate= 0.012438457595541283
+acceleration= 0.007907450172761956
+time_step= 89
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 89
+"
+"
+position= [-6.96423971 14.51733128]
+orientation= 2.134008693676797
+velocity= 5.74449730408071
+yaw_rate= 0.002775181637100778
+acceleration= 0.0036350987368782266
+time_step= 90
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 90
+"
+"
+position= [-7.27115252 15.00293679]
+orientation= 2.1345658860567696
+velocity= 5.7447288380696815
+yaw_rate= -0.00021692041893541653
+acceleration= 0.0011452528036603109
+time_step= 91
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 91
+"
+"
+position= [-7.57807477 15.48855095]
+orientation= 2.1342813357609987
+velocity= 5.7447619636992595
+yaw_rate= -0.0004695490214695997
+acceleration= -0.0003027334315300271
+time_step= 92
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 92
+"
+"
+position= [-7.88488638 15.97423249]
+orientation= 2.134203523881534
+velocity= 5.744703619454526
+yaw_rate= 0.000202810250729305
+acceleration= -0.0006869798960608459
+time_step= 93
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 93
+"
+"
+position= [-8.19171707 16.45989434]
+orientation= 2.134300574855525
+velocity= 5.744641649338633
+yaw_rate= 0.00013723572319777056
+acceleration= -0.0005543085663938627
+time_step= 94
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 94
+"
+"
+position= [-8.49858337 16.94552713]
+orientation= 2.134363578115743
+velocity= 5.74459238658457
+yaw_rate= 8.408985715428027e-05
+acceleration= -0.0004327770847397473
+time_step= 95
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 95
+"
+"
+position= [-8.80547108 17.43114126]
+orientation= 2.1343993537195685
+velocity= 5.744554731533839
+yaw_rate= 4.225705879502425e-05
+acceleration= -0.0003221209307991548
+time_step= 96
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 96
+"
+"
+position= [-9.11236937 17.91674484]
+orientation= 2.1344158911447497
+velocity= 5.7445266671955215
+yaw_rate= 1.6396479098735572e-05
+acceleration= -0.00024037124706602258
+time_step= 97
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 97
+"
+"
+position= [-9.4192711 18.4023434]
+orientation= 2.1344193700495837
+velocity= 5.744506416897804
+yaw_rate= -3.3106687006691178e-06
+acceleration= -0.00016583408017635274
+time_step= 98
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 98
+"
+"
+position= [-9.72617114 18.88794106]
+orientation= 2.1344131466821192
+velocity= 5.744493260793944
+yaw_rate= -1.748653453751318e-05
+acceleration= -9.848506515221272e-05
+time_step= 99
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 99
+"
+"
+position= [-10.03306609  19.37354073]
+orientation= 2.1344015229176456
+velocity= 5.744485761074105
+yaw_rate= -2.259595544006739e-05
+acceleration= -5.226755324806899e-05
+time_step= 100
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 100
+"
+"
+position= [-10.33995451  19.8591439 ]
+orientation= 2.1343876050004464
+velocity= 5.744482655588392
+yaw_rate= -2.5518502388168835e-05
+acceleration= -1.0600924810283621e-05
+time_step= 101
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 101
+"
+"
+position= [-10.6468358   20.34475146]
+orientation= 2.1343725722915208
+velocity= 5.744483489073134
+yaw_rate= -2.6521838420672565e-05
+acceleration= 2.651122109543674e-05
+time_step= 102
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 102
+"
+"
+position= [-10.95370998  20.83036379]
+orientation= 2.13435818373003
+velocity= 5.7444872872217
+yaw_rate= -2.353553478743744e-05
+acceleration= 4.9008834660151266e-05
+time_step= 103
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 103
+"
+"
+position= [-11.26057786  21.31598069]
+orientation= 2.134345569583331
+velocity= 5.744493202258917
+yaw_rate= -2.0354913425064924e-05
+acceleration= 6.884902240942855e-05
+time_step= 104
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 104
+"
+"
+position= [-11.56744043  21.80160174]
+orientation= 2.134334822666916
+velocity= 5.744500968454755
+yaw_rate= -1.70454611347102e-05
+acceleration= 8.603207419650176e-05
+time_step= 105
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 105
+"
+"
+position= [-11.87429876  22.28722649]
+orientation= 2.134326321921714
+velocity= 5.744509968166945
+yaw_rate= -1.2640983716550581e-05
+acceleration= 9.373513892537158e-05
+time_step= 106
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 106
+"
+"
+position= [-12.18115405  22.77285426]
+orientation= 2.1343201979774653
+velocity= 5.744519670102376
+yaw_rate= -8.766266409551604e-06
+acceleration= 0.00010007678382588049
+time_step= 107
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 107
+"
+"
+position= [-12.48800741  23.25848443]
+orientation= 2.134316153617477
+velocity= 5.744529938185492
+yaw_rate= -5.3965964855900965e-06
+acceleration= 0.00010505826994395174
+time_step= 108
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 108
+"
+"
+position= [-12.79485983  23.74411643]
+orientation= 2.1343139846456176
+velocity= 5.744540412949567
+yaw_rate= -2.2564833395201178e-06
+acceleration= 0.0001043477174843968
+time_step= 109
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 109
+"
+"
+position= [-13.10171216  24.22974971]
+orientation= 2.1343134488812976
+velocity= 5.744550789879829
+yaw_rate= 2.974410481562674e-07
+acceleration= 0.00010310167939044599
+time_step= 110
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 110
+"
+"
+position= [-13.40856511  24.71538383]
+orientation= 2.134314223219255
+velocity= 5.74456101544848
+yaw_rate= 2.3126239073520554e-06
+acceleration= 0.00010132052459816063
+time_step= 111
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 111
+"
+"
+position= [-13.71541923  25.2010184 ]
+orientation= 2.1343159783015477
+velocity= 5.744570905550072
+yaw_rate= 3.7292978615369763e-06
+acceleration= 9.64726163735583e-05
+time_step= 112
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 112
+"
+"
+position= [-14.02227489  25.68665313]
+orientation= 2.1343184329044127
+velocity= 5.744580308192777
+yaw_rate= 4.754512941293249e-06
+acceleration= 9.157133626680364e-05
+time_step= 113
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 113
+"
+"
+position= [-14.32913237  26.1722878 ]
+orientation= 2.1343213733318933
+velocity= 5.7445892180351485
+yaw_rate= 5.4271886722103105e-06
+acceleration= 8.661658953591528e-05
+time_step= 114
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 114
+"
+"
+position= [-14.6359918   26.65792226]
+orientation= 2.1343245453379227
+velocity= 5.744597562362568
+yaw_rate= 5.585477633999557e-06
+acceleration= 8.030250116739459e-05
+time_step= 115
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 115
+"
+"
+position= [-14.94285321  27.14355642]
+orientation= 2.1343277573317647
+velocity= 5.744605285042336
+yaw_rate= 5.570050498171168e-06
+acceleration= 7.418362173250439e-05
+time_step= 116
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 116
+"
+"
+position= [-15.24971657  27.62919023]
+orientation= 2.134330915825473
+velocity= 5.7446124055910825
+yaw_rate= 5.4028600353279055e-06
+acceleration= 6.825986784962388e-05
+time_step= 117
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 117
+"
+"
+position= [-15.55658179  28.11482366]
+orientation= 2.1343338873610396
+velocity= 5.7446189164818575
+yaw_rate= 4.938149057220971e-06
+acceleration= 6.200719777494057e-05
+time_step= 118
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 118
+"
+"
+position= [-15.86344872  28.60045675]
+orientation= 2.134336584990386
+velocity= 5.744624816880666
+yaw_rate= 4.450503544915516e-06
+acceleration= 5.605002872461557e-05
+time_step= 119
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 119
+"
+"
+position= [-16.17031719  29.08608953]
+orientation= 2.134338997715994
+velocity= 5.744630136337755
+yaw_rate= 3.9475075135267795e-06
+acceleration= 5.038836442239937e-05
+time_step= 120
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 120
+"
+"
+position= [-16.47718702  29.57172204]
+orientation= 2.1343410880414204
+velocity= 5.744634901069125
+yaw_rate= 3.3383760379060736e-06
+acceleration= 4.4957702630259344e-05
+time_step= 121
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 121
+"
+"
+position= [-16.78405803  30.05735435]
+orientation= 2.134342842819254
+velocity= 5.744639138166766
+yaw_rate= 2.7791342026294526e-06
+acceleration= 3.983569520802606e-05
+time_step= 122
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 122
+"
+"
+position= [-17.09093003  30.5429865 ]
+orientation= 2.1343442904401475
+velocity= 5.744642878497634
+yaw_rate= 2.268847466820031e-06
+acceleration= 3.5022371603114786e-05
+time_step= 123
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 123
+"
+"
+position= [-17.39780284  31.02861855]
+orientation= 2.134345413051521
+velocity= 5.744646153076354
+yaw_rate= 1.6579533834714704e-06
+acceleration= 3.052048232514182e-05
+time_step= 124
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 124
+"
+"
+position= [-17.70467627  31.51425056]
+orientation= 2.134346215597671
+velocity= 5.744648992850579
+yaw_rate= 1.153000616182357e-06
+acceleration= 2.6326287014333292e-05
+time_step= 125
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 125
+"
+"
+position= [-18.01155018  31.9998826 ]
+orientation= 2.1343467562887137
+velocity= 5.744651428591094
+yaw_rate= 7.447660726054344e-07
+acceleration= 2.243981153983479e-05
+time_step= 126
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 126
+"
+"
+position= [-18.31842441  32.48551469]
+orientation= 2.134347060124564
+velocity= 5.744653493604437
+yaw_rate= 3.342901431982875e-07
+acceleration= 1.8909866272886687e-05
+time_step= 127
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 127
+"
+"
+position= [-18.62529883  32.97114688]
+orientation= 2.1343471632387345
+velocity= 5.744655220446744
+yaw_rate= 4.326714307162877e-08
+acceleration= 1.5676392544869708e-05
+time_step= 128
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 128
+"
+"
+position= [-18.93217335  33.4567792 ]
+orientation= 2.1343471296220207
+velocity= 5.744656638765552
+yaw_rate= -1.4442541177705292e-07
+acceleration= 1.2739396893611395e-05
+time_step= 129
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 129
+"
+"
+position= [-19.23904791  33.94241165]
+orientation= 2.134347016657741
+velocity= 5.744657772846692
+yaw_rate= -2.3369753389307007e-07
+acceleration= 9.99749349286068e-06
+time_step= 130
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 130
+"
+"
+position= [-19.54592245  34.42804422]
+orientation= 2.1343468763554414
+velocity= 5.744658649317747
+yaw_rate= -2.434047497803334e-07
+acceleration= 7.587194954578658e-06
+time_step= 131
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 131
+"
+"
+position= [-19.85279697  34.9136769 ]
+orientation= 2.1343467478692086
+velocity= 5.7446593013391345
+yaw_rate= -1.9636232872800623e-07
+acceleration= 5.508499989297856e-06
+time_step= 132
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 132
+"
+"
+position= [-20.15967148  35.39930965]
+orientation= 2.13434673667828
+velocity= 5.7446597761396685
+yaw_rate= 8.681986346051482e-08
+acceleration= 4.001897098774024e-06
+time_step= 133
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 133
+"
+"
+position= [-20.46654603  35.88494243]
+orientation= 2.1343467884730045
+velocity= 5.744660104595853
+yaw_rate= 6.112575649756301e-08
+acceleration= 2.5816130213596613e-06
+time_step= 134
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 134
+"
+"
+position= [-20.7734206   36.37057522]
+orientation= 2.1343467916551
+velocity= 5.744660295339545
+yaw_rate= -4.422143605802972e-08
+acceleration= 1.2476472116853566e-06
+time_step= 135
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 135
+"
+"
+position= [-21.08029518  36.85620802]
+orientation= 2.13434676896816
+velocity= 5.7446603751545515
+yaw_rate= -3.099873744368196e-08
+acceleration= 4.0736116141993717e-07
+time_step= 136
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 136
+"
+"
+position= [-21.38716975  37.34184083]
+orientation= 2.1343467583917803
+velocity= 5.744660388553427
+yaw_rate= -5.491792491144453e-09
+acceleration= -8.067540411123408e-08
+time_step= 137
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 137
+"
+"
+position= [-21.69404431  37.82747364]
+orientation= 2.1343467610673783
+velocity= 5.74466037076112
+yaw_rate= 1.1706009377703933e-08
+acceleration= -2.1646246234833492e-07
+time_step= 138
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 138
+"
+"
+position= [-22.00091888  38.31310645]
+orientation= 2.1343467665461424
+velocity= 5.74466035122314
+yaw_rate= 7.513644304598442e-09
+acceleration= -1.7485665584529384e-07
+time_step= 139
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 139
+"
+"
+position= [-22.30779345  38.79873926]
+orientation= 2.1343467698599135
+velocity= 5.744660335677888
+yaw_rate= 4.156257520689698e-09
+acceleration= -1.3660785530884164e-07
+time_step= 140
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 140
+"
+"
+position= [-22.61466802  39.28437207]
+orientation= 2.1343467714662423
+velocity= 5.7446603237896685
+yaw_rate= 1.5564172961649329e-09
+acceleration= -1.0171606024784928e-07
+time_step= 141
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 141
+"
+"
+position= [-22.92154259  39.77000487]
+orientation= 2.1343467719294122
+velocity= 5.7446603149269055
+yaw_rate= 1.2048241739507082e-10
+acceleration= -7.591782094417476e-08
+time_step= 142
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 142
+"
+"
+position= [-23.22841716  40.25563767]
+orientation= 2.134346771675125
+velocity= 5.744660308530382
+yaw_rate= -9.473267365007663e-10
+acceleration= -5.239122157520169e-08
+time_step= 143
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 143
+"
+"
+position= [-23.53529173  40.74127047]
+orientation= 2.134346770903946
+velocity= 5.744660304372939
+yaw_rate= -1.685530859966536e-09
+acceleration= -3.113626248185215e-08
+time_step= 144
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 144
+"
+"
+position= [-23.8421663   41.22690328]
+orientation= 2.13434676994096
+velocity= 5.744660302000458
+yaw_rate= -1.6584564921953845e-09
+acceleration= -1.6553085266052314e-08
+time_step= 145
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 145
+"
+"
+position= [-24.14904087  41.71253608]
+orientation= 2.1343467690078697
+velocity= 5.744660301014379
+yaw_rate= -1.5828813038041486e-09
+acceleration= -3.408177240687501e-09
+time_step= 146
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 146
+"
+"
+position= [-24.45591544  42.19816888]
+orientation= 2.1343467681302877
+velocity= 5.74466030127088
+yaw_rate= -1.4661280317191074e-09
+acceleration= 8.298460958286684e-09
+time_step= 147
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 147
+"
+"
+position= [-24.76279001  42.68380169]
+orientation= 2.1343467673912624
+velocity= 5.744660302462567
+yaw_rate= -1.116290743201485e-09
+acceleration= 1.539574582169449e-08
+time_step= 148
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 148
+"
+"
+position= [-25.06966457  43.16943449]
+orientation= 2.134346766837626
+velocity= 5.7446603043221245
+yaw_rate= -8.195814081896384e-10
+acceleration= 2.165591452300077e-08
+time_step= 149
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 149
+"
+"
+position= [-25.37653914  43.65506729]
+orientation= 2.134346766439996
+velocity= 5.744660306765845
+yaw_rate= -5.721113375849688e-10
+acceleration= 2.7078966795042577e-08
+time_step= 150
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 150
+"
+"
+position= [-25.68341371  44.1407001 ]
+orientation= 2.1343467661778037
+velocity= 5.744660309599033
+yaw_rate= -3.4884747356504136e-10
+acceleration= 2.9513308617752252e-08
+time_step= 151
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 151
+"
+"
+position= [-25.99028827  44.6263329 ]
+orientation= 2.1343467660304003
+velocity= 5.744660312654212
+yaw_rate= -1.7177149318421154e-10
+acceleration= 3.151881187247988e-08
+time_step= 152
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 152
+"
+"
+position= [-26.29716284  45.11196571]
+orientation= 2.134346765972513
+velocity= 5.744660315888501
+yaw_rate= -3.653840358692031e-11
+acceleration= 3.309547595651899e-08
+time_step= 153
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 153
+"
+"
+position= [-26.60403741  45.59759851]
+orientation= 2.1343467659712534
+velocity= 5.744660319188522
+yaw_rate= 2.9096553364096616e-11
+acceleration= 3.287675405365268e-08
+time_step= 154
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 154
+"
+"
+position= [-26.91091198  46.08323132]
+orientation= 2.134346766002464
+velocity= 5.744660322458211
+yaw_rate= 7.684175289748576e-11
+acceleration= 3.248879386947289e-08
+time_step= 155
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 155
+"
+"
+position= [-27.21778655  46.56886412]
+orientation= 2.13434676605635
+velocity= 5.74466032568064
+yaw_rate= 1.0808523606467665e-10
+acceleration= 3.1931595223415016e-08
+time_step= 156
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 156
+"
+"
+position= [-27.52466111  47.05449693]
+orientation= 2.134346766116246
+velocity= 5.744660328797683
+yaw_rate= 9.970739234571778e-11
+acceleration= 3.040638410864335e-08
+time_step= 157
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 157
+"
+"
+position= [-27.83153568  47.54012974]
+orientation= 2.134346766170728
+velocity= 5.744660331761342
+yaw_rate= 9.001669511097228e-11
+acceleration= 2.886390671414692e-08
+time_step= 158
+"
+"
+position= [0.6814788  2.65787746]
+orientation= -2.5788657605070053
+velocity= 9.046956993944965
+yaw_rate= 0.0
+acceleration= -5
+time_step= 158
+"

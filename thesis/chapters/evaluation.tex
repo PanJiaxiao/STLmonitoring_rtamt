@@ -1,0 +1,738 @@
+\chapter{Evaluation}\label{ch:evaluation}
+
+% variables
+\newcommand{\corInteractionsCollisions}{0.15}
+\newcommand{\corPInteractionsCollisions}{\ll~0.05}
+\newcommand{\corInteractionsEmergency}{0.12}
+\newcommand{\corPInteractionsEmergency}{\ll~0.05}
+\newcommand{\corInteractionsGoals}{0.22}
+\newcommand{\corPInteractionsGoals}{\ll~0.05}
+\newcommand{\corEmergencyGoals}{0.82}
+
+\newcommand{\corDangerInteractionsCollisions}{0.20}
+\newcommand{\corInteractionsInteractionsCollisions}{0.19}
+\newcommand{\corRandomInteractionsCollisions}{0.19}
+
+\newcommand{\corDangerInteractionsEmergency}{0.17}
+\newcommand{\corInteractionsInteractionsEmergency}{0.21}
+\newcommand{\corRandomInteractionsEmergency}{0.15}
+
+\newcommand{\corDangerInteractionsGoals}{0.18}
+\newcommand{\corInteractionsInteractionsGoals}{0.40}
+\newcommand{\corRandomInteractionsGoals}{0.07}
+
+\newcommand{\aOneTwoDangerInteractionsCollisions}{0.60}
+\newcommand{\aOneTwoDangerInteractionsEmergency}{0.88}
+\newcommand{\aOneTwoDangerInteractionsGoals}{0.86}
+\newcommand{\aOneTwoDangerInteractionsInteractions}{0.11}
+\newcommand{\aOneTwoDangerRandomCollisions}{0.83}
+\newcommand{\aOneTwoDangerRandomEmergency}{0.99}
+\newcommand{\aOneTwoDangerRandomGoals}{0.95}
+\newcommand{\aOneTwoDangerRandomInteractions}{1}
+\newcommand{\aOneTwoInteractionsDangerCollisions}{0.40}
+\newcommand{\aOneTwoInteractionsDangerEmergency}{0.12}
+\newcommand{\aOneTwoInteractionsDangerGoals}{0.15}
+\newcommand{\aOneTwoInteractionsDangerInteractions}{0.89}
+\newcommand{\aOneTwoInteractionsRandomCollisions}{0.87}
+\newcommand{\aOneTwoInteractionsRandomEmergency}{0.97}
+\newcommand{\aOneTwoInteractionsRandomGoals}{0.90}
+\newcommand{\aOneTwoInteractionsRandomInteractions}{1}
+
+\newcommand{\pDangerInteractionsCollisions}{0.31}
+\newcommand{\pDangerInteractionsEmergency}{\ll~0.05}
+\newcommand{\pDangerInteractionsGoals}{\ll~0.05}
+\newcommand{\pDangerInteractionsInteractions}{\ll~0.05}
+\newcommand{\pDangerRandomCollisions}{\ll~0.05}
+\newcommand{\pDangerRandomEmergency}{\ll~0.05}
+\newcommand{\pDangerRandomGoals}{\ll~0.05}
+\newcommand{\pDangerRandomInteractions}{\ll~0.05}
+\newcommand{\pInteractionsRandomCollisions}{\ll~0.05}
+\newcommand{\pInteractionsRandomEmergency}{\ll~0.05}
+\newcommand{\pInteractionsRandomGoals}{\ll~0.05}
+\newcommand{\pInteractionsRandomInteractions}{\ll~0.05}
+
+\newcommand{\numberRuns}{60}
+\newcommand{\runsPerScenarioPerAlgorithm}{5}
+\newcommand{\runsPerScenario}{15}
+\newcommand{\runsPerAlgorithm}{20}
+\newcommand{\numberScenarios}{4}
+\newcommand{\numberSimulationsPerRun}{400}
+
+
+\section{Experimental Setup}\label{sec:experimental-setup}
+To evaluate the novel multi-motion-planning-system the three algorithms were tested on four different
+scenarios taken from the \CommonRoad~scenario library\footnote{\url{https://commonroad.in.tum.de/scenarios} Date: \FootDate}.
+The experiment consists of several runs, whereby the base scenarios were simulated \numberSimulationsPerRun~times per run and
+mutations are applied between the individual simulations according to the chosen algorithm.
+For each scenario and algorithm combination \runsPerScenarioPerAlgorithm~runs were carried out,
+this lead to overall \runsPerScenario~runs per scenario and \runsPerAlgorithm~runs per algorithm, overall \numberRuns~runs
+and therefore 24.000 individual simulations.
+With the configuration~\ref{tab:table:experiment-config} a single run took about 3--8 hours, depending on the used algorithm
+and the scenario.
+The experiments were carried out on a Ryzen5 3600 3.8GHz CPU with 16GB RAM\@.
+Runs could be triggered in parallel for different scenarios and algorithms to improve the overall experiment
+duration.
+
+To find a good configuration for the final study, a pilot study was conducted in advance.
+% TODO also include a diagram here to show that values are not growing after set amount of simulations?
+% TODO explain each configuration value?
+
+\begin{table}[h!]
+    \setlength{\tabcolsep}{3pt} % default value: 6pt
+    \begin{tabularx}{\textwidth}{msb}
+        \toprule
+        \textbf{Configuration} & \textbf{Value} & \textbf{Explanation}
+        \\
+        \midrule
+        \texttt{simulation} \texttt{\_retries} & 400 & number of simulations per run\\
+        \addlinespace
+        \addlinespace
+        \texttt{dist\_to\_end} & 10.0 & length of goal area at the end of a lanelet\\
+        \addlinespace
+        \addlinespace
+        \texttt{max\_amount\_pp} & 6 & maximum amount of planning problems in a scenario\\
+        \addlinespace
+        \addlinespace
+        \texttt{min\_amount\_pp} & 2 & minimum amount of planning problems in a scenario\\
+        \addlinespace
+        \addlinespace
+        \texttt{max\_position} \texttt{\_modifier} & 50 & maximum amount for position mutations, minimum amount is the negative value of this configuration\\
+        \addlinespace
+        \addlinespace
+        \texttt{max\_velocity} & 25 & maximum velocity of an ego after mutation\\
+        \addlinespace
+        \addlinespace
+        \texttt{min\_velocity} & 5 & minimum velocity of an ego after mutation\\
+        \addlinespace
+        \addlinespace
+        \texttt{max\_init\_velocity} & 10 & maximum initial velocity for new planning problems and also maximum modifier for velocity mutations\\
+        \addlinespace
+        \addlinespace
+        \texttt{min\_init\_velocity} & 5 & minimum initial velocity and minimum modifier for velocity mutations\\
+        \addlinespace
+        \addlinespace
+        \texttt{max\_time\_step} & 200 & maximum number of time step that each planner can take in a simulation\\
+        \addlinespace
+        \addlinespace
+        \texttt{emergency\_slow} \texttt{\_down\_amount} & 5 & how much a planner is slowing down for each time step it spends in emergency mode\\
+        \bottomrule
+    \end{tabularx}
+    \caption{Configuration values of \texttt{config.py} for the experiment.}
+    \label{tab:table:experiment-config}
+\end{table}
+
+\subsection{Base Scenario Selection}\label{subsec:base-scenario-selection}
+For the evaluation four highway specific scenarios were chosen, as the MPA (Reactive Planner~\ref{subsubsec:reactive-planner})
+was designed towards this kind of scenarios.
+The scenarios were selected by features from \CommonRoad's online library, mentioned in \autoref{sec:experimental-setup}.
+The scenarios have different features to cover the basic highway driving maneuvers and to test how
+the different road networks affect the planners' behaviour.
+
+\textbf{Ramp Scenario (RS}~\autoref{fig:scenario:rs}\textbf{)}: The ramp scenario has one on-ramp and two off-ramps onto
+a regular two-lane highway.
+The on-/off-ramps are designed to test whether planners can correctly arrange themselves in the lanes
+in order to reach the goal on an off-ramp or on the highway when they are finished.
+
+\textbf{Merge Scenario (MS}~\autoref{fig:scenario:ms}\textbf{)}: The merge scenario has long almost straight roads
+that merge together.
+The scenario aims to generate critical situations during the merge and tailgating interactions on the long
+sections before and after.
+
+\textbf{Multi Lane Scenario (MLS}~\autoref{fig:scenario:mls}\textbf{)}: This scenario has several lanes next to each other
+and should generate a lot of interaction between the planners as they try to place themselves on their
+respective goal lane and thereby also influence other planners.
+
+\textbf{Oncoming Lane Scenario (OLS}~\autoref{fig:scenario:ols}\textbf{)}: This scenario has oncoming lanes, which
+should ultimately lead to serious critical situations such as collisions.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.82\linewidth]{images/scenarios/USA_US101-23_1_T-1}
+    \caption{Highway scenario with on and off ramps, Ramp Scenario [RS]}
+    \label{fig:scenario:rs}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.82\linewidth]{images/scenarios/DEU_Cologne-79_2_I-1}
+    \caption{Scenario with oncoming traffic lanes, lane splits and merges, Oncoming Lane Scenario [OLS]}
+    \label{fig:scenario:ols}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.82\linewidth]{images/scenarios/CHN_Cho-2_2_l-1-1}
+    \caption{Scenario with long straight roads and a lane merge, Merge Scenario [MS]}
+    \label{fig:scenario:ms}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.82\linewidth]{images/scenarios/USA_US101-15_2_T-1}
+    \caption{Scenario with multiple lanes, Multi Lane Scenario [MLS]}
+    \label{fig:scenario:mls}
+\end{figure}
+
+\newpage
+\section{Results}\label{sec:results}
+\subsection{Research Questions}\label{subsec:research-questions}
+
+\textbf{RQ 1 (Failure Exposure):} \textit{Can the system automatically detect faults that are due to interactions?}
+
+% TODO not sure if needed
+%\textbf{RQ 1.1} \textit{Is there a difference for the algorithms?}
+%
+%\textbf{RQ 1.2} \textit{Is there a difference for the scenarios?}
+
+\textbf{RQ 2 (Algorithm Comparison):} \textit{Which fitness metric is suited best for generating critical interactions in scenarios?}
+
+\textbf{RQ 3 (Effect of Scenario Features):} \textit{Are there features within the scenarios that promote different metrics in the simulations?}
+
+
+
+\subsection{Analysis}\label{subsec:analysis}
+
+\subsubsection{Side Notes: Qualitative Analysis}
+In this case the qualitative analysis deals with the GIFs of the individual simulations.
+For this purpose, simulations are selected and analysed on the basis of conspicuous critical
+metrics within the data of a run.
+This is necessary because on the basis of the critical metrics alone
+it is not possible to draw conclusions about the exact course and behaviour of the planners during a simulation.
+
+In the qualitative analysis at the end of the experiment, two main categories of interactions were found,
+firstly Tailgating Interactions and secondly Lane Switch Interactions.
+These occur in most scenarios and produce similar behavioural patterns that result in the critical metrics.
+These two interactions are described below and will be referred to in the qualitative analyses of the individual
+detailed analyses.
+
+\paragraph{Tailgating Interaction}\label{par:tailgating-interaction}\mbox{}\\
+% TODO add images for different tailgating interactions or actually the one that gives lots of interactions
+A tailgating interaction is considered as two or more ego cars going behind each other
+with the ego(s) in the back going slightly faster than the one in front.
+This behaviour causes the egos to drive very close to each other and due to the higher velocity from the ego
+in the back also generates interactions.
+These tailgating interactions can have these different outcomes:
+\begin{enumerate}
+    \item The ego in front has enough space to move aside and let the ego in the back pass, this only leads to a
+            few interactions.
+    \item The ego in front can not find a solution due to the ego in the back being too close
+            and switches to emergency mode which slows down the ego, this
+            often leads to a collision due to the close distances and the immediate slowing
+            down of the ego in front.
+    \item The ego in front is continuously adjusting its trajectory which counts as lots of interactions but there
+            is not enough space for the ego in the back to overtake, so this boosts the scenarios' interaction count
+            by a lot without actually having a dangerous interaction.
+            % TODO is this manually reproducible relevant?
+            This interaction is not interesting for the experiment and is also easily manually reproducible by
+            putting two planning problems in the same lane with the same goal.
+\end{enumerate}
+
+\paragraph{Lane Switch Interaction}\label{par:laneswitch-interaction}\mbox{}\\
+A lane switching interaction describes two or more egos driving in lanes approximately next to each other
+and at least one ego trying to switch lanes in the process.
+This means that at least one of the planners involved must adjust their trajectory to avoid a collision
+and thereby leads to interactions.
+These lane change interactions can lead to various interactions:
+\begin{enumerate}
+    \item The egos involved are slightly offset with about the same velocities
+        and can therefore be placed behind each other with slight
+        adjustments to the trajectory, only a few interactions occur in this process.
+    \item One ego has a higher velocity and is cut off by another, this leads
+        to several interactions and potentially \EM~or \Collisions~as well.
+    \item Egos travel at the same height at similar velocities and therefore no lane
+        change can take place, this leads to many interactions and often \Goals~or \EM.
+\end{enumerate}
+
+\newpage
+
+
+\subsubsection{RQ1: Failure Exposure}\label{subsubsec:failure-exposure}
+This research question explores the relationship between the defined interaction metric and the critical metrics
+(\EM, \Collisions, \Goals).
+This aims to show to what extent critical situations are caused by interactions.
+
+\begin{figure}
+    \centering
+    \begin{tabular}{ |c|c|c| }
+        \hline
+        metric & correlation & p-value\\
+        \hline
+        \EM & \corInteractionsEmergency & < 0.05\\
+        \Goals & \corInteractionsGoals & < 0.05\\
+        \Collisions & \corInteractionsCollisions & < 0.05\\
+        \hline
+    \end{tabular}
+    \caption{Correlation values of fault metrics compared to interactions metric.}
+    \label{fig:correlation-interactions}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/plots/scatter-emergency-interactions}
+    \caption{Relationship between \EM~and \Interactions~across all individual simulations.}
+    \label{fig:plots:scatter-emergency}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/plots/scatter-goals-interactions}
+    \caption{Relationship between \Goals~and \Interactions~across all individual simulations.}
+    \label{fig:plots:scatter-goals}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/plots/scatter-collisions-interactions}
+    \caption{Relationship between \Collisions~and \Interactions~across all individual simulations.}
+    \label{fig:plot:scatter-collisions}
+\end{figure}
+
+%TODO also analyze correlations with danger metric?
+
+For this research question all the collected data needs to be analysed together in order to test whether
+there is a correlation between the interactions and the critical metrics.
+The analysis shows that there is a weak correlation for all critical metrics and all of them have a significant
+p-value (\autoref{fig:correlation-interactions}).
+
+The metric \EM~only shows a very weak correlation with interactions (cor: \corInteractionsEmergency, p-value).
+This can be explained by the behaviour of the planner, which in many situations can not find a solution
+for the state of the ego car and therefore going into emergency mode.
+Meaning there are egos in emergency mode without having interactions with other ego cars.
+
+The metric \Goals~has the highest correlation with interactions.
+The main reason ego cars do not reach the goal is that the ego stopped during the simulation because of too
+many steps spent in emergency mode and then stopping on the road.
+Another reason can be that there were not enough steps in the simulation to drive from start to goal, but
+this can mostly be neglected due to the pilot study where cars mostly reached the finish. %TODO sketchy sentence
+This is also backed by the correlation between \EM~and \Goals~(cor: 0.79, p < 0.05).
+%TODO how can this be pulled back on interactions
+
+The metric collisions shows a weak correlation with interactions (cor: \corInteractionsCollisions, p-value < 0.05).
+This means that interactions rarely lead to collisions.
+
+\noindent\fbox{\parbox{\textwidth}{\textbf{Summary:} The system can automatically detect faults that are due to interactions, but
+interactions are not a very good metric on their own to generate critical situations, as an interaction can
+also take place with sufficient safety distance.}}
+
+\newpage
+
+\subsubsection{RQ2: Algorithm Comparison}\label{subsubsec:algorithm-comparison}
+This research question investigates which of the fitness metrics, danger or interactions,
+can generate the most critical metrics in the simulations.
+First, a comparison is made with the basic \Random~approach and then the two algorithms
+\MaxDanger~and \MaxInteractions~are compared with each other.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/plots/emergency_maneuvers_per_algorithm}
+    \caption{Aggregated \EM~per run for algorithms \MaxDanger, \MaxInteractions~and \Random.}
+    \label{fig:plots:emergency_maneuvers_per_algorithm}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/plots/goals_not_reached_per_algorithm}
+    \caption{Aggregated \Goals~per run for algorithms \MaxDanger, \MaxInteractions~and \Random.}
+    \label{fig:plots:goals_not_reached_per_algorithm}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/plots/collisions_per_algorithm}
+    \caption{Aggregated \Collisions~per run for algorithms \MaxDanger, \MaxInteractions~and \Random.}
+    \label{fig:plot:collisions_per_algorithm}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/plots/interactions_per_algorithm}
+    \caption{Aggregated \Interactions~per run for algorithms \MaxDanger, \MaxInteractions~and \Random.}
+    \label{fig:plots:interactions_per_algorithm}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \begin{tabular}{ |c|c| c| c| }
+        \hline
+        algorithm & metric & p-value & A12 effect size\\
+        \hline
+        max\_danger & emergency\_maneuvers & \pDangerRandomEmergency &  \aOneTwoDangerRandomEmergency\\
+        & goals\_not\_reached & \pDangerRandomGoals &\aOneTwoDangerRandomGoals\\
+        & collisions & \pDangerRandomCollisions&\aOneTwoDangerRandomCollisions\\
+        & interactions & \pDangerRandomInteractions &\aOneTwoDangerRandomInteractions\\
+        max\_interactions & emergency\_maneuvers & \pInteractionsRandomEmergency & \aOneTwoInteractionsRandomEmergency\\
+        & goals\_not\_reached & \pInteractionsRandomGoals &\aOneTwoInteractionsRandomGoals\\
+        & collisions & \pInteractionsRandomCollisions &\aOneTwoInteractionsRandomCollisions\\
+        & interactions & \pInteractionsRandomInteractions &\aOneTwoInteractionsRandomInteractions\\
+        \hline
+    \end{tabular}
+    \caption{Comparison of algorithms \texttt{max\_danger} and \texttt{max\_interactions} to baseline approach \texttt{random}.}
+    \label{fig:statistical-algorithm-comparison}
+\end{figure}
+
+\subsubsection{General Observations}
+At first sight, there is a notable similarity between the graphs for
+\EM\linebreak(\cref{fig:plots:emergency_maneuvers_per_algorithm})
+and \Goals~(\cref{fig:plots:goals_not_reached_per_algorithm}), this is because the metric \linebreak
+\Goals~is directly dependent on \EM, since after all emergency maneuvers of a planner are used up,
+the ego vehicle simply stops on the road and thus cannot reach the goal.
+The metric \Collisions~affects \Goals~in the same way, as two planners that have collided can no longer reach the goal area,
+however, the effects on the graphs are not visible because collisions are not very frequent.
+
+\subsubsection{Algorithm \Random}
+This mutation approach purely serves as a baseline comparison for the algorithms \texttt{max\_danger} and \texttt{max\_interactions}.
+The main purpose was to properly evaluate the other implementations and help to prove that those are good
+drivers to generate critical interactions.
+
+\paragraph{Quantitative Analysis}\mbox{}\\
+Figures \cref{fig:plots:emergency_maneuvers_per_algorithm,fig:plots:goals_not_reached_per_algorithm,fig:plot:collisions_per_algorithm}
+show that the algorithm \texttt{random} is clearly the worst performer.
+This is also confirmed by the statistical values in \cref{fig:statistical-algorithm-comparison}, as the A12 effect
+sizes of the algorithms \MaxDanger~and \MaxInteractions~are significantly better for
+all critical metrics and also for the interaction metric.
+%todo why is this so? because random just can not find anything good with random distribution all over the lanelet
+ % network
+
+
+\paragraph{Qualitative Analysis}\mbox{}\\
+As bad as the overall results of the algorithm \Random~are,
+over a whole run with enough time steps, as in the configuration, the algorithm is often able
+to find a few scenarios with good critical values.
+%TODO explain WHYYYY this is that way
+
+Manual analysis of the simulated GIFs shows that for the case of high interactions those are coming from randomly
+found tailgating interactions (3) of two (sometimes more) egos over a long distance of a single lanelet in the scenario.
+
+\noindent\fbox{\parbox{\textwidth}{\textbf{Summary:} The qualitative analysis has shown that algorithm \Random
+only rarely finds good critical scenarios. When it finds a scenario with high critical metrics it often is an
+uninteresting~\nameref{par:tailgating-interaction} (3).}}
+
+\subsubsection{Algorithm \MaxDanger}\label{subsubsec:algo-max_danger}
+
+\paragraph{Quantitative Analysis}\mbox{}\\
+The \MaxDanger~algorithm is significantly better than random in all metrics (\cref{fig:plots:emergency_maneuvers_per_algorithm,fig:plots:goals_not_reached_per_algorithm,fig:plot:collisions_per_algorithm}).
+Overall, \MaxDanger~performs best in all critical metrics and is only beaten in the interaction metric by the
+algorithm \MaxInteractions~\cref{fig:plots:interactions_per_algorithm}.
+For the metric \EM~(p-value \pDangerInteractionsEmergency, A12: \aOneTwoDangerInteractionsEmergency) and
+\Goals~(p-value \pDangerInteractionsGoals, A12: \aOneTwoDangerInteractionsGoals) algorithm \MaxDanger~performs
+significantly better than \MaxInteractions, for \Collisions~the two algorithms are almost even
+(p-value: \pDangerInteractionsCollisions, A12: \aOneTwoDangerInteractionsCollisions) and for the metric \Interactions~
+it is significantly worse than algorithm \MaxInteractions
+(p-value \pDangerInteractionsInteractions, A12: \aOneTwoDangerInteractionsInteractions).
+These statistics make the approach \MaxDanger~the overall best algorithm to generate critical driving metrics.
+The baseline mutation \texttt{random} is outperformed significantly
+in all relevant measures, emergency maneuvers, goals not reached,
+collisions and interactions.
+
+The differences in the critical metrics can be traced back to the definition of the danger fitness metric,
+which favours small distances between planners and high relative velocities (\cref{subsubsec:danger-def}).
+From a purely physical point of view, this makes it difficult for the planners to find a solution and
+in the end this leads to most critical metrics.
+
+
+
+% more pages: Other interesting statistics (like are there more egos, higher velocities, more steps taken)
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{images/showcase-gifs/max_danger_us23_tailgating_fast/frame_000_delay-0.01s}
+    \caption{From the left side three planners approach three other planners which are slower.}
+    \label{fig:showcase-max-danger:tailgating-us23:initial}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{images/showcase-gifs/max_danger_us23_tailgating_fast/frame_078_delay-0.01s}
+    \caption{Critical point at which the purple planner gives way to the blue one.}
+    \label{fig:showcase-max-danger:tailgating-us23:intermediate}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \label{fig:showcase-max-danger:tailgating-us23:finished}
+    \includegraphics[width=1\linewidth]{images/showcase-gifs/max_danger_us23_tailgating_fast/frame_139_delay-0.01s}
+    \caption{Final state of the simulation with the collision of the blue and green planner and the non-achieved goal
+    of the purple planner.}
+\end{figure}
+
+\paragraph{Qualitative Analysis}\mbox{}\\
+Manual analysis of the generated GIFs for each simulation during a run shows that due to the
+danger metric(\cref{subsubsec:danger-def})
+the ego cars tend to drive very close to each other.
+This supports the statistics from the quantitative analysis.
+
+The example from \cref{fig:showcase-max-danger:tailgating-us23:finished} shows a tailgating interaction inside a
+simulation.
+The initial scenario~\cref{fig:showcase-max-danger:tailgating-us23:initial}
+shows fast planners from the left side distributed over all three lanes and in front of them
+planners with slower speed also distributed over all three lanes.
+Based on this setup, one can already see that at a certain point the faster planners will catch up with the slower
+ones and interactions will take place.
+When the rear planners catch up with the front planners, they change lanes to let the faster planners pass.
+Shortly before the finish and the off ramp, the blue planner reaches the purple one, which then changes lanes
+(\nameref{par:tailgating-interaction}(1)).
+However, when the blue planner reaches the green planner, the latter has no possibility to
+move out of the way and there is a collision between the blue and green planner (\nameref{par:tailgating-interaction}(2)).
+In the end, the purple planner cannot reach the goal area either, because the road is blocked by the collision.
+
+Another observation of the simulated scenarios is that planners with the algorithm \MaxDanger~sometimes do not start
+and only use up the emergency maneuvers until they then stop.
+This has been shown to be an issue with the planner, but in simulations with the \MaxDanger~algorithm, it often leads
+to planners blocking a road from the beginning of a simulation, as other planners have to drive around the static
+obstacle and this is gets a good score from the danger metric (high relative velocity, close distances).
+However, these scenarios are not very interesting and do not generate much interactions.
+Under these circumstances, it would also be possible to directly insert static obstacles, which is not the scope
+of this work.
+
+\noindent\fbox{\parbox{\textwidth}{\textbf{Summary:} The quantitative analysis has shown that the \MaxDanger~algorithm produces the highest number of critical metrics.
+But the qualitative analysis shows that the scenarios with high danger values are not necessarily the best for critical interactions and also bring problems.}}
+%TODO result of max-danger is also good in the qualitative analysis, change result sentence here
+
+
+\subsubsection{Algorithm \MaxInteractions}
+The idea of the \MaxInteractions~algorithm is to maximise the interactions and thereby obtain simulations with many
+critical situations.
+
+\paragraph{Quantitative Analysis}\mbox{}\\
+The \MaxInteractions~algorithm performs significantly
+better than \Random~in all critical metrics, and also in the interaction metric
+(\cref{fig:statistical-algorithm-comparison},
+\cref{fig:plots:emergency_maneuvers_per_algorithm,fig:plots:goals_not_reached_per_algorithm,fig:plot:collisions_per_algorithm}).
+This means that the introduced definition of an interaction (\cref{subsubsec:interaction-def})
+promotes critical metrics and finds more of them than a random approach.
+
+As already mentioned in the analysis of algorithm \MaxDanger, the algorithm\newline \MaxInteractions~performs
+worse in the critical metrics, but is significantly better in the interaction metric (\cref{subsubsec:algo-max_danger}),
+which is simply due to the fact that this metric is preferred by the fitness function.
+This is because the danger function promotes small distances and great differences in velocities.
+According to the definition of an interaction, it is sufficient here if a planner changes its trajectory and another
+planner is nearby.
+For this to happen, the planners do not necessarily have to be very close to each other and there does not have
+to be a difference in velocity, which, in the case of \MaxDanger, ultimately brings them even closer
+together over several time steps.
+One reason for the worse performance on the critical metrics is that the \Collisions~and \EM~metrics result in a
+standstill of the planners and therefore the planners can not generate any further interactions, which is badly rated
+by the \MaxInteractions~algorithm.
+%TODO move sentence below and maybe adjust sentence above
+While this does not bring the planners as close and does not generate as many critical metrics, it does encourage
+a different type of interactions, namely lane switch interaction (\cref{par:laneswitch-interaction}).
+
+
+\paragraph{Qualitative Analysis}\mbox{}\\
+The analysis of the GIFs shows that the planners often get very close by switching lanes and thus generate interactions,
+but these are not as critical as those from the \MaxDanger~algorithm.
+This is because the speed differences are not that high and planners have to constantly adjust their trajectory
+to avoid colliding sideways, which is badly rated by the algorithm.
+
+There are also planners with \MaxInteractions~who do not find a solution from the beginning, but this does not occur
+so often because these planners cannot generate any interactions themselves and only generate a few interactions for
+other planners.
+
+The example from \cref{fig:showcase-max-interactions:laneswitch-us23:initial}~shows several lane switching interactions.
+In the initial scenario \cref{fig:showcase-max-interactions:laneswitch-us23:initial},
+three planners are distributed next to each other on the lanes and most of them have the exit at the end of the scenario
+as goal area.
+In the course of the simulation,
+more and more planners try to get into the lane of the exit, which leads to the lane switching interactions.
+In \cref{fig:showcase-max-interactions:laneswitch-us23:intermediate}, the purple planner switches lanes
+into the very narrow gap between the blue and green planner, which leads to trajectory adjustments for
+all three planners involved.
+As can also be seen in \cref{fig:showcase-max-interactions:laneswitch-us23:intermediate},
+the green planner approaches and tries to get into the exit lane as well.
+However, since the three other planners are already very close together on this lane,
+the green planner finds no solution for a lane change and then comes to a standstill in emergency mode
+\cref{fig:showcase-max-interactions:laneswitch-us23:finished}.
+%TODO refs to laneswitch explanation
+
+\noindent\fbox{\parbox{\textwidth}{\textbf{Summary:} The quantitative analysis has shown that the \MaxInteractions~algorithm generates
+more critical metrics than the \Random~algorithm, but less than \MaxDanger.
+For producing many \Interactions~the algorithm \MaxInteractions~is the best approach.
+The qualitative analysis has shown that \MaxInteractions~generates a high quality of scenarios that yield
+interesting interactions, mostly due to lane switching.}}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{images/showcase-gifs/max_interactions_us23_lane_switch/frame_000_delay-0.01s}
+    \caption{There are two pairs of planners on lanes that are directly adjacent to each other and have the same goal
+    area, namely the exit ramp at the end of the lanelet network.}
+    \label{fig:showcase-max-interactions:laneswitch-us23:initial}
+\end{figure}
+\begin{figure}
+    \centering
+    \label{fig:showcase-max-interactions:laneswitch-us23:intermediate}
+    \includegraphics[width=1\linewidth]{images/showcase-gifs/max_interactions_us23_lane_switch/frame_090_delay-0.01s}
+    \caption{Critical point at which the purple planner joins the blue and green planners in order to reach the exit.
+    The green planner also tries to reach this exit.}
+\end{figure}
+\begin{figure}
+    \centering
+    \label{fig:showcase-max-interactions:laneswitch-us23:finished}
+    \includegraphics[width=1\linewidth]{images/showcase-gifs/max_interactions_us23_lane_switch/frame_129_delay-0.01s}
+    \caption{The green planner cannot find a solution and cannot reach the goal area because the three planners
+    on the exit lane are in the way. All the other planners reach their goal area.}
+\end{figure}
+
+\newpage
+
+\subsubsection{RQ3: Effect of Scenario Features}\label{subsubsec:scenario-effects}
+This research question investigates whether road features from the baseline scenarios have an impact on the
+measured critical metrics.
+Furthermore, this will test the planner and MPP under a wider range of driving situations and provide insights
+into test generation and simulation under different conditions.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/plots/scenarios_interactions}
+    \caption{Comparison of the metric \Interactions~across all scenarios split by fitness function}
+    \label{fig:plots:scenarios_interactions}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/plots/scenarios_emergency}
+    \caption{Comparison of the metric \EM~across all scenarios split by fitness function}
+    \label{fig:plots:scenarios_emergency}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/plots/scenarios_goals}
+    \caption{Comparison of the metric \Goals~across all scenarios split by fitness function}
+    \label{fig:plots:scenarios_goals}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/plots/scenarios_collisions}
+    \caption{Comparison of the metric \Collisions~across all scenarios split by fitness function}
+    \label{fig:plots:scenarios_collisions}
+\end{figure}
+
+
+\paragraph{Quantitative Analysis}\mbox{}\\
+Since hardly any statistically relevant differences were found, the quantitative analysis is presented separately
+in advance.
+
+The quantitative analysis in this case refers to all critical metrics as well as the interaction metric,
+which are grouped by scenario;
+the algorithms do not factor into the statistical analysis.
+
+For all metrics examined, only the \Goals~metric showed a significant difference for the OLS;
+all other metrics did not show large or significant differences for any of the scenarios.
+The OLS scores significantly less \Goals~than MS (p-value: 0.031, A12: 0.73) and RS (p-value: 0.025, A12: 0.74),
+MLS (p-value: 0.089, A12: 0.68) is not quite significantly better.
+
+Even though the difference is not significant, the MLS and RS scenarios, as suspected in advance,
+generate the most interactions due to the possibility of many lane changes with the multiple
+lanes and on-/off-ramps next to each other~\ref{fig:plots:scenarios_interactions}.
+
+The values for the metrics collisions and \EM~are very balanced.
+An interesting aspect here is that the values if, in addition to the grouping by scenarios,
+one also divides them according to the algorithms.
+The MS scenario achieves many collisions at \MaxDanger and almost none at \MaxInteractions,
+whereas the opposite is true for OLS~\ref{fig:plots:scenarios_collisions}.
+This shows that the simulations can behave completely differently depending on the algorithm and the scenario.
+
+
+\noindent\fbox{\parbox{\textwidth}{\textbf{Summary:} The quantitative analysis has shown that road features of the scenarios
+have an influence on the metrics, but statistically this is only relevant to a limited extent. The combination
+of scenarios and fitness functions can have interesting impacts on the results.}}
+
+
+\subsubsection{Analysis for Multi Lane Scenario [MLS]}
+The MLS scenario aimed to generate many interactions with the lanes next to each other, as lane
+changes are possible at almost any point in this scenario.
+The lane changes should then also generate critical maneuvers.
+
+\paragraph{Qualitative Analysis}\mbox{}\\
+The many interactions are caused by planners trying to change lanes on adjacent roads and thus taking
+each other's space away.
+
+Most critical situations arise due to several planners driving side by side and crossing paths on the way to their goals.
+With two planners, a solution can often be found, but when even more planners are involved,
+the situation can become very chaotic and planners drive extremely close to each other and hardly stay in one lane.
+
+\noindent\fbox{\parbox{\textwidth}{\textbf{Summary:} The qualitative analysis confirms the
+expected high number of interactions and shows chaotic situations in which planners often do not find a solution
+due to conflicting routes.}}
+
+\subsubsection{Analysis for Ramp Scenario [RS]}
+The scenario should generate many interactions similar to the MLS and have more critical interactions with
+the on-ramps/off-ramps as planners need to get into the turn lane in time.
+
+\paragraph{Qualitative Analysis}\mbox{}\\
+The goal with the critical situations at the on and off ramps has been achieved.
+Often planners do not manage to get into the on/off lane in time and, after missing the off-ramp, can no longer
+find a solution.
+The planners then come to a standstill next to the exit and block the road for other planners.
+Often there are \Collisions~or many \EM~when planners try to change to the exit lane at the last moment.
+
+Furthermore, many critical situations arise during normal lane changes similar to the MLS,
+so that the on/off ramps are not always relevant.
+
+
+\subsubsection{Analysis for Merge Scenario [MS]}
+The scenario was chosen to create critical situations during the merge and to generate tailgating interactions
+on the long straights.
+
+\paragraph{Qualitative Analysis}\mbox{}\\
+There are often tailgating interactions in which the planners come to a standstill due to the \EM, as
+described in~\nameref{par:tailgating-interaction} (3).
+As a result, the roads are blocked and since there are hardly any possibilities to take avoiding actions,
+the following planners are severely hindered, which leads to more critical situations.
+
+The merge rarely has an influence on the course of the scenario, as often one of the two roads
+is blocked by a planner anyway.
+
+
+\noindent\fbox{\parbox{\textwidth}{\textbf{Summary:} The MS does not produce many interesting situations compared to
+the other scenarios and the merge feature only has little impact on the simulation.}}
+
+
+\subsubsection{Analysis for Oncoming Lane Scenario [OLS]}
+The scenario should generate many collisions and situations where planners drive on the oncoming lanes.
+
+\paragraph{Qualitative Analysis}\mbox{}\\
+During the simulation planners often drive into the oncoming lane when overtaking or changing lanes,
+but this rarely results
+in collisions or critical interactions with traffic participants from the oncoming lane.
+
+\noindent\fbox{\parbox{\textwidth}{\textbf{Summary:} The OLS partly fulfills the goal as
+planners drive on the oncoming lane but it rarely results in critical interactions and therefore
+the oncoming lane feature only has little impact on the simulation.}}
+
+%\section{Discussion}\label{sec:discussion}
+
+
+\section{Threats to Validity}\label{sec:threats-validity}
+
+\subsection{External Validity}\label{subsec:external-validity}
+The evaluation was only carried out with four scenarios, it could be that the generation
+of critical interactions cannot be generalised to other scenarios.
+To mitigate this risk, the scenarios were selected so that each scenario contains different
+road features(\ref{subsec:base-scenario-selection}), this way the effects of the different features
+could be analysed(\ref{subsubsec:scenario-effects}), which increases the possibility of generalisation.
+
+\subsection{Internal Validity}\label{subsec:internal-validity}
+Internal validity can be affected by the randomness of evolutionary
+algorithms~(\ref{subsec:evolutionary-algorithm-1+1}), which leads
+to a different result for each randomly generated scenario, thereby potentially skewing the overall result.
+To minimise the risk of randomness, a large number of simulations were executed, \numberRuns~runs for each
+scenario--algorithm combination and
+\numberSimulationsPerRun~simulations per run result in overall 24.000 simulations(~\ref{sec:experimental-setup}).
+
+Another issue is the possibility of bugs in the implementation, which can have many effects, e.g.\ that
+the MPP does not recognise a collision of two planners or that metrics are recorded incorrectly.
+To counteract this issue, the code was thoroughly checked and the generated
+GIFs of the simulations were sampled for validity after each run.
+
+\subsection{Construct Validity}\label{subsec:construct-validity}
+An interaction is defined as a change in trajectory compared to the previously
+computed trajectory and another ego vehicle being within the safety distance(\ref{subsubsec:interaction-def}).
+The issue here comes when checking for an interaction, as a change in trajectory
+does not necessarily come from an interaction, as planners can also change the trajectory
+for readjustment purposes without an interaction happening,
+this can lead to false positive interactions.
+Due to the implementation effort and the long runtimes of other solutions, this problem is tolerated,
+and furthermore, the effect
+is limited by the second requirement of another ego within the safety distance, so not every trajectory
+adjustment is counted as an interaction.

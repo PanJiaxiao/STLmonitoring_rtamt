@@ -1,0 +1,67 @@
+\chapter{Introduction}\label{ch:introduction}
+This chapter presents the motivation behind this thesis, states the main problem that is being addressed and finally
+gives a brief overview of the structural design.
+
+
+\section{Motivation}\label{sec:motivation}
+Autonomous driving (AD) is slowly being more adopted and tested in the real world\cite{bansal2017forecasting},
+but this also brings up cases
+where autonomous vehicles (AV) cause crashes and other accidents.
+Motion planning is a core part of AD and therefore needs thorough testing and as testing in
+real world scenarios can be quite expensive and dangerous, this is mostly done in virtual simulations\cite{schoner2018simulation}.
+
+The goal of testing is to generate many challenging scenarios and find misbehaviours in the MPA when simulating
+the scenarios\cite{koopman2016challenges}.
+Here most of the research focuses on testing a single MPA under simulated real world driving scenarios\cite{huang2016autonomous}.
+This is very useful to prove the system can solve those scenarios and guarantee safety requirements to some
+degree.
+But with a rising adoption of AD, in the future there will be more AVs on the road\cite{bansal2017forecasting} and testing also
+needs to focus on the interaction with other AVs, because there have already been accidents with multiple AVs involved.
+
+This problem is addressed in this thesis, where not only test scenario generation is on focus, but also
+the behaviour of multiple MPAs together in the same scenario.
+Therefore, a new platform is set up to perform simulations with multiple instances of MPAs simultaneously.
+
+The evaluation of the novel Multi-Planning-Platform (MPP) shows that both introduced
+fitness functions are able to find more
+critical behaviours than a baseline random approach.
+
+
+\section{Problem Statement}\label{sec:problem-statement}
+As AVs are becoming more prevalent, adoption is predicted to increase considerably in the future\cite{bansal2017forecasting},
+and there are even trials with AV taxis\footnote{\url{https://www.roboticsbusinessreview.com/rbr50-company-2021/waymo/} Date: \FootDate}
+\footnote{\url{https://www.therobotreport.com/cruise-opens-driverless-robotaxi-service-sf-public/} Date: \FootDate},
+they must meet high safety requirements to avoid accidents and also to get publicly accepted.
+Despite extensive testing, both in the real world and in simulations, there are still accidents in
+which AVs are involved and often even at fault
+\footnote{\url{https://www.businessinsider.com/self-driving-car-accidents-waymo-cruise-tesla-zoox-san-francisco-2022-1} Date: \FootDate}.
+A big factor here is the test cases in which AVs are repeatedly tested with simulated traffic participants.
+However, this neglects how AVs interact with each other;
+these interactions are completely unpredictable and can lead to a variety of situations.
+Furthermore, the more AVs are adapted in the future, the more relevant this issue will become.
+There are already actual cases of AVs interacting with each other in an unforeseeable way,
+causing accidents\footnote{\url{https://edition.cnn.com/2022/09/01/business/cruise-robotaxi-recall/index.html}\\Date: \FootDate}
+or roadblocks\footnote{\url{https://www.theverge.com/2022/7/1/23191045/cruise-robotaxis-driverless-roadblock-san-francisco} Date: \FootDate}.
+In order to avoid such interactions and to investigate them in advance,
+the behaviour of AVs among each other should specifically be tested.
+So this thesis is focused on testing interactions between motion planners
+and the main objective is to find critical interactions, specifically collisions,
+disengagements and missed goals.
+In this process the novel MPP is developed for simulation purposes
+and coupled with an evolutionary algorithm to generate actual critical scenarios.
+Critical metrics are tracked during simulations in order to answer which of the introduced
+evolutionary approaches is the best
+to find critical interactions in motion planners.
+
+\section{Overview}\label{sec:overview}
+First of all, the~\nameref{ch:background} chapter gives an overview of the current
+state of the art for testing autonomous vehicles and MPAs,
+then the technologies and concepts used for implementation are explained, this includes an explanation of the
+\CommonRoad~framework and the idea of coupling it with an evolutionary algorithm.
+In the next chapter,~\nameref{ch:methodology}, the idea behind the MPP and
+several details about the design of the individual components follow.
+Then, in the~\nameref{ch:evaluation} chapter, the experimental setup and the
+research questions are first defined and then addressed in the analysis,
+where each question is examined quantitatively and qualitatively.
+Finally, the~\nameref{ch:conclusion-future-work} chapter provides a summary of the findings of this thesis and
+what learnings can be drawn from it, and lastly gives an outlook on future challenges.

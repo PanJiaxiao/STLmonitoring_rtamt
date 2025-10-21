@@ -1,0 +1,72 @@
+\chapter{Conclusions and Future Work}\label{ch:conclusion-future-work}
+
+\section{Conclusions}\label{sec:conclusions}
+
+Testing AVs raises a number of various challenges, including the amount of tests and critical scenarios required
+to properly test AVs under as many diverse situations as possible\cite{koopman2016challenges}.
+A variety of virtual test generation methods are used to address this in other works\cite{huang2016autonomous},
+but testing how multiple AVs interact with each other is almost completely neglected.
+Therefore, this thesis presents the MPP, a platform that generates critical interactions for
+MPAs by making multiple planners interact with one another.
+
+The experiment shows that with the MPP and an evolutionary algorithm, a large number of critical situations
+are found due to interactions.
+Furthermore, the defined fitness metrics are particularly good at generating critical situations.
+As a result, different critical behaviours are found in different scenarios with the planner under test.
+Besides that, the selected scenarios did not show any statistically relevant differences in the number of individual
+critical metrics generated, but the slightly increased values suggest to still select scenarios with certain
+features to generate critical situations for a specific use case.
+
+Although many critical situations are generated, there are also limitations in the generation, for example, the
+criticality of some scenarios is based on one or more planners coming to a standstill early in the simulation
+and blocking the road for upcoming ego vehicles.
+This behaviour occurs in both presented algorithms and reduces the quality
+of the scenarios, as scenarios with static obstacles are not very interesting
+and other research with explicitly adding static obstacles has already been conducted\cite{hu2018dynamic}.
+
+Another limit is the definition of an interaction, because as mentioned
+in Definition~\nameref{subsubsec:interaction-def},
+this also evaluates false positive interactions.
+This affects the performance of the \MaxInteractions~algorithm and can generally distort the tracking of interactions.
+However, the effect is not substantial enough to affect the result, but nevertheless a
+more precise measurement is always better and more robust.
+%TODO are there more limitations?
+
+\section{Future Work}\label{sec:future-work}
+The novel MPP provides a good foundation for investigating on interactions with multiple planners and gives
+insights into how AVs may interact on the road of a real world scenario.
+But there are a lot of other things to add to this project, which is beyond the scope of a Master's thesis:
+
+A scenario can achieve good critical values in a simulation and still have poor quality if the critical
+interactions are uninteresting (e.g.~\nameref{par:tailgating-interaction}(3)).
+This can be counteracted by categorising interactions directly live in the simulation, which
+can be achieved by analysing the last states of the involved ego vehicles.
+
+Mutation algorithms were evaluated purely based on the criticality metrics and were kept very simple.
+As the algorithms have shown that they are able to produce bad behaviours in the planner, they can also
+be refined and improved to incorporate different metrics.
+This can improve the scenario generation to find scenarios of higher critical quality instead of e.g.\ uninteresting
+tailgating behaviours~\ref{par:tailgating-interaction}.
+In addition, the fitness functions can be redefined to improve the quality already during the simulation
+or the generation of the scenarios.
+Approaches here could include a combination of the Danger and Interaction metrics or,
+to improve scenario generation, planners with little impact on the simulation can be removed
+or mutated with higher probability.
+%
+%
+%Improve data collection:
+%Goals not reached metric is not very meaningful as it is affected by collisions and emergency maneuvers
+%for the future those two cases should be deducted from goals not reached and this metric can then for example
+%show that goals where either missed due to limited amount of time steps or because the planner did not manage
+%to drive in the goal area.
+%
+%One other interesting point would be if cars are able to recover from the emergency maneuvers and reach the goal,
+%this can not be concluded from the current data.
+%
+%%TODO for more interesting insights and pages in evaluation
+%A way to accomplish this with current data would be to divide EM by configured_max_EM_per_ego and then this can be
+%compared to goals_not_reached - collisions, actually this should be possible with current data!
+%Actually this seems not to be possible because the collision metric is not tracked very well.
+%1 collision means 2 cars collided, but a third car could also crash into the 2 already collided cars which means there
+%is now 2 collisions with 3 cars involved but 2 collisions could also be 2 separate collisions which would
+%then be 4 cars involved

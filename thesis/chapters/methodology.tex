@@ -1,0 +1,320 @@
+\chapter{Methodology}\label{ch:methodology}
+This chapter provides an overview of the idea and implementation details of the new MPP\@.
+In the figure~\ref{fig:mpp-overview} an overview of the individual components of the system can be found
+and the internal interrelationships can be obtained.
+
+\section{Idea}\label{sec:idea}
+Since the interaction of several autonomous vehicles has not yet been researched much and there have already been
+incidents involving several autonomous vehicles, these cases should also be covered by tests.
+and investigated further.
+In order to be able to test these cases in a simulation, a new platform must be developed, the Multi-Planning-Platform
+(MPP)\@.
+The idea behind this is to simulate several instances of an MPA simultaneously in a shared
+scenario and study how they interact.
+
+The~\autoref{fig:mpp-overview} describes the base components and their interaction.
+The main component, the controller, instructs all other components.
+First, the generation of a
+scenario is initiated, this is based on the selected base scenario and is repeated until the scenario
+validator accepts the scenario as valid.
+Then the scenario with the contained planning problems is passed on
+to the multi simulation and simulated.
+The Multi Simulation takes care of the planners responsible for each
+planning problem.
+During the simulation, critical metrics and fitness are tracked, which are needed at
+the end of a simulation to evaluate the simulation with the evolutionary algorithm.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.77\linewidth]{images/mpp-overview/mpp-overview}
+    \caption{Overview of the MPP components.}
+    \label{fig:mpp-overview}
+\end{figure}
+
+\section{Design}\label{sec:design}
+\subsection{Setup with multiple Planners}\label{subsec:setup-with-multiple-planners}
+As already mentioned in~\autoref{ch:background} the whole system is based on the \CommonRoad~platform.
+\CommonRoad~is designed to only have a single~\PlanningProblem~
+inside each scenario, nevertheless it is still possible to modify a scenario
+to include multiple~\PlanningProblems, because there are no hard restrictions on the XML file format.
+So the first challenge is to implement a platform where for each \PlanningProblem~in a scenario
+a new instance of a motion planner is created and assigned to it.
+%TODO which commonroad framework
+With the help of the \CommonRoad~\textit{Scenario Designer}~(\ref{subsubsec:tool-set})
+the creation of a base scenario with multiple~\PlanningProblems~is straight forward, as the \PlanningProblems~can
+simply be added to an existing scenario and visualised for verification.
+%TODO describe how each planner is instantiated/initialized, e.g. with a CollisionChecker
+To proceed from the base scenario to the simulation, each \PlanningProblem~needs a
+\textit{Reactive Planner}~(\ref{subsubsec:reactive-planner}) assigned to it,
+but there already is a problem here, because each \textit{Reactive Planner} operates on a single~\CollisionChecker~instance.
+This means that a new~\CollisionChecker~needs to be created for each planner, and then
+again all other planners, with their respective states, must be added to this instance of the \CollisionChecker.
+
+Another challenge is that the planners are designed to only work with~\nameref{subsubsec:dynamic-obstacles}
+which already have their predefined trajectory over a set amount of steps in a scenario.
+To overcome this, at each time step dynamic obstacles need to be created
+from the computed trajectories and added to each planners' \CollisionChecker.
+More details follow in the section~\nameref{subsubsec:communication-between-planners}.
+
+For the development of the multi-simulation mainly the \CommonRoad~\textit{Input/Output} module was used,
+a detailed documentation of the module can be found here~\footnote{\url{https://commonroad-io.readthedocs.io/en/latest/} Date: \FootDate}.
+
+\begin{algorithm}
+    \underline{function simulate} $(scenario, problem\_set)$\;
+    \For{$planner~in~planning\_generators$}{
+        $solution\gets planner.plan()$\\
+        $solutions.append(solution)$
+    }
+    \If{$every~solution~in~solutions~is~\textsc{finished}~or~\textsc{crashed}$}{
+        $break$ \tcp{no more solution left, simulation is finished}
+    }
+
+    \For{$planner~in~planning\_generators$}{
+        $planner.collision\_checker\gets create\_cc(scenario)$ \tcp{create a new cc because old objects can not be updated}\\
+    \For{$solution~in~solutions$}{
+        \If{$solution.id = planner.id$}{
+            continue \tcp{do not add object for own planner as it would compute a collision with itself}\\
+        }
+
+        $collision\_object\gets create\_object(solution.trajectory)$\\
+        $planner.collision\_checker.add(collision\_object)$\\
+    }
+    }
+    \caption{Simplified code of a simulation, shows how each planner computes its solution
+    and how the solutions are shared in between all planners.}
+    \label{alg:algorithm}
+\end{algorithm}
+
+\newpage
+\subsubsection{Communication between Planners}\label{subsubsec:communication-between-planners}
+%TODO there was a paper where they had multi planning, but I am no longer sure if it was quite the same
+Since the \CommonRoad~framework is designed for scenarios with only a single\newline \PlanningProblem~the planning algorithms
+need to communicate their trajectories with each other.
+The first idea and simple solution was to put all trajectories in a global\newline
+\CollisionChecker~which is then assigned to each planner, which is not possible, because planners only work with other trajectories,
+and it would recognize a collision with its own trajectory.
+Another issue with the \CollisionChecker~is, that previously added obstacles could not be updated later,
+so for each time step in a simulation a new \CollisionChecker~needs to be instantiated and assigned to its planner.
+The final solution then was that each planner has its own instance of a \CollisionChecker~and
+the computed trajectories of all other planners are added there, so only a planners own trajectory is not added.
+With this approach the timing of sharing the trajectories is very important because other planners should all have
+the same information at the same time step.
+Therefore, all planners compute and store their new trajectories in a list first, and then all planners receive the new
+trajectories from this list.
+This ensures that all planners have the same knowledge at the same time step.
+
+
+\subsection{Scenario Generation}\label{subsec:scenario-generation}
+The Scenario Generation focuses on populating existing scenarios with \PlanningProblems, so the foundation is a
+scenario with a lanelet network without any obstacles or \PlanningProblems.
+Initially a scenario is populated with a random amount of \PlanningProblems~in between the configured range of
+\texttt{min\_amount\_pp} to \texttt{max\_amount\_pp}.
+The initial \PlanningProblems~are also generated completely random, based on the mutation operator that adds
+new \PlanningProblems~to a scenario.
+
+The scenario generation and mutation is implemented in the file \texttt{scenario\_generator.py}.
+
+\subsubsection{Mutation of Scenarios}
+In between simulations the best rated scenario is mutated to find better rated scenarios.
+This is done by mutating at least one of the \PlanningProblem~in the scenario
+with at least one of five different mutation operators:
+\begin{itemize}
+    \item \texttt{goal\_area}: move goal area to the end of a different reachable lanelet without successor lanelets
+    \item \texttt{velocity}: add a random amount in the range \{\texttt{-max\_init\_velocity},\newline\texttt{max\_init\_velocity}\}
+        to the initial velocity
+    \item \texttt{position}: add a random amount
+        in the range \{\texttt{-max\_position\_modifier},\newline\texttt{max\_position\_modifier}\}
+        to the current position by measuring distance along the curvature of the lanelet
+    \item \texttt{add\_planning\_problem}: add a new random \PlanningProblem~to the scenario
+    \item \texttt{remove\_planning\_problem}: remove a random existing \PlanningProblem~from the scenario
+\end{itemize}
+The probability for a \PlanningProblem~being mutated is\\
+\centerline{$\boldmath{random(0, 1) < \frac{1}{amount\_planning\_problems}}$}\\
+for each \PlanningProblem~in a scenario.
+When a \PlanningProblem~is selected for mutation, the probability for each mutation operator to be applied
+is computed separately as follows:\\
+\centerline{$\boldmath{random(0, 1) < \frac{1}{amount\_mutation\_operators}}$}
+
+When, due to randomness, no mutation is applied, the mutation process is started again until at least one mutation operator
+is applied to at least one \PlanningProblem.
+This guarantees that a mutation is applied before passing the scenario to the Validator and improves the
+overall performance, because the same scenario is never simulated twice.
+
+
+\subsubsection{Validation of Scenarios}
+To ensure the validity of initially generated and mutated scenarios a \texttt{ScenarioValidator} is implemented.
+For each \PlanningProblem~of a scenario the following aspects are validated:
+\begin{itemize}
+    \item Safety Distance: Ensure that there is enough distance between planners
+        on the same road by using the initial position and velocity
+    \item Distance to Goal: ensure the initial state is outside the goal area and is at least
+        \texttt{min\_dist\_goal} units away from the goal area
+    \item Goal Reachability: check if the goal area is on a lanelet
+        that can be reached via the lanelet network from the given starting point
+    \item Velocity Check: make sure that the initial velocity is between the configured \texttt{min\_velocity}
+        and \texttt{max\_velocity}
+\end{itemize}
+
+The corresponding implementation can be found in \texttt{validator.py}.
+
+
+\subsubsection{Configuration}\label{subsubsec:configuration}
+Mutation and validation, as well as other simulation-specific parameters, can be adjusted in a configuration file
+(\texttt{config.py}).
+This allows the simulation to be adapted to different scenarios or planners, and helps control the size, duration
+and \PlanningProblem~population (including velocities, positions and distances between planners) of a simulation.
+
+An example for the possible configurations with values used for the experiment
+can be found in~\autoref{tab:table:experiment-config}.
+
+
+\subsection{Emergency Maneuver}\label{subsec:emergency-maneuver}
+When testing only a single MPA the simulation is finished when either the goal is reached or the MPA can not find
+a solution.
+With multiple planners this is no longer the case, as the simulation should still continue
+as long as at least one planner has not reached the goal or time limit and still finds solutions.
+Furthermore, this emergency mode also replicates the current real-world behaviour of autonomous vehicles, which
+require intervention by a human driver when they are overwhelmed with a situation and cannot find a solution\cite{lv2017analysis}.
+The Emergency Maneuver is therefore intended to be an interim solution for disengagements
+and to give the MPAs a chance to recover\cite{lv2017analysis}.
+
+In order to keep a scenario running when planners disengage,
+an emergency maneuver is implemented which takes over once a planner has no
+solution.
+The idea is to use the previously computed trajectory and slow all states down plus extending it by one state based
+on the last state of the trajectory.
+This gives the planner a chance to recover from emergency mode in the next time step, but the emergency mode is limited
+to a configurable amount of steps.
+When all emergency maneuver steps are used up, the ego vehicle remains at the current state and is basically a static
+obstacle for the rest of the simulation.
+
+
+\subsection{Data Collection Procedure and Critical Metrics}\label{subsec:data-collection-procedure}
+In order to evaluate a simulation, data must be collected.
+Part of the data can only be collected during the simulation and another part has to be evaluated after the simulation.
+Overall, the following metrics are collected for each simulation in a run and then stored in a CSV file:
+\begin{itemize}
+    \setlength\itemsep{-0.7em}
+    \item Number of simulation in the run as \texttt{sim\_num}
+    \item Maximum danger metric as \texttt{max\_danger}
+    \item Amount of interactions as \texttt{interactions}
+    \item Average velocity of ego vehicles as \texttt{avg\_velocity}
+    \item Number of time steps as \texttt{overall\_steps}
+    \item Applied mutation algorithm as \texttt{algorithm}
+    \item \textbf{Amount of goals not reached as} \texttt{goals\_not\_reached}
+    \item \textbf{Amount of collisions as} \texttt{collisions}
+    \item \textbf{Amount of steps all planners spent in emergency mode as\newline}\texttt{emergency\_maneuvers}
+\end{itemize}
+
+The three metrics marked in bold em, goals, collisions together form the critical metrics and
+represent critical interactions between planners during a simulation.
+The critical metrics are needed to identify planner misbehaviour and make it possible to evaluate
+a simulation based on the number of critical metrics.
+
+\subsection{Simulation Visualisation}\label{subsec:simulation-visualization}
+Visualisation is an important part, as the simulations are also analysed qualitatively and the behaviour
+of the planners can be observed precisely here.
+For this, the visualisation provided by \CommonRoad~is customised and extended so that the individual planners
+are visually recognisable.
+So after each simulation a GIF is saved, which makes it possible
+to observe each planner at any point in the simulation.
+
+
+\subsection{Evolutionary Algorithm 1+1}\label{subsec:evolutionary-algorithm-1+1}
+As this topic is a rather novel approach, the decision on the \textit{1+1 Evolutionary Algorithm} was made because of
+its simplicity and can therefore also be integrated into the platform quite problem-free.
+This prevents unnecessary complexity when evaluating this new approach and allows fast implementation.
+
+The \textit{1+1 Evolutionary Algorithm} follows an evolutionary strategy with one individual and one offspring rated by a single
+objective fitness function\cite{back1993overview}.
+In this case, an individual is represented by a scenario popularised with \PlanningProblems.
+These \PlanningProblems~can be mutated in between simulations based on the values of the initial
+state and this then creates a new offspring for further simulations.
+In order to evaluate the simulations of the scenarios, the following two fitness functions are introduced.
+
+\subsubsection{Fitness Function: Danger Metric}\label{subsubsec:danger-def}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/helper-visualizations/danger-visualization}
+    \caption{Vectors with length as velocity and an orientation show low and high danger values.}
+    \label{fig:diagrams:danger-visualization}
+\end{figure}
+
+In order to find critical situations, the danger metric from\cite{calo2020generating} is used.
+The danger metric evaluates the states of two planners at a given time \textit{t} during
+a simulation, so the whole simulation can be rated with a numeric value.
+Danger favours close distances and a high relative speed between the ego vehicles, as
+visualised in~\autoref{fig:diagrams:danger-visualization}, where the effects of high differences in relative
+speed and closer distances are shown by velocity vectors.
+By using the states $s_{a}^{t}$ and $s_{b}^{t}$ of ego vehicles \textit{a} and \textit{b}
+at a given time step \textit{t}, \textit{danger}~can be calculated with the following formula\cite{calo2020generating}:\\
+
+\centerline{$danger(s_{a}^{t}, s_{b}^{t}) = \frac{\vec{v}\,_{a|b}^{t}}{\left \| s_{a}^{t}.pos, s_{b}^{t}.pos \right \|^{2}}$}
+
+Where $\vec{v}\,_{a|b}^{t}$ is the relative velocity between the planners and
+$\left \| \cdot \right \|$ denotes the Euclidean distance of the planners' positions.
+
+The idea behind this is that planners have to interact with each other due to close
+distances and speed differences, resulting in critical interactions.
+
+To calculate the danger metric during a simulation, the states of two planners can
+be queried to obtain all the necessary information for the formula.
+The relative velocity needs to be computed extra from the orientations and
+velocities of two states, the Euclidean distance can
+be calculated quite simply from the respective positions.
+
+Thus, at any given time step in a simulation, the danger metric between two vehicles is computed.
+The final value of danger for a full simulation is then taken as the maximum danger value of an ego vehicle over
+all time steps in the simulation.
+
+%TODO should collision rating be mentioned?
+%- the other thesis is preferring collisions with an extra treatment but for this case this is not necessary
+%as in this thesis the goal is to have egos with high danger instead of two egos colliding at high velocity
+
+
+\subsubsection{Fitness Function: Interaction}\label{subsubsec:interaction-def}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/helper-visualizations/interaction-visualization}
+    \caption{Comparison of previously and newly computed trajectories that indicate an interaction.}
+    \label{fig:diagrams:interaction-visualization}
+\end{figure}
+
+The second fitness metric is defined as interaction, where the more interactions the better,
+as critical situations can arise depending on the behaviour of the planners when interacting with each other.
+For this thesis, an interaction is defined as follows by these two mandatory criteria, also visualised
+in~\autoref{fig:diagrams:interaction-visualization}:
+\begin{itemize}
+    \setlength\itemsep{-0.7em}
+    \item a planner changes its trajectory compared to the previously computed trajectory
+    \item there is another ego vehicle within the safety distance of the planner
+\end{itemize}
+
+In order to then detect differences in the trajectories, the Euclidean distance similarity measure
+is applied\cite{magdy2015review}.
+This is a rather simpler method that is only applicable to trajectories of equal length.
+To properly compare old and new trajectories, the old trajectory needs to be cropped
+by one time step at the start and the new trajectory by one time step at the end,
+so both contain the same time step range.
+Due to these preparations, it can be assumed that the trajectories start and end with the same time step,
+so each position-time step combination can be compared directly.
+The comparison is made by calculating the Euclidean distance for each position-time step pair and if the resulting
+distance is greater than a configurable threshold, the trajectories are considered unequal,
+as the planner is not continuing on the previously computed trajectory.
+If the second criterion is then also met with another planner within the safety distance, the change in
+trajectory is considered an interaction.
+
+
+Overall the MPP can be used with three different modes for the evolutionary algorithm:
+\begin{itemize}
+    \item \texttt{max\_danger}: advises the algorithm to continue simulation with the scenario that yields the
+    highest number for the danger metric~\ref{subsubsec:danger-def} for a single planner
+    \item \texttt{max\_interactions}: this mode prefers the scenario that yields the most interactions
+    between all planners
+    \item \texttt{random}: this mode creates a new and completely random scenario at the beginning of each simulation,
+    this is implemented as a baseline approach to properly evaluate the other modes
+\end{itemize}
+
+
