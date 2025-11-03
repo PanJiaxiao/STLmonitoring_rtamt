@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import os
 import config
 
-def plot(scenario_type):
-    path = './rob_result/'+scenario_type+"/"+config.ScenarioGeneratorConfig.file_vinit
+def plot(scenario_type,vinit):
+    path = './rob_result/'+scenario_type+"/"+vinit
 
     os.makedirs(path+"/figs", exist_ok=True)
     path_list = os.listdir(path)
@@ -45,4 +45,5 @@ def plot(scenario_type):
 
 
 if __name__ == '__main__':
-    plot("change_lane")
+    vinit="4.502132028215444"
+    plot("crossroad",vinit)

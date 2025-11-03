@@ -6,6 +6,7 @@ import subprocess
 from deap import base, creator, tools, algorithms
 import random
 import argparse
+import traceback
 
 import config
 from run_multi_motion_planner_system import get_init_scenario,ScenarioGenerator,simulate,get_random_scenario,get_mutated_scenario
@@ -110,8 +111,10 @@ def run_commonroad(vinit, start, end):
     critical_key = best_criticality_pp_id
     print(f"Most critical key - criticality: {critical_key} - {best_criticality}, sim_nr: {result_iteration}")
 
-    write_scenario(filename, best_result.simulation_state_map, best_result.scenario, best_result.problem_set,
+    xml_path=write_scenario(filename, best_result.simulation_state_map, best_result.scenario, best_result.problem_set,
                    critical_key, result_name)
+
+    save_for_stl(filename, args.scenario_type, args.run_time,xml_path,lanelet_network)
 
     if args.run_result:
         pure_filename = filename.split('.')[0]
@@ -167,9 +170,11 @@ def evaluate(individual):
         if result is False:
             # 如果function_a返回False，直接给予惩罚并跳过本次评估
             return 0, -1000  # 严重惩罚
-    except (IndexError, TypeError):
+    except (IndexError, TypeError) as e:
         # 捕获IndexError，直接给予惩罚并跳过本次评估
+        print(f"索引错误: {e}")
         print("IndexError or TypeError")
+        traceback.print_exc()
         return 0, -1000  # 严重惩罚
 
     # 运行函数a
@@ -209,10 +214,10 @@ def create_toolbox():
     # 6个参数：vinit1, start1, end1, vinit2, start2, end2
     #TODO change scale
     param_bounds = [
-        (2.0, 15.0),    # 振幅1
+        (2.0, 8.0),    # 振幅1
         (0.0, 1.0),    # 频率1
         (0, 3),  # 相位1
-        (2.0, 15.0),    # 振幅2
+        (2.0, 8.0),    # 振幅2
         (0.0, 1.0),    # 频率2
         (0, 3)   # 相位2
     ]
@@ -589,24 +594,24 @@ if __name__ == "__main__":
    # clear_result("./rob_result/" + args.scenario_type)
     # 运行遗传算法
     final_population = run_genetic_algorithm(
-        pop_size=2,
-        generations=1,
+        pop_size=1,
+        generations=5,
         cxpb=0.7,
         mutpb=0.3
     )
 
     # 分析结果
     # best_solution = analyze_results(final_population)
-    front, best_solution, saved_file = analyze_results(final_population)
-    # 验证最佳解
-    print("\n验证最佳解:")
-    # result1, result2 = function_a(best_solution)
-    # print("best_solution%%%%%",best_solution)
-    result_path = "./rob_result/crossroad/" + str(best_solution[0])
-    result1 = pd.read_csv(result_path + "/rob_save21-run_time[1].csv")
-    result2 = pd.read_csv(result_path + "/rob_save22-run_time[1].csv")
-    print(f"结果1 > 0 的时间点: {np.sum(result1 > 0)}/{len(result1)}")
-    print(f"结果2 > 0 的时间点: {np.sum(result2 > 0)}/{len(result1)}")
-    print(f"结果1 > 0 的平均幅度: {np.mean(result1[result1 > 0]) if np.any(result1 > 0) else 0:.3f}")
-    print(f"结果2 > 0 的平均幅度: {np.mean(result2[result2 > 0]) if np.any(result2 > 0) else 0:.3f}")
-    print(f"两个结果都 > 0 的时间点: {np.sum((result1 > 0) & (result2 > 0))}/{len(result1)}")
+    # front, best_solution, saved_file = analyze_results(final_population)
+    # # 验证最佳解
+    # print("\n验证最佳解:")
+    # # result1, result2 = function_a(best_solution)
+    # # print("best_solution%%%%%",best_solution)
+    # result_path = "./rob_result/crossroad/" + str(best_solution[0])
+    # result1 = pd.read_csv(result_path + "/rob_save21-run_time[1].csv")
+    # result2 = pd.read_csv(result_path + "/rob_save22-run_time[1].csv")
+    # print(f"结果1 > 0 的时间点: {np.sum(result1 > 0)}/{len(result1)}")
+    # print(f"结果2 > 0 的时间点: {np.sum(result2 > 0)}/{len(result1)}")
+    # print(f"结果1 > 0 的平均幅度: {np.mean(result1[result1 > 0]) if np.any(result1 > 0) else 0:.3f}")
+    # print(f"结果2 > 0 的平均幅度: {np.mean(result2[result2 > 0]) if np.any(result2 > 0) else 0:.3f}")
+    # print(f"两个结果都 > 0 的时间点: {np.sum((result1 > 0) & (result2 > 0))}/{len(result1)}")

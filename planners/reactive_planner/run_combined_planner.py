@@ -36,7 +36,7 @@ filename = args.filename
 
 scenario_path = os.path.join(base_dir, filename)
 scenario_path = os.path.abspath(scenario_path)
-print(scenario_path)
+#print(scenario_path)
 files = sorted(glob.glob(scenario_path))
 
 # open scenario and panning problem

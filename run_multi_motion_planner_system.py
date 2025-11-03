@@ -83,7 +83,7 @@ base_dir = "./scenarios"
 validator = ScenarioValidator()
 
 #mark2
-def get_init_scenario(scenario_type,vinit, start, end,filename):
+def get_init_scenario(scenario_type,vinit, start, end,acc,filename):
     print("filename",filename)
     scenario_path = os.path.join(base_dir, filename)
     files = sorted(glob.glob(scenario_path))
@@ -101,7 +101,7 @@ def get_init_scenario(scenario_type,vinit, start, end,filename):
     # generate new scenario until it is valid
     #mark3 在此处重写pp
     print(scenario_type)
-    scenario, problem_set = prepare_scenario(crfr, validator,scenario_type,vinit, start, end)
+    scenario, problem_set = prepare_scenario(crfr, validator,scenario_type,vinit, start, end,acc)
     no_scenario_found = scenario is None or problem_set is None
     if no_scenario_found or (
             not validator.config.ignore_validation and not validator.is_scenario_valid(scenario, problem_set)):
@@ -152,6 +152,7 @@ def simulate(scenario: Scenario, problem_set: PlanningProblemSet, scenario_type,
     vehicle_constraints = VehModelParameters()
     length = vehicle_constraints.veh_length
     width = vehicle_constraints.veh_width
+
 
     # init planning generators, each with the same collision checker
     planning_generators: List[Tuple[PlanningGenerator, Any]] = list()
@@ -216,13 +217,14 @@ def simulate(scenario: Scenario, problem_set: PlanningProblemSet, scenario_type,
                 last_solution_map[generator_object.planning_problem.planning_problem_id] = (
                     deepcopy(x_0), x_cl, new_state_list, *rest)
                 #TODO temp print
-                print(f"Planning problem {generator_object.planning_problem.planning_problem_id} "
-                      )
+                #print(f"Planning problem {generator_object.planning_problem.planning_problem_id} "
+                #      )
 
             if x_0 != PlanningStatus.FINISHED and not generator_object.could_not_solve \
                     and not generator_object.is_crashed:
                 some_generator_running = True
 
+            # print("some_generator_running",some_generator_running)
         if not some_generator_running:
             break
 
@@ -256,9 +258,12 @@ def simulate(scenario: Scenario, problem_set: PlanningProblemSet, scenario_type,
 
         previous_ego, previous_key = None, None
         # update car states for other planners with latest computed state
+
         for i, (gen_object, gen) in enumerate(planning_generators):
+
             # check if planner has a solution
             if gen_object.planning_problem.planning_problem_id not in last_solution_map:
+
                 continue
 
             # create new collision checker where ego cars of other planners are added with their new planned trajectory
@@ -355,8 +360,8 @@ def simulate(scenario: Scenario, problem_set: PlanningProblemSet, scenario_type,
         for i, problem in enumerate(planning_problems):
             id.append(problem.planning_problem_id)
         #print(id)
-        #def save_for_stl(laneletnetwork:LaneletNetwork,solution_map: dict(),id:List[str], filename: str):
-        save_for_stl(scenario.lanelet_network,last_solution_map,id,"rob_save",scenario_type,run_time)
+        # def save_for_stl(laneletnetwork:LaneletNetwork,solution_map: dict(),id:List[str], filename: str):
+        #save_for_stl(scenario.lanelet_network,last_solution_map,id,"rob_save",scenario_type,run_time)
 
         step += 1
 
@@ -495,8 +500,11 @@ if __name__ == "__main__":
     critical_key = best_criticality_pp_id
     print(f"Most critical key - criticality: {critical_key} - {best_criticality}, sim_nr: {result_iteration}")
 
-    write_scenario(filename, best_result.simulation_state_map, best_result.scenario, best_result.problem_set,
+    xml_path=write_scenario(filename, best_result.simulation_state_map, best_result.scenario, best_result.problem_set,
                    critical_key, result_name)
+
+    save_for_stl( filename,args.scenario_type, args.run_time, xml_path)
+
 
     if args.run_result:
         pure_filename = filename.split('.')[0]

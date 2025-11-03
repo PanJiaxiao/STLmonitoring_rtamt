@@ -1,0 +1,347 @@
+开始使用pymoo进行多目标优化...
+para@@@@@@ [4.50213203e+00 7.20324493e-01 3.43124452e-04 3.02332573e-01
+ 2.88053534e+00 9.23385948e-02 5.58780634e-01 3.45560727e-01]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 1584 has predecessors set(), successors {4488, 4489, 4487}, left adjacency 1583 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 110
+Overall steps: 300
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_9.402347519589012/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [4.38060485 0.53881673 1.25758354 0.6852195  3.2267135  0.87811744
+ 0.08216278 0.67046751]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 39 has predecessors set(), successors {2536, 2534, 2535}, left adjacency 40 with opposite direction, and right adjacency with opposite direction
+Scenario not valid: Minimum distance to Goal Region not fulfilled
+No valid Scenario found!
+False
+para@@@@@@ [4.50382881 0.55868983 0.42116082 0.19810149 6.80446741 0.96826158
+ 0.94027253 0.69232262]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 39 has predecessors set(), successors {2536, 2534, 2535}, left adjacency 40 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 75
+goal reached - id: 999, steps: 187
+Overall steps: 189
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_15.087105085438752/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [7.25833491 0.89460666 0.25513263 0.03905478 3.01898252 0.8781425
+ 0.2950405  0.42110763]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 39 has predecessors set(), successors {2536, 2534, 2535}, left adjacency 40 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 39 has predecessors set(), successors {2536, 2534, 2535}, left adjacency 40 with opposite direction, and right adjacency with opposite direction
+No valid Scenario found!
+False
+para@@@@@@ [7.74733718 0.53316528 2.07563134 0.31551563 6.11900557 0.83462567
+ 0.05486483 0.75014431]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 39 has predecessors set(), successors {2536, 2534, 2535}, left adjacency 40 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 77
+goal reached - id: 1000, steps: 169
+Overall steps: 171
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_18.430289823697933/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [7.93316653 0.74816565 0.84133198 0.78927933 2.61935604 0.44789353
+ 2.72578651 0.29361415]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 66
+goal reached - id: 1000, steps: 204
+Overall steps: 206
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_16.398593715758235/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [3.72665203 0.13002857 0.05810087 0.67883553 3.2697687  0.26554666
+ 1.47471948 0.05336255]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1584 has predecessors set(), successors {4488, 4489, 4487}, left adjacency 1583 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 118
+goal reached - id: 1000, steps: 234
+Overall steps: 236
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_9.657014388517828/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [5.44470563 0.14672857 1.76791661 0.69975836 2.61400657 0.41405599
+ 2.08320047 0.41417927]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1584 has predecessors set(), successors {4488, 4489, 4487}, left adjacency 1583 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 76
+goal reached - id: 1000, steps: 282
+Overall steps: 284
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_13.584551482085333/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [2.29972075 0.53589641 1.99138394 0.51488911 7.66756854 0.58655504
+ 2.71020575 0.1374747 ]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+Scenario not valid: Minimum distance to Goal Region not fulfilled
+No valid Scenario found!
+False
+para@@@@@@ [2.83565808 0.80739129 1.19303051 0.1653542  7.56505148 0.34776586
+ 2.25243631 0.72599799]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 39 has predecessors set(), successors {2536, 2534, 2535}, left adjacency 40 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 108
+Overall steps: 300
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_15.892685717168236/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [7.29983655 0.62367221 2.2528273  0.34889834 3.61956735 0.89588622
+ 1.28427357 0.96484005]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 39 has predecessors set(), successors {2536, 2534, 2535}, left adjacency 40 with opposite direction, and right adjacency with opposite direction
+Scenario not valid: Minimum distance to Goal Region not fulfilled
+No valid Scenario found!
+False
+para@@@@@@ [5.98064899 0.62169572 0.34423792 0.94948926 4.6994728  0.57838961
+ 1.22441041 0.23702698]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+No valid Scenario found!
+False
+para@@@@@@ [7.42027712 0.57367949 0.00861098 0.61714491 3.95986941 0.5270581
+ 2.6578263  0.35726976]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 118
+goal reached - id: 1000, steps: 142
+Overall steps: 144
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_16.12173607558502/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [7.45121091 0.62336012 0.04746373 0.92943723 6.14538151 0.99732285
+ 0.51702153 0.13713575]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 39 has predecessors set(), successors {2536, 2534, 2535}, left adjacency 40 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 83
+goal reached - id: 999, steps: 118
+Overall steps: 120
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_16.848333613811917/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [7.59557278 0.69681816 0.19800052 0.75546305 6.52325713 0.92302454
+ 2.13457428 0.12427096]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 39 has predecessors set(), successors {2536, 2534, 2535}, left adjacency 40 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+Traceback (most recent call last):
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/pymooga.py", line 138, in _evaluate
+    result = function_a(x)
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/pymooga.py", line 103, in function_a
+    if run_commonroad(vinit, start, end,acc) == False:
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/pymooga.py", line 45, in run_commonroad
+    best_result = simulate(best_scenario, best_problem_set, args.scenario_type, args.run_time, max_steps=max_steps)
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/run_multi_motion_planner_system.py", line 182, in simulate
+    scenario, problem, collision_checker_scenario, color)
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/planning_generator.py", line 78, in __init__
+    self.ref_path = route_planner.plan_routes().retrieve_first_route().reference_path
+  File "/home/karl/anaconda3/envs/croad/lib/python3.7/site-packages/commonroad_route_planner/route.py", line 366, in retrieve_first_route
+    return self.list_route_candidates[0]
+IndexError: list index out of range
+索引错误: list index out of range
+para@@@@@@ [2.1192808  0.02621099 0.08491946 0.24621107 7.16016769 0.53883106
+ 1.65846594 0.84203089]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1584 has predecessors set(), successors {4488, 4489, 4487}, left adjacency 1583 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+Scenario not valid: Minimum distance to Goal Region not fulfilled
+No valid Scenario found!
+False
+para@@@@@@ [2.74503989 0.27918368 1.75727781 0.96959575 5.36618132 0.01864729
+ 2.40189802 0.23297427]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 1584 has predecessors set(), successors {4488, 4489, 4487}, left adjacency 1583 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 200
+goal reached - id: 999, steps: 271
+Overall steps: 273
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_13.770798029215214/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [6.84263117 0.38786064 2.59062556 0.74712164 5.3374414  0.13645523
+ 0.17975307 0.12134346]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 1584 has predecessors set(), successors {4488, 4489, 4487}, left adjacency 1583 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 91
+goal reached - id: 999, steps: 122
+Overall steps: 124
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_16.34323217807289/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [2.26731127 0.10749413 0.67712802 0.71298898 5.35830189 0.01255598
+ 0.21592284 0.96727633]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1584 has predecessors set(), successors {4488, 4489, 4487}, left adjacency 1583 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 1584 has predecessors set(), successors {4488, 4489, 4487}, left adjacency 1583 with opposite direction, and right adjacency with opposite direction
+No valid Scenario found!
+False
+para@@@@@@ [5.40860277 0.20329323 0.75697723 0.74382585 3.17257689 0.58135893
+ 2.91005997 0.8468288 ]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1584 has predecessors set(), successors {4488, 4489, 4487}, left adjacency 1583 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 86
+Traceback (most recent call last):
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/pymooga.py", line 138, in _evaluate
+    result = function_a(x)
+索引错误: unsupported operand type(s) for +: 'NoneType' and 'float'
+=======================================================
+n_gen |  n_eval |  n_nds  |     eps      |  indicator  
+=======================================================
+    1 |      20 |      20 |            - |            -
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/pymooga.py", line 103, in function_a
+    if run_commonroad(vinit, start, end,acc) == False:
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/pymooga.py", line 45, in run_commonroad
+    best_result = simulate(best_scenario, best_problem_set, args.scenario_type, args.run_time, max_steps=max_steps)
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/run_multi_motion_planner_system.py", line 210, in simulate
+    x_0, x_cl, new_state_list, *rest = next(generator, (PlanningStatus.FINISHED, None, None))
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/planning_generator.py", line 135, in plan
+    raise err
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/planning_generator.py", line 127, in plan
+    self.x_0, self.collision_checker_scenario, cl_states=self.x_cl, draw_traj_set=plot)
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/planners/reactive_planner/commonroad_rp/reactive_planner.py", line 442, in plan
+    optimal_trajectory = self._get_optimal_trajectory(bundle, cc, draw_traj_set)
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/planners/reactive_planner/commonroad_rp/reactive_planner.py", line 1013, in _get_optimal_trajectory
+    feasible_trajectories = self.check_kinematics(trajectory_bundle)
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/planners/reactive_planner/commonroad_rp/reactive_planner.py", line 921, in check_kinematics
+    kappa_gl[i] = (dpp + k_r * dp * tanTheta) * cosTheta * (cosTheta / oneKrD) ** 2 + (
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'float'
+para@@@@@@ [7.95812459 0.11964135 0.82743352 0.69975836 2.61917313 0.41405599
+ 2.08320047 0.41417927]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1584 has predecessors set(), successors {4488, 4489, 4487}, left adjacency 1583 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 282
+Overall steps: 284
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_15.135566678732308/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [2.29972075 0.53589641 2.10904306 0.51488911 7.66756854 0.56435625
+ 0.62096488 0.09928475]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 116
+goal reached - id: 999, steps: 227
+Overall steps: 229
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_14.41172374109283/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [6.87053987 0.38786064 1.04268631 0.74712164 3.18497299 0.13645523
+ 0.17975307 0.15575854]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 1584 has predecessors set(), successors {4488, 4489, 4487}, left adjacency 1583 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 95
+goal reached - id: 1000, steps: 136
+Overall steps: 138
+Replace file ./results/DEU_VilaVelha-92_1_T-10_max_danger_crossroad_[1]_12.705148288356611/DEU_VilaVelha-92_1_T-10-multi-planner-simulate.xml
+Arrive stl!!!!
+para@@@@@@ [5.98064899 0.62169572 0.34423792 0.96503105 4.6994728  0.57838961
+ 1.22441041 0.23702698]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 1586 has predecessors set(), successors {4490, 4491, 4492}, left adjacency 1587 with opposite direction, and right adjacency with opposite direction
+No valid Scenario found!
+False
+para@@@@@@ [3.72665203 0.13002857 0.05810087 0.67883553 3.2697687  0.98998073
+ 1.47471948 0.05270538]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 1584 has predecessors set(), successors {4488, 4489, 4487}, left adjacency 1583 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 39 has predecessors set(), successors {2536, 2534, 2535}, left adjacency 40 with opposite direction, and right adjacency with opposite direction
+Scenario not valid: Minimum distance to Goal Region not fulfilled
+No valid Scenario found!
+False
+para@@@@@@ [6.81647568 0.53264965 2.06186085 0.31551563 6.11900557 0.83462567
+ 0.05486483 0.75185312]
+filename DEU_VilaVelha-92_1_T-10.xml
+crossroad
+position Lanelet with id 37 has predecessors set(), successors {2531, 2532, 2533}, left adjacency 36 with opposite direction, and right adjacency with opposite direction
+position Lanelet with id 39 has predecessors set(), successors {2536, 2534, 2535}, left adjacency 40 with opposite direction, and right adjacency with opposite direction
+Found valid initial Scenario after 0 tries
+Traceback (most recent call last):
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/pymooga.py", line 388, in <module>
+    generations=20
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/pymooga.py", line 217, in run_pymoo_optimization
+    seed=1)
+  File "/home/karl/anaconda3/envs/croad/lib/python3.7/site-packages/pymoo/optimize.py", line 83, in minimize
+    res = algorithm.run()
+  File "/home/karl/anaconda3/envs/croad/lib/python3.7/site-packages/pymoo/core/algorithm.py", line 213, in run
+    self.next()
+  File "/home/karl/anaconda3/envs/croad/lib/python3.7/site-packages/pymoo/core/algorithm.py", line 233, in next
+    self.evaluator.eval(self.problem, infills, algorithm=self)
+  File "/home/karl/anaconda3/envs/croad/lib/python3.7/site-packages/pymoo/core/evaluator.py", line 95, in eval
+    self._eval(problem, pop[I], evaluate_values_of=evaluate_values_of, **kwargs)
+  File "/home/karl/anaconda3/envs/croad/lib/python3.7/site-packages/pymoo/core/evaluator.py", line 115, in _eval
+    **kwargs)
+  File "/home/karl/anaconda3/envs/croad/lib/python3.7/site-packages/pymoo/core/problem.py", line 124, in evaluate
+    self.do(X, out, *args, **kwargs)
+  File "/home/karl/anaconda3/envs/croad/lib/python3.7/site-packages/pymoo/core/problem.py", line 305, in do
+    ret = self.func_eval(self.func_elementwise_eval, self, X, out, *args, **kwargs)
+  File "/home/karl/anaconda3/envs/croad/lib/python3.7/site-packages/pymoo/core/problem.py", line 264, in looped_eval
+    return [func_elementwise_eval(problem, x, dict(out), args, kwargs) for x in X]
+  File "/home/karl/anaconda3/envs/croad/lib/python3.7/site-packages/pymoo/core/problem.py", line 264, in <listcomp>
+    return [func_elementwise_eval(problem, x, dict(out), args, kwargs) for x in X]
+  File "/home/karl/anaconda3/envs/croad/lib/python3.7/site-packages/pymoo/core/problem.py", line 257, in elementwise_eval
+    problem._evaluate(x, out, *args, **kwargs)
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/pymooga.py", line 138, in _evaluate
+    result = function_a(x)
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/pymooga.py", line 103, in function_a
+    if run_commonroad(vinit, start, end,acc) == False:
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/pymooga.py", line 45, in run_commonroad
+    best_result = simulate(best_scenario, best_problem_set, args.scenario_type, args.run_time, max_steps=max_steps)
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/run_multi_motion_planner_system.py", line 210, in simulate
+    x_0, x_cl, new_state_list, *rest = next(generator, (PlanningStatus.FINISHED, None, None))
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/planning_generator.py", line 127, in plan
+    self.x_0, self.collision_checker_scenario, cl_states=self.x_cl, draw_traj_set=plot)
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/planners/reactive_planner/commonroad_rp/reactive_planner.py", line 414, in plan
+    x_0_lon, x_0_lat = self._compute_initial_states(x_0)
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/planners/reactive_planner/commonroad_rp/reactive_planner.py", line 287, in _compute_initial_states
+    s, d = self._co.convert_to_curvilinear_coords(x_0.position[0], x_0.position[1])
+  File "/home/karl/Downloads/multi-motion-planner-system-master-ga/planners/reactive_planner/commonroad_rp/utils.py", line 159, in convert_to_curvilinear_coords
+    return self._ccosy.convert_to_curvilinear_coords(x, y)
+KeyboardInterrupt

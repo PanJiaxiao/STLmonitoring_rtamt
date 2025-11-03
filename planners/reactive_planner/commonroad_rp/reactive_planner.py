@@ -288,7 +288,7 @@ class ReactivePlanner(object):
         except ValueError:
             print('<Reactive_planner>: Value Error for curvilinear transformation')
             tmp = np.array([x_0.position])
-            print(x_0.position)
+            #print(x_0.position)
             # print(self._co._reference[0])
             # print(self._co._reference[-1])
             if self._co._reference[0][0] > x_0.position[0]:

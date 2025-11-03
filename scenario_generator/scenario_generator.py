@@ -56,7 +56,7 @@ class ScenarioGenerator:
             #print("lan_center",lan_center)
             crossroad_income=crossroad_income+lan_center
     #mark5
-    def generate(self, scenario: Scenario, problem_set: PlanningProblemSet,scenario_type,vinit, start, end):
+    def generate(self, scenario: Scenario, problem_set: PlanningProblemSet,scenario_type,vinit, start, end,acc):
         if scenario_type=="change_lane":
             remove_lanelet=[]
             remove_lanelet.append(scenario.lanelet_network.find_lanelet_by_id(144))
@@ -143,7 +143,7 @@ class ScenarioGenerator:
                 #print("goal",goal_area)
                 id = 999 + i
                 #TODO
-                init_state = self.get_random_init_state(scenario,vinit[i], start[i])
+                init_state = self.get_random_init_state(scenario,vinit[i], start[i],acc[i])
                 new_pp = PlanningProblem(id, init_state, goal)
                 problem_set.add_planning_problem(new_pp)
 
@@ -376,7 +376,7 @@ class ScenarioGenerator:
         pp_id_to_remove = problem_set.find_planning_problem_by_id(pp.planning_problem_id)
         problem_set.planning_problem_dict.pop(pp_id_to_remove.planning_problem_id)
 
-    def get_random_init_state(self,scenario: Scenario,vint,index):
+    def get_random_init_state(self,scenario: Scenario,vint,index,acc):
         global crossroad_income
         global income_list
         # mandatory fields for init State: [position, velocity, orientation, yaw_rate, slip_angle, time_step]
@@ -384,6 +384,7 @@ class ScenarioGenerator:
         #     self.config.min_init_velocity, self.config.max_init_velocity)
 
         velocity=vint
+        acceleration=acc
 
         #random_index = random.choice(range(len(lanelet.center_vertices) - 1))
         #position = lanelet.center_vertices[random_index]
@@ -410,7 +411,7 @@ class ScenarioGenerator:
         yaw_rate = 0.0
         slip_angle = 0.0
 
-        return State(velocity=velocity, orientation=orientation, time_step=0, position=position, yaw_rate=yaw_rate,
+        return State(velocity=velocity, orientation=orientation, time_step=0, position=position,acceleration=acceleration, yaw_rate=yaw_rate,
                      slip_angle=slip_angle)
 
     # return a rectangle positioned at the end of a lanelet
