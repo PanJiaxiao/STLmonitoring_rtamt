@@ -83,7 +83,7 @@ base_dir = "./scenarios"
 validator = ScenarioValidator()
 
 #mark2
-def get_init_scenario(scenario_type,vinit, start, end,acc,filename):
+def get_init_scenario(scenario_type,vinit, start, acc,filename):
     print("filename",filename)
     scenario_path = os.path.join(base_dir, filename)
     files = sorted(glob.glob(scenario_path))
@@ -101,7 +101,7 @@ def get_init_scenario(scenario_type,vinit, start, end,acc,filename):
     # generate new scenario until it is valid
     #mark3 在此处重写pp
     print(scenario_type)
-    scenario, problem_set = prepare_scenario(crfr, validator,scenario_type,vinit, start, end,acc)
+    scenario, problem_set = prepare_scenario(crfr, validator,scenario_type,vinit, start, acc)
     no_scenario_found = scenario is None or problem_set is None
     if no_scenario_found or (
             not validator.config.ignore_validation and not validator.is_scenario_valid(scenario, problem_set)):

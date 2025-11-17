@@ -37,6 +37,10 @@ crossroad_income=[]
 #end is index of lan;goal is terminal of a lan
 crossroad_outcome=[36,1587,40,1583]
 income_list=[1584,37,1586,39]
+#stl=[21,22]
+goal_id=40
+# goal_id=[40,1587]
+start_id=[37,1584]
 
 
 class ScenarioGenerator:
@@ -45,18 +49,20 @@ class ScenarioGenerator:
         self.scenario = scenario
         self.lanelet_network = scenario.lanelet_network
     #generate income
-    def gen_income(self,scenario: Scenario):
-        global income_list
+    def gen_income(self,scenario: Scenario,lan_id):
+        # global income_list
         global crossroad_income
         crossroad_income.clear()
-        for i in income_list:
+        # for i in income_list:
             #print("incom_list",i)
-            lan=scenario.lanelet_network.find_lanelet_by_id(i)
-            lan_center=lan.center_vertices.tolist()
-            #print("lan_center",lan_center)
-            crossroad_income=crossroad_income+lan_center
+        lan=scenario.lanelet_network.find_lanelet_by_id(lan_id)
+        lan_center=lan.center_vertices.tolist()
+        #print("lan_center",lan_center)
+        crossroad_income=crossroad_income+lan_center
     #mark5
-    def generate(self, scenario: Scenario, problem_set: PlanningProblemSet,scenario_type,vinit, start, end,acc):
+    def generate(self, scenario: Scenario, problem_set: PlanningProblemSet,scenario_type,vinit, start,acc):
+        global goal_id
+        global start_id
         if scenario_type=="change_lane":
             remove_lanelet=[]
             remove_lanelet.append(scenario.lanelet_network.find_lanelet_by_id(144))
@@ -119,31 +125,17 @@ class ScenarioGenerator:
             #print(list(incoming_map))
             first_id=[]
             for i in range(self.config.amount_pp):
-                # incoming_id=random.sample(list(incoming_map),1)
-                # while incoming_id in first_id:
-                #     incoming_id = random.sample(list(incoming_map), 1)
-                # first_id.append(incoming_id)
-                # incoming_ele=incoming_map[incoming_id[0]]
-                # lanelet = scenario.lanelet_network.find_lanelet_by_id(incoming_id[0])
-                # # print(incoming_ele)
-                # #TODO diff start area
-                # goal_lanelets=incoming_ele.successors_right | incoming_ele.successors_left | incoming_ele.successors_straight
-                # print(goal_lanelets)
-                # goal_lanelet_id=goal_lanelets.pop()
-                # goal_lanelet = scenario.lanelet_network.find_lanelet_by_id(goal_lanelet_id)
-                # succ_lanelets = get_successor_lanelets_notmerge(
-                #     goal_lanelet, scenario.lanelet_network)
 
-                #end is index of lan
-                #print(end)
-                lan_id=crossroad_outcome[end[i]]
-                goal_area = self.get_possible_goal_for_lanelet(scenario.lanelet_network.find_lanelet_by_id(lan_id))
+                #lan_id=crossroad_outcome[end[i]]
+                #stl{21,22}-one goal
+                goal_area = self.get_possible_goal_for_lanelet(scenario.lanelet_network.find_lanelet_by_id(goal_id))
+                # goal_area = self.get_possible_goal_for_lanelet(scenario.lanelet_network.find_lanelet_by_id(goal_id[i]))
 
                 goal = self.generate_goal(goal_area)
-                #print("goal",goal_area)
+                #print("goal############",goal_area)
                 id = 999 + i
                 #TODO
-                init_state = self.get_random_init_state(scenario,vinit[i], start[i],acc[i])
+                init_state = self.get_random_init_state(scenario,vinit[i], start[i],start_id[i],acc[i])
                 new_pp = PlanningProblem(id, init_state, goal)
                 problem_set.add_planning_problem(new_pp)
 
@@ -376,7 +368,8 @@ class ScenarioGenerator:
         pp_id_to_remove = problem_set.find_planning_problem_by_id(pp.planning_problem_id)
         problem_set.planning_problem_dict.pop(pp_id_to_remove.planning_problem_id)
 
-    def get_random_init_state(self,scenario: Scenario,vint,index,acc):
+    #mark6
+    def get_random_init_state(self,scenario: Scenario,vint,index,lan_id,acc):
         global crossroad_income
         global income_list
         # mandatory fields for init State: [position, velocity, orientation, yaw_rate, slip_angle, time_step]
@@ -389,20 +382,28 @@ class ScenarioGenerator:
         #random_index = random.choice(range(len(lanelet.center_vertices) - 1))
         #position = lanelet.center_vertices[random_index]
         #print("cross_income",crossroad_income)
-        self.gen_income(scenario)
-        lanelet_list=scenario.lanelet_network.find_lanelet_by_position([crossroad_income[int(index*len(crossroad_income))]])
-        #print("list", lanelet_list)
-        lanelet_id = list(filter(lambda x: x in lanelet_list[0], income_list))
-        lanelet=scenario.lanelet_network.find_lanelet_by_id(lanelet_id[0])
+        self.gen_income(scenario,lan_id)
+        #crossroad stl={21,22}
+        # lanelet_list=scenario.lanelet_network.find_lanelet_by_position([crossroad_income[int(index*len(crossroad_income))]])
+        # #print("list", lanelet_list)
+        # lanelet_id = list(filter(lambda x: x in lanelet_list[0], income_list))
+        # lanelet=scenario.lanelet_network.find_lanelet_by_id(lanelet_id[0])
 
-        position=np.array(crossroad_income[int(index*len(crossroad_income))])
-        #print("position",int(index*len(crossroad_income)))
+        # position=np.array(crossroad_income[int(index*len(crossroad_income))])
+
+        #fix the start
+        # crossroad stl={21,22}
+        lanelet = scenario.lanelet_network.find_lanelet_by_id(lan_id)
+        #index[0,1];crossroad_incomde depends on the lan_id
+        position = np.array(crossroad_income[int(index * len(crossroad_income))])
+        # print("crossroad_income",crossroad_income)
+        # print("position&&&&&&&&&&&&&&",int(index*len(crossroad_income)))
         # TODO might be out of bounds
         # next_point=np.array(crossroad_income[int(index*len(crossroad_income))+1])
 
         # TODO might be out of bounds
         # next_point = lanelet.center_vertices[random_index + 1]
-        print("position", lanelet)
+        # print("position", lanelet)
         orientation =utils.orientation_by_position(lanelet,position)
         # print("prientation",orientation)
         # orientation = get_orientation_by_coords(

@@ -16,7 +16,7 @@ class ValidationConfig:
 
     def car_distance_formula(self, speed): return speed * self.safety_time
 
-    min_dist_goal = 50
+    min_dist_goal = 20
     retry_generation = 10000
 
     ignore_validation = False  # for debugging purposes

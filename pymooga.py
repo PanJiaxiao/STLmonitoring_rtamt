@@ -27,16 +27,21 @@ from utils import SimulationResult, PlanningStatus, create_cc_scenario, get_cmap
     save_for_stl, clear_result
 from plot import plot
 
+stl_filename_1="/rob_save21-run_time[1].csv"
+stl_filename_2="/rob_save22-run_time[1].csv"
 
-def run_commonroad(vinit, start, end,acc):
+
+
+def run_commonroad(vinit, start, acc):
     global filename
     global scenario_type
 
-    result_init = get_init_scenario(args.scenario_type, vinit, start, end,acc, filename)
+    result_init = get_init_scenario(args.scenario_type, vinit, start, acc, filename)
     if result_init is False:
         return False
     best_scenario, best_problem_set = result_init
 
+    #mark1
     scenario_generator = ScenarioGenerator(best_scenario)
     max_steps = scenario_generator.config.max_time_step
     result_name = f"{filename.split('.')[0]}_{args.criticality_mode}_{args.scenario_type}_{args.run_time}_{config.ScenarioGeneratorConfig.file_vinit}"
@@ -86,26 +91,28 @@ def run_commonroad(vinit, start, end,acc):
 
 
 def function_a(parameters):
+    global stl_filename_1
+    global stl_filename_2
     """
     模拟函数a，接收参数，返回两个随时间变化的结果
     """
-    vinit1, start1, end1,  acc1 ,vinit2, start2, end2, acc2 = parameters
+    vinit1, start1,  acc1 ,vinit2, start2, acc2 = parameters
 
-    config.ScenarioGeneratorConfig.file_vinit = str(vinit1+start1+end1+acc1+vinit2+start2+end2+acc2)
+    config.ScenarioGeneratorConfig.file_vinit = str(vinit1+start1+acc1+vinit2+start2+acc2)
 
     print("para@@@@@@", parameters)
 
     vinit = [vinit1, vinit2]
     start = [start1, start2]
-    end = [int(end1), int(end2)]
+
     acc=[acc1,acc2]
 
-    if run_commonroad(vinit, start, end,acc) == False:
+    if run_commonroad(vinit, start, acc) == False:
         return False
 
     result_path = "./rob_result/crossroad/" + config.ScenarioGeneratorConfig.file_vinit
-    result1 = pd.read_csv(result_path + "/rob_save21-run_time[1].csv")
-    result2 = pd.read_csv(result_path + "/rob_save22-run_time[1].csv")
+    result1 = pd.read_csv(result_path + stl_filename_1)
+    result2 = pd.read_csv(result_path + stl_filename_2)
 
     return np.array(result1), np.array(result2)
 
@@ -117,11 +124,13 @@ class MultiObjectiveProblem(ElementwiseProblem):
 
     def __init__(self):
         # 定义6个参数的范围
-        xl = [2.0, 0.0, 0.0, 0.0,2.0, 0.0, 0.0,0.0 ] # 下界
-        xu = [8.0, 1.0, 3.0, 1.0,8.0, 1.0, 3.0,1.0 ] # 上界
+        #vinit1, start1,  acc1 ,vinit2, start2, acc2
+        xl = [2.0, 0.0,  0.0,2.0, 0.0, 0.0 ] # 下界
+        xu = [8.0, 1.0, 1.0,8.0, 1.0, 1.0 ] # 上界
 
         # 2个目标（都是最大化）
-        super().__init__(n_var=8, n_obj=2, xl=xl, xu=xu)
+        super().__init__(n_var=6, n_obj=2, xl=xl, xu=xu)
+
 
     def _evaluate(self, x, out, *args, **kwargs):
         """
@@ -139,9 +148,11 @@ class MultiObjectiveProblem(ElementwiseProblem):
             if result is False:
                 # 如果function_a返回False，直接给予惩罚
                 #function1
-                out["F"] = [0, 0]  # 严重惩罚
+                # out["F"] = [0, 0]  # 严重惩罚
                 #function2
                 # out["F"] = [10, 10]
+                #fucntion4
+                out["F"] = [0, 0, 0]
                 return
         except (IndexError, TypeError) as e:
             # 捕获IndexError，直接给予惩罚
@@ -151,6 +162,8 @@ class MultiObjectiveProblem(ElementwiseProblem):
             out["F"] = [0, 0]  # 严重惩罚
             #function2
             # out["F"] = [10, 10]
+
+
             return
 
         result1, result2 = result
@@ -159,15 +172,16 @@ class MultiObjectiveProblem(ElementwiseProblem):
         both_positive = (result1 > 0) & (result2 > 0)
         positive_count = np.sum(both_positive)
         #function2
-        # positive_1 = result1 > 0
-        # positive_count_1 = np.sum(positive_1)
-        # positive_2 = result2 > 0
-        # positive_count_2 = np.sum(positive_2)
+        positive_1 = result1 > 0
+        positive_count_1 = np.sum(positive_1)
+        positive_2 = result2 > 0
+        positive_count_2 = np.sum(positive_2)
 
         #function1
         # 如果没有同时大于0的时刻，给予惩罚
         if positive_count == 0:
             out["F"] = [0, 0]  # 严重惩罚
+
             return
 
 
@@ -175,11 +189,18 @@ class MultiObjectiveProblem(ElementwiseProblem):
         min_positive_values = np.minimum(result1[both_positive], result2[both_positive])
         positive_magnitude = np.mean(min_positive_values)
 
+        #function3
+        positive_magnitude_1 = np.mean(result1[positive_1])
+        positive_magnitude_2 = np.mean(result2[positive_2])
+
         #function1
         # 返回两个目标值（注意：pymoo默认是最小化，所以这里取负号来转换为最大化）
-        out["F"] = [-positive_count, -positive_magnitude]
+        # out["F"] = [-positive_count, -positive_magnitude]
         #function2
         # out["F"] = [-positive_count_1, -positive_count_2]
+        #function3
+        out["F"] = [-positive_magnitude_1, -positive_magnitude_2]
+
 
 
 def run_pymoo_optimization(pop_size=2, generations=5):
@@ -226,30 +247,35 @@ def get_pareto_front_and_best(res):
     X = res.X  # 决策变量
 
     # 由于我们使用了负号来转换为最大化，这里需要转换回来
-    positive_counts = -F[:, 0]  # 第一个目标：正数时间点数量
-    magnitudes = -F[:, 1]  # 第二个目标：平均正数幅度
+    Object_1 = -F[:, 0]  # 第一个目标：正数时间点数量
+    Object_2 = -F[:, 1]  # 第二个目标：正数时间点数量
+    #function4
+    Object_3 = -F[:, 2]  # 第3个目标：平均正数幅度
 
     # 找到最佳折衷解（基于两个目标的乘积）
-    scores = positive_counts * magnitudes
+    scores = Object_1 * Object_2
     best_index = np.argmax(scores)
     best_individual = X[best_index]
 
-    return X, F, best_individual, best_index, positive_counts, magnitudes
+
+    return X, F, best_individual, best_index, Object_1, Object_2
 
 
 def save_results_to_excel(res, best_individual, filename="pymoo_optimization_results.xlsx"):
+    global stl_filename_1
+    global stl_filename_2
     """将优化结果保存到Excel文件"""
 
-    X, F, _, best_index, positive_counts, magnitudes = get_pareto_front_and_best(res)
+    X, F, _, best_index, Object_1, Object_2 = get_pareto_front_and_best(res)
 
     # 创建数据框存储帕累托前沿解
     pareto_data = []
-    for i, (ind, pos_count, mag) in enumerate(zip(X, positive_counts, magnitudes)):
-        result_path = "./rob_result/crossroad/" + str(ind[0]+ind[1]+ind[2]+ind[3]+ind[4]+ind[5]+ind[6]+ind[7])
+    for i, (ind, ob_1, ob_2) in enumerate(zip(X, Object_1, Object_2)):
+        result_path = "./rob_result/crossroad/" + str(ind[0]+ind[1]+ind[2]+ind[3]+ind[4]+ind[5])
         try:
-            result1 = pd.read_csv(result_path + "/rob_save21-run_time[1].csv")
+            result1 = pd.read_csv(result_path + stl_filename_1)
             time_step = len(result1)
-            # result2 = pd.read_csv(result_path + "/rob_save22-run_time[1].csv")
+            result2 = pd.read_csv(result_path + stl_filename_2)
             #
             # both_positive = (result1 > 0) & (result2 > 0)
             # positive_ratio = np.sum(both_positive) / len(result1) * 100
@@ -258,15 +284,14 @@ def save_results_to_excel(res, best_individual, filename="pymoo_optimization_res
                 'solution_index': i + 1,
                 'init_velocity_1': ind[0],
                 'start_1': ind[1],
-                'goal_1': ind[2],
-                'acc_1': ind[3],
-                'init_velocity_2': ind[4],
-                'start_2': ind[5],
-                'goal_2': ind[6],
-                'acc_2': ind[7],
-                'Positive_Point': pos_count,
-                'Average_Positive_Magnitude': mag,
-                'Positive_Point_Ratio(%)': pos_count/time_step
+                'acc_1': ind[2],
+                'init_velocity_2': ind[3],
+                'start_2': ind[4],
+                'acc_2': ind[5],
+                'Object_1': ob_1,
+                'Object_2': ob_2,
+                #TODO replace
+                'Positive_Point_Ratio(%)': np.sum((np.array(result1) > 0) & (np.array(result2) > 0)) / time_step
             })
         except Exception as e:
             print(f"Error reading results for individual {i}: {e}")
@@ -280,10 +305,10 @@ def save_results_to_excel(res, best_individual, filename="pymoo_optimization_res
             pareto_df.to_excel(writer, sheet_name='pareto_front_solution', index=False)
 
         # 获取最佳解的时间序列
-        result_path = "./rob_result/crossroad/" + str(best_individual[0]+best_individual[1]+best_individual[2]+best_individual[3]+best_individual[4]+best_individual[5]+best_individual[6]+best_individual[7])
+        result_path = "./rob_result/crossroad/" + str(best_individual[0]+best_individual[1]+best_individual[2]+best_individual[3]+best_individual[4]+best_individual[5])
         try:
-            result1 = pd.read_csv(result_path + "/rob_save21-run_time[1].csv")
-            result2 = pd.read_csv(result_path + "/rob_save22-run_time[1].csv")
+            result1 = pd.read_csv(result_path + stl_filename_1)
+            result2 = pd.read_csv(result_path + stl_filename_2)
 
             # 保存最佳解的时间序列数据
             time_series_data = {
@@ -296,21 +321,23 @@ def save_results_to_excel(res, best_individual, filename="pymoo_optimization_res
             time_series_df.to_excel(writer, sheet_name='best_solution_timestep', index=False)
 
             # 保存算法参数和统计信息
-            both_positive = (result1 > 0) & (result2 > 0)
+            both_positive = (np.array(result1) > 0) & (np.array(result2) > 0)
             positive_ratio = np.sum(both_positive) / len(result1) * 100
 
             stats_data = {
-                'Parameter': ['init_velocity_1', 'start_1', 'goal_1', 'init_velocity_2', 'start_2', 'goal_2','acc_1','acc_2',
-                              'Positive_Point', 'Average_Positive_Magnitude', 'Positive_Point_Ratio(%)'],
+                'Parameter': ['init_velocity_1', 'start_1', 'init_velocity_2', 'start_2','acc_1','acc_2',
+                              'Object_1', 'Object_2', 'Positive_Point_Ratio(%)'],
                 'Value': [best_individual[0], best_individual[1], best_individual[2],
                           best_individual[3], best_individual[4], best_individual[5],
-                          positive_counts[best_index], magnitudes[best_index], positive_ratio]
+                          Object_1[best_index], Object_2[best_index], positive_ratio]
             }
             stats_df = pd.DataFrame(stats_data)
             stats_df.to_excel(writer, sheet_name='Best_Solution', index=False)
 
         except Exception as e:
             print(f"Error processing best individual results: {e}")
+            traceback.print_exc()
+
 
     print(f"结果已保存到Excel文件: {filename}")
     return filename
@@ -355,6 +382,8 @@ def analyze_results(res, save_excel=True, excel_filename="pymoo_optimization_res
 if __name__ == "__main__":
     global filename
     global scenario_type
+    global stl_filename_1
+    global stl_filename_2
 
     parser = argparse.ArgumentParser("run_multi_motion_planner_system")
     parser.add_argument("--run_result", type=bool, nargs='?', const=False, default=False,
@@ -384,8 +413,8 @@ if __name__ == "__main__":
 
     # 运行pymoo优化
     result = run_pymoo_optimization(
-        pop_size=20,
-        generations=20
+        pop_size=30,
+        generations=50
     )
 
     # 分析结果
@@ -393,14 +422,14 @@ if __name__ == "__main__":
 
     # 验证最佳解
     print("\n验证最佳解:")
-    result_path = "./rob_result/crossroad/" + str(best_solution[0]+best_solution[1]+best_solution[2]+best_solution[3]+best_solution[4]+best_solution[5]+best_solution[6]+best_solution[7])
+    result_path = "./rob_result/crossroad/" + str(best_solution[0]+best_solution[1]+best_solution[2]+best_solution[3]+best_solution[4]+best_solution[5])
     try:
-        result1 = pd.read_csv(result_path + "/rob_save21-run_time[1].csv")
-        result2 = pd.read_csv(result_path + "/rob_save22-run_time[1].csv")
+        result1 = np.array(pd.read_csv(result_path + stl_filename_1))
+        result2 = np.array(pd.read_csv(result_path + stl_filename_2))
 
         print("index:", str(
             best_solution[0] + best_solution[1] + best_solution[2] + best_solution[3] + best_solution[4] +
-            best_solution[5] + best_solution[6] + best_solution[7]))
+            best_solution[5]))
 
         print(f"结果1 > 0 的时间点: {np.sum(result1 > 0)}/{len(result1)}")
         print(f"结果2 > 0 的时间点: {np.sum(result2 > 0)}/{len(result1)}")

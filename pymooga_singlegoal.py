@@ -28,14 +28,15 @@ from utils import SimulationResult, PlanningStatus, create_cc_scenario, get_cmap
 from plot import plot
 
 
-def run_commonroad(vinit, start, end,acc):
+def run_commonroad(vinit, start, acc):
     global filename
     global scenario_type
-
-    result_init = get_init_scenario(args.scenario_type, vinit, start, end,acc, filename)
+    # mark1
+    result_init = get_init_scenario(args.scenario_type, vinit, start, acc, filename)
     if result_init is False:
         return False
     best_scenario, best_problem_set = result_init
+
 
     scenario_generator = ScenarioGenerator(best_scenario)
     max_steps = scenario_generator.config.max_time_step
@@ -89,18 +90,17 @@ def function_a(parameters):
     """
     模拟函数a，接收参数，返回两个随时间变化的结果
     """
-    vinit1, start1, end1,  acc1 ,vinit2, start2, end2, acc2 = parameters
+    vinit1, start1,   acc1 ,vinit2, start2, acc2 = parameters
 
-    config.ScenarioGeneratorConfig.file_vinit = str(vinit1+start1+end1+acc1+vinit2+start2+end2+acc2)
+    config.ScenarioGeneratorConfig.file_vinit = str(vinit1+start1+acc1+vinit2+start2+acc2)
 
     print("para@@@@@@", parameters)
 
     vinit = [vinit1, vinit2]
     start = [start1, start2]
-    end = [int(end1), int(end2)]
     acc=[acc1,acc2]
 
-    if run_commonroad(vinit, start, end,acc) == False:
+    if run_commonroad(vinit, start, acc) == False:
         return False
 
     result_path = "./rob_result/crossroad/" + config.ScenarioGeneratorConfig.file_vinit
@@ -117,8 +117,9 @@ class MultiObjectiveProblem(ElementwiseProblem):
 
     def __init__(self):
         # 定义6个参数的范围
-        xl = [2.0, 0.0, 0.0, 0.0,2.0, 0.0, 0.0,0.0 ] # 下界
-        xu = [8.0, 1.0, 3.0, 1.0,8.0, 1.0, 3.0,1.0 ] # 上界
+        #vinit1, start1,  acc1 ,vinit2, start2, acc2
+        xl = [2.0, 0.0,  0.0,2.0, 0.0, 0.0 ] # 下界
+        xu = [8.0, 1.0, 1.0,8.0, 1.0, 1.0 ] # 上界
 
         # 2个目标（都是最大化）
         super().__init__(n_var=8, n_obj=1, xl=xl, xu=xu)

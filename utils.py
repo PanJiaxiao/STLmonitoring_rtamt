@@ -95,7 +95,7 @@ def get_cmap(n, name='hsv'):
     return plt.cm.get_cmap(name, n)
 
 
-def prepare_scenario(crfr, validator,scenario_type, vinit, start, end,acc, scenario: Scenario = None, problem_set: PlanningProblemSet = None, random=False):
+def prepare_scenario(crfr, validator,scenario_type, vinit, start, acc, scenario: Scenario = None, problem_set: PlanningProblemSet = None, random=False):
     retry_generation = validator.config.retry_generation
     ignore_validation = validator.config.ignore_validation
     for i in range(retry_generation):
@@ -112,7 +112,7 @@ def prepare_scenario(crfr, validator,scenario_type, vinit, start, end,acc, scena
         else:
             #生成了道路和pp，直接进入这里mark4 
             new_scenario, new_problem_set = scenario_generator.generate(
-                new_scenario, new_problem_set,scenario_type,vinit, start, end,acc)
+                new_scenario, new_problem_set,scenario_type,vinit, start,acc)
             #default:mutation=false
             scenario_generator.mutate_scenario(new_scenario, new_problem_set)
 
@@ -820,125 +820,125 @@ def save_for_stl( filename: str, scenario_type,
                        "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             # interaction under scenrio
             "stl_19": {
-                "phi_str": "(yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc >= 0.01) and (abs(yr_a) >= 0.01)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc >= 0.01) and (abs(yr_a) >= 0.01)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_20": {
-                "phi_str": "(yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc >= 0.01) and (abs(yr_b) >= 0.01)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc >= 0.01) and (abs(yr_b) >= 0.01)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_21": {
-                "phi_str": "(yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.01)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.01)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_22": {
-                "phi_str": "(yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc >= 0.01) and (abs(yr_b) >= 0.01)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc >= 0.01) and (abs(yr_b) >= 0.01)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_23": {
-                "phi_str": "(yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.01)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.01)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_24": {
-                "phi_str": "(yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.01) and (abs(yr_b) >= 0.01)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.01) and (abs(yr_b) >= 0.01)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_25": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_26": {
-                "phi_str": "(abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_27": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_28": {
-                "phi_str": "(abs(yr_b) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
-                "signal_str": "yr_b,distance,yr_a,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,vb_acc,orientation_b,orientation_a"},
             "stl_29": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_30": {
-                "phi_str": "(abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_31": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_32": {
-                "phi_str": "(abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_33": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_34": {
-                "phi_str": "(abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_35": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_36": {
-                "phi_str": "(abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_37": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_38": {
-                "phi_str": "(abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_39": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_40": {
-                "phi_str": "(abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_41": {
-                "phi_str": "(yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_42": {
-                "phi_str": "(yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (vb_acc >= 0.01) and (abs(yr_b) >= 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (vb_acc >= 0.01) and (abs(yr_b) >= 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_43": {
-                "phi_str": "(yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_44": {
-                "phi_str": "(yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (vb_acc >= 0.01) and (abs(yr_b) >= 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (vb_acc >= 0.01) and (abs(yr_b) >= 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_45": {
-                "phi_str": "(yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_46": {
-                "phi_str": "(yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (vb_acc < 0.01) and (abs(yr_b) >= 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (vb_acc < 0.01) and (abs(yr_b) >= 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_47": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_48": {
-                "phi_str": "(abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_49": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_50": {
-                "phi_str": "(abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_51": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_52": {
-                "phi_str": "(abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_53": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (va_acc >= 0.01) and (abs(yr_a) < 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (va_acc >= 0.01) and (abs(yr_a) < 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_54": {
-                "phi_str": "(abs(yr_a) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_a) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_55": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (va_acc < 0.01) and (abs(yr_a) < 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (va_acc < 0.01) and (abs(yr_a) < 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_56": {
-                "phi_str": "(abs(yr_a) >= 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (vb_acc >= 0.01) and (abs(yr_b) >= 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (vb_acc >= 0.01) and (abs(yr_b) >= 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             "stl_57": {
-                "phi_str": "(abs(yr_b) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (va_acc < 0.01) and (abs(yr_a) < 0.001)",
-                "signal_str": "yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (va_acc < 0.01) and (abs(yr_a) < 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_58": {
-                "phi_str": "(abs(yr_a) < 0.001) and (distance<30) and (abs(orientation_a-orientation_b)>=1.5708) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
-                "signal_str": "yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
+                "phi_str": "(va*vb>0.0) and (abs(yr_a) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
 
         }
     elif scenario_type == "single_straight":
