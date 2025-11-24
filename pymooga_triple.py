@@ -32,11 +32,11 @@ stl_filename_2="/rob_save22-run_time[1].csv"
 
 
 
-def run_commonroad(vinit, start, acc):
+def run_commonroad():
     global filename
     global scenario_type
 
-    result_init = get_init_scenario(args.scenario_type, vinit, start, acc, filename)
+    result_init = get_init_scenario(args.scenario_type,  filename)
     if result_init is False:
         return False
     best_scenario, best_problem_set = result_init
@@ -93,6 +93,7 @@ def run_commonroad(vinit, start, acc):
 def function_a(parameters):
     global stl_filename_1
     global stl_filename_2
+    global scenario_type
     """
     模拟函数a，接收参数，返回两个随时间变化的结果
     """
@@ -107,10 +108,14 @@ def function_a(parameters):
 
     acc=[acc1,acc2]
 
-    if run_commonroad(vinit, start, acc) == False:
+    config.ScenarioGeneratorConfig.vinit=vinit
+    config.ScenarioGeneratorConfig.acc=acc
+    config.ScenarioGeneratorConfig.start=start
+
+    if run_commonroad() == False:
         return False
 
-    result_path = "./rob_result/crossroad/" + config.ScenarioGeneratorConfig.file_vinit
+    result_path = "./rob_result/"+scenario_type+"/" + config.ScenarioGeneratorConfig.file_vinit
     result1 = pd.read_csv(result_path + stl_filename_1)
     result2 = pd.read_csv(result_path + stl_filename_2)
 
@@ -125,7 +130,7 @@ class MultiObjectiveProblem(ElementwiseProblem):
     def __init__(self):
         # 定义6个参数的范围
         #vinit1, start1,  acc1 ,vinit2, start2, acc2
-        xl = [2.0, 0.0,  0.0,2.0, 0.0, 0.0 ] # 下界
+        xl = [2.0, 0.0,  -1.0,2.0, 0.0, -1.0 ] # 下界
         xu = [8.0, 1.0, 1.0,8.0, 1.0, 1.0 ] # 上界
 
         # 2个目标（都是最大化）
@@ -269,6 +274,7 @@ def get_pareto_front_and_best(res):
 def save_results_to_excel(res, best_individual, filename="pymoo_optimization_results.xlsx"):
     global stl_filename_1
     global stl_filename_2
+    global scenario_type
     """将优化结果保存到Excel文件"""
 
     X, F, _, best_index, Object_1, Object_2,Object_3 = get_pareto_front_and_best(res)
@@ -276,7 +282,7 @@ def save_results_to_excel(res, best_individual, filename="pymoo_optimization_res
     # 创建数据框存储帕累托前沿解
     pareto_data = []
     for i, (ind, ob_1, ob_2,ob_3) in enumerate(zip(X, Object_1, Object_2,Object_3)):
-        result_path = "./rob_result/crossroad/" + str(ind[0]+ind[1]+ind[2]+ind[3]+ind[4]+ind[5])
+        result_path = "./rob_result/"+scenario_type+"/" + str(ind[0]+ind[1]+ind[2]+ind[3]+ind[4]+ind[5])
         try:
             result1 = pd.read_csv(result_path + stl_filename_1)
             time_step = len(result1)
@@ -311,7 +317,7 @@ def save_results_to_excel(res, best_individual, filename="pymoo_optimization_res
             pareto_df.to_excel(writer, sheet_name='pareto_front_solution', index=False)
 
         # 获取最佳解的时间序列
-        result_path = "./rob_result/crossroad/" + str(best_individual[0]+best_individual[1]+best_individual[2]+best_individual[3]+best_individual[4]+best_individual[5])
+        result_path = "./rob_result/"+scenario_type+"/" + str(best_individual[0]+best_individual[1]+best_individual[2]+best_individual[3]+best_individual[4]+best_individual[5])
         try:
             result1 = pd.read_csv(result_path + stl_filename_1)
             result2 = pd.read_csv(result_path + stl_filename_2)
@@ -389,7 +395,6 @@ if __name__ == "__main__":
     global filename
     global scenario_type
 
-
     parser = argparse.ArgumentParser("run_multi_motion_planner_system")
     parser.add_argument("--run_result", type=bool, nargs='?', const=False, default=False,
                         help="Run the generated most critical scenario with the reference planner implementation")
@@ -399,27 +404,40 @@ if __name__ == "__main__":
                         choices=["max_danger", "avg_danger", "random", "max_interactions"],
                         default="max_danger", help="Select a rating mode for simulations")
     parser.add_argument("--scenario_type", type=str,
-                        choices=["change_lane", "crossroad", "single_straight"],
+                        choices=["change_lane", "crossroad", "single_straight", "roundabout", "T-intersection"],
                         default="change_lane", help="Select a scenarios type for simulations")
     parser.add_argument("--run_time", type=int, nargs='*', default=0,
                         help="run time.")
+    parser.add_argument("--interaction_type", type=str,
+                        choices=["merge_2", "merge_1", "cross_2", "cross_1", "cross_0", "default"],
+                        default="default", help="interaction of different scenarios")
+    parser.add_argument("--run_type", type=str,
+                        choices=["random", "ga"],
+                        default="random", help="interaction of different scenarios")
     args = parser.parse_args()
+
+    config.ScenarioGeneratorConfig.interaction_type = args.interaction_type
+    config.ScenarioGeneratorConfig.run_type = args.run_type
 
     scenario_type = args.scenario_type
 
     if args.scenario_type == "change_lane":
-        filename = "USA_US101-23_1_T-1.xml"
+        filename = "USA_US101new-23_1_T-1.xml"
     elif args.scenario_type == "crossroad":
         filename = "DEU_VilaVelha-92_1_T-10.xml"
     elif args.scenario_type == "single_straight":
-        filename = "USA_new-66_1_T-10.xml"
+        filename = "USA_new3-66_1_T-10.xml"
+    elif args.scenario_type == "roundabout":
+        filename = "DEU_Heilbronnnew-267_1_T-5.xml"
+    elif args.scenario_type == "T-intersection":
+        filename = "DEU_Salzwedel-107_1_T-7.xml"
 
     print("开始使用pymoo进行多目标优化...")
 
     # 运行pymoo优化
     result = run_pymoo_optimization(
-        pop_size=30,
-        generations=50
+        pop_size=5,
+        generations=2
     )
 
     # 分析结果
@@ -427,7 +445,7 @@ if __name__ == "__main__":
 
     # 验证最佳解
     print("\n验证最佳解:")
-    result_path = "./rob_result/crossroad/" + str(best_solution[0]+best_solution[1]+best_solution[2]+best_solution[3]+best_solution[4]+best_solution[5])
+    result_path = "./rob_result/"+scenario_type+"/" + str(best_solution[0]+best_solution[1]+best_solution[2]+best_solution[3]+best_solution[4]+best_solution[5])
     try:
         result1 = np.array(pd.read_csv(result_path + stl_filename_1))
         result2 = np.array(pd.read_csv(result_path + stl_filename_2))

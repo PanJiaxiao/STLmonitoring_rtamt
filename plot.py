@@ -4,8 +4,11 @@ import matplotlib.pyplot as plt
 import os
 import config
 
-def plot(scenario_type,vinit):
-    path = './rob_result/'+scenario_type+"/"+vinit
+def plot(scenario_type):
+    if config.ScenarioGeneratorConfig.run_type=="ga":
+        path = './rob_result/'+scenario_type+"/"+config.ScenarioGeneratorConfig.file_vinit
+    else:
+        path='./rob_result/'+scenario_type
 
     os.makedirs(path+"/figs", exist_ok=True)
     path_list = os.listdir(path)

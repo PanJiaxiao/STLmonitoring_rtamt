@@ -1,14 +1,12 @@
 import numpy as np
-from openpyxl.styles.builtins import output
 from scipy import stats
-import argparse
 import pandas as pd
-import config
+
 
 
 stl_filename_1="/rob_save21-run_time[1].csv"
 stl_filename_2="/rob_save22-run_time[1].csv"
-file_code="6.99299610111332"
+file_code="10.860961875819347"
 
 def get_data():
     global stl_filename_1
@@ -112,11 +110,14 @@ def robust_combined_measure():
             output = np.clip(base_output + balance_adjust, -1, 1)
 
         output_list.append(output)
+        # 创建DataFrame，指定列名
+        df = pd.DataFrame(output_list, columns=['column_name'])
+
+        # 保存到CSV文件
+        df.to_csv('./monitor/output.csv', index=False)
 
 
-    return output
 
 if __name__ == '__main__':
 
-    get_data()
-    # robust_combined_measure()
+    robust_combined_measure()

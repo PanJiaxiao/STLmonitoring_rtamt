@@ -26,13 +26,15 @@ from commonroad.scenario.lanelet import LaneletNetwork
 from utils import SimulationResult, PlanningStatus, create_cc_scenario, get_cmap, prepare_scenario, write_scenario, \
     save_for_stl, clear_result
 from plot import plot
+stl_filename_1="/rob_save9-run_time[1].csv"
+stl_filename_2="/rob_save10-run_time[1].csv"
 
 
-def run_commonroad(vinit, start, acc):
+def run_commonroad():
     global filename
     global scenario_type
     # mark1
-    result_init = get_init_scenario(args.scenario_type, vinit, start, acc, filename)
+    result_init = get_init_scenario(args.scenario_type, filename)
     if result_init is False:
         return False
     best_scenario, best_problem_set = result_init
@@ -90,6 +92,9 @@ def function_a(parameters):
     """
     模拟函数a，接收参数，返回两个随时间变化的结果
     """
+    global stl_filename_1
+    global stl_filename_2
+    global scenario_type
     vinit1, start1,   acc1 ,vinit2, start2, acc2 = parameters
 
     config.ScenarioGeneratorConfig.file_vinit = str(vinit1+start1+acc1+vinit2+start2+acc2)
@@ -100,12 +105,16 @@ def function_a(parameters):
     start = [start1, start2]
     acc=[acc1,acc2]
 
-    if run_commonroad(vinit, start, acc) == False:
+    config.ScenarioGeneratorConfig.vinit = vinit
+    config.ScenarioGeneratorConfig.acc = acc
+    config.ScenarioGeneratorConfig.start = start
+
+    if run_commonroad() == False:
         return False
 
-    result_path = "./rob_result/crossroad/" + config.ScenarioGeneratorConfig.file_vinit
-    result1 = pd.read_csv(result_path + "/rob_save21-run_time[1].csv")
-    result2 = pd.read_csv(result_path + "/rob_save22-run_time[1].csv")
+    result_path = "./rob_result/"+scenario_type+"/" + config.ScenarioGeneratorConfig.file_vinit
+    result1 = pd.read_csv(result_path + stl_filename_1)
+    result2 = pd.read_csv(result_path + stl_filename_2)
 
     return np.array(result1), np.array(result2)
 
@@ -122,7 +131,7 @@ class MultiObjectiveProblem(ElementwiseProblem):
         xu = [8.0, 1.0, 1.0,8.0, 1.0, 1.0 ] # 上界
 
         # 2个目标（都是最大化）
-        super().__init__(n_var=8, n_obj=1, xl=xl, xu=xu)
+        super().__init__(n_var=6, n_obj=1, xl=xl, xu=xu)
 
     def _evaluate(self, x, out, *args, **kwargs):
         """
@@ -226,6 +235,9 @@ def get_pareto_front_and_best(res):
 
 def save_results_to_excel(res, best_individual, filename="pymoo_optimization_results.xlsx"):
     """将优化结果保存到Excel文件"""
+    global scenario_type
+    global stl_filename_1
+    global stl_filename_2
 
     X, F, _, best_index, positive_counts = get_pareto_front_and_best(res)
     #print("X!!!!",X)
@@ -233,9 +245,9 @@ def save_results_to_excel(res, best_individual, filename="pymoo_optimization_res
     pareto_data = []
     for i, (ind, pos_count) in enumerate(zip(X, positive_counts)):
         #print("ind",ind)
-        result_path = "./rob_result/crossroad/" + str(ind[0]+ind[1]+ind[2]+ind[3]+ind[4]+ind[5]+ind[6]+ind[7])
+        result_path = "./rob_result/"+scenario_type+"/" + str(ind[0]+ind[1]+ind[2]+ind[3]+ind[4]+ind[5])
         try:
-            result1 = pd.read_csv(result_path + "/rob_save21-run_time[1].csv")
+            result1 = pd.read_csv(result_path + stl_filename_1)
             time_step = len(result1)
             # result2 = pd.read_csv(result_path + "/rob_save22-run_time[1].csv")
             #
@@ -246,12 +258,10 @@ def save_results_to_excel(res, best_individual, filename="pymoo_optimization_res
                 'solution_index': i + 1,
                 'init_velocity_1': ind[0],
                 'start_1': ind[1],
-                'goal_1': ind[2],
-                'acc_1': ind[3],
-                'init_velocity_2': ind[4],
-                'start_2': ind[5],
-                'goal_2': ind[6],
-                'acc_2': ind[7],
+                'acc_1': ind[2],
+                'init_velocity_2': ind[3],
+                'start_2': ind[4],
+                'acc_2': ind[5],
                 'Positive_Point': pos_count,
                 'Positive_Point_Ratio(%)': pos_count/time_step
             })
@@ -267,10 +277,10 @@ def save_results_to_excel(res, best_individual, filename="pymoo_optimization_res
             pareto_df.to_excel(writer, sheet_name='pareto_front_solution', index=False)
 
         # 获取最佳解的时间序列
-        result_path = "./rob_result/crossroad/" + str(best_individual[0]+best_individual[1]+best_individual[2]+best_individual[3]+best_individual[4]+best_individual[5]+best_individual[6]+best_individual[7])
+        result_path = "./rob_result/"+scenario_type+"/" + str(best_individual[0]+best_individual[1]+best_individual[2]+best_individual[3]+best_individual[4]+best_individual[5])
         try:
-            result1 = pd.read_csv(result_path + "/rob_save21-run_time[1].csv")
-            result2 = pd.read_csv(result_path + "/rob_save22-run_time[1].csv")
+            result1 = pd.read_csv(result_path + stl_filename_1)
+            result2 = pd.read_csv(result_path + stl_filename_2)
             result_1_np = np.array(result1)
             result_2_np = np.array(result2)
 
@@ -289,10 +299,10 @@ def save_results_to_excel(res, best_individual, filename="pymoo_optimization_res
             positive_ratio = np.sum(both_positive) / len(result1) * 100
 
             stats_data = {
-                'Parameter': ['init_velocity_1', 'start_1', 'goal_1', 'init_velocity_2', 'start_2', 'goal_2','acc_1','acc_2',
+                'Parameter': ['init_velocity_1', 'start_1', 'init_velocity_2', 'start_2','acc_1','acc_2',
                               'Positive_Point', 'Positive_Point_Ratio(%)'],
                 'Value': [best_individual[0], best_individual[1], best_individual[2],best_individual[3],
-                          best_individual[4], best_individual[5], best_individual[6],best_individual[7],
+                          best_individual[4], best_individual[5],
                           positive_counts[best_index], positive_ratio]
             }
             stats_df = pd.DataFrame(stats_data)
@@ -338,27 +348,39 @@ if __name__ == "__main__":
                         choices=["max_danger", "avg_danger", "random", "max_interactions"],
                         default="max_danger", help="Select a rating mode for simulations")
     parser.add_argument("--scenario_type", type=str,
-                        choices=["change_lane", "crossroad", "single_straight"],
+                        choices=["change_lane", "crossroad", "single_straight", "roundabout", "T-intersection"],
                         default="change_lane", help="Select a scenarios type for simulations")
     parser.add_argument("--run_time", type=int, nargs='*', default=0,
                         help="run time.")
+    parser.add_argument("--interaction_type", type=str,
+                        choices=["merge_2", "merge_1", "cross_2", "cross_1", "cross_0", "default"],
+                        default="default", help="interaction of different scenarios")
+    parser.add_argument("--run_type", type=str,
+                        choices=["random", "ga"],
+                        default="random", help="interaction of different scenarios")
     args = parser.parse_args()
 
+    config.ScenarioGeneratorConfig.interaction_type = args.interaction_type
+    config.ScenarioGeneratorConfig.run_type = args.run_type
     scenario_type = args.scenario_type
 
     if args.scenario_type == "change_lane":
-        filename = "USA_US101-23_1_T-1.xml"
+        filename = "USA_US101new-23_1_T-1.xml"
     elif args.scenario_type == "crossroad":
         filename = "DEU_VilaVelha-92_1_T-10.xml"
     elif args.scenario_type == "single_straight":
-        filename = "USA_new-66_1_T-10.xml"
+        filename = "USA_new3-66_1_T-10.xml"
+    elif args.scenario_type == "roundabout":
+        filename = "DEU_Heilbronnnew-267_1_T-5.xml"
+    elif args.scenario_type == "T-intersection":
+        filename = "DEU_Salzwedel-107_1_T-7.xml"
 
     print("开始使用pymoo进行多目标优化...")
 
     # 运行pymoo优化
     result = run_pymoo_optimization(
-        pop_size=20,
-        generations=20
+        pop_size=7,
+        generations=2
     )
 
     # 分析结果
@@ -366,13 +388,13 @@ if __name__ == "__main__":
 
     # 验证最佳解
     print("\n验证最佳解:")
-    result_path = "./rob_result/crossroad/" + str(best_solution[0]+best_solution[1]+best_solution[2]+best_solution[3]+best_solution[4]+best_solution[5]+best_solution[6]+best_solution[7])
+    result_path = "./rob_result/"+scenario_type+"/" + str(best_solution[0]+best_solution[1]+best_solution[2]+best_solution[3]+best_solution[4]+best_solution[5])
     try:
-        result1 = pd.read_csv(result_path + "/rob_save21-run_time[1].csv")
-        result2 = pd.read_csv(result_path + "/rob_save22-run_time[1].csv")
+        result1 = pd.read_csv(result_path +stl_filename_1)
+        result2 = pd.read_csv(result_path + stl_filename_2)
         result_1_np = np.array(result1)
         result_2_np = np.array(result2)
-        print("index:",str(best_solution[0]+best_solution[1]+best_solution[2]+best_solution[3]+best_solution[4]+best_solution[5]+best_solution[6]+best_solution[7]))
+        print("index:",str(best_solution[0]+best_solution[1]+best_solution[2]+best_solution[3]+best_solution[4]+best_solution[5]))
         print(f"结果1 > 0 的时间点: {np.sum(result_1_np > 0)}/{len(result_1_np)}")
         print(f"结果2 > 0 的时间点: {np.sum(result_2_np > 0)}/{len(result_1_np)}")
         print(f"两个结果都 > 0 的时间点: {np.sum((result_1_np > 0) & (result_2_np > 0))}/{len(result_1_np)}")

@@ -16,7 +16,7 @@ class ValidationConfig:
 
     def car_distance_formula(self, speed): return speed * self.safety_time
 
-    min_dist_goal = 20
+    min_dist_goal = 10
     retry_generation = 10000
 
     ignore_validation = False  # for debugging purposes
@@ -35,8 +35,16 @@ class ScenarioGeneratorConfig:
     min_velocity = 2  # min velocity of an ego by mutation
     max_init_velocity = 8  # max init velocity for new egos; also max velocity modifier for velocity mutations
     min_init_velocity = 2  # see max_init_velocity
+    min_init_acceleration = -1
+    max_init_acceleration = 1
     car_distance_formula = ValidationConfig().car_distance_formula
-    max_time_step = 300  # maximum number of steps that each planner can take
+    max_time_step = 200  # maximum number of steps that each planner can take
     emergency_slow_down_amount = 5  # how much a car is slowing down for each step it spends in emergency mode
     max_emergency_steps = 5
     file_vinit=""
+    interaction_type=""
+    run_type=""
+    vinit=[]
+    start=[]
+    acc=[]
+

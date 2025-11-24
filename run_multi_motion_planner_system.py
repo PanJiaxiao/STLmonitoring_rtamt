@@ -10,6 +10,7 @@ from commonroad.scenario.scenario import Scenario
 import matplotlib.colors as colors
 from commonroad.scenario.lanelet import LaneletNetwork
 
+import config
 import utils
 from config import ScenarioGeneratorConfig
 from planning_generator import PlanningGenerator
@@ -83,7 +84,7 @@ base_dir = "./scenarios"
 validator = ScenarioValidator()
 
 #mark2
-def get_init_scenario(scenario_type,vinit, start, acc,filename):
+def get_init_scenario(scenario_type,filename):
     print("filename",filename)
     scenario_path = os.path.join(base_dir, filename)
     files = sorted(glob.glob(scenario_path))
@@ -101,7 +102,7 @@ def get_init_scenario(scenario_type,vinit, start, acc,filename):
     # generate new scenario until it is valid
     #mark3 在此处重写pp
     print(scenario_type)
-    scenario, problem_set = prepare_scenario(crfr, validator,scenario_type,vinit, start, acc)
+    scenario, problem_set = prepare_scenario(crfr, validator,scenario_type)
     no_scenario_found = scenario is None or problem_set is None
     if no_scenario_found or (
             not validator.config.ignore_validation and not validator.is_scenario_valid(scenario, problem_set)):
@@ -260,7 +261,7 @@ def simulate(scenario: Scenario, problem_set: PlanningProblemSet, scenario_type,
         # update car states for other planners with latest computed state
 
         for i, (gen_object, gen) in enumerate(planning_generators):
-
+            # print("here check crash")
             # check if planner has a solution
             if gen_object.planning_problem.planning_problem_id not in last_solution_map:
 
@@ -404,23 +405,35 @@ if __name__ == "__main__":
                         choices=["max_danger", "avg_danger", "random", "max_interactions"],
                         default="max_danger", help="Select a rating mode for simulations")
     parser.add_argument("--scenario_type", type=str,
-                        choices=["change_lane", "crossroad", "single_straight"],
+                        choices=["change_lane", "crossroad", "single_straight","roundabout","T-intersection"],
                         default="change_lane", help="Select a scenarios type for simulations")
     parser.add_argument("--run_time", type=int, nargs='*',  default=0,
                         help="run time.")
+    parser.add_argument("--interaction_type", type=str,
+                        choices=["merge_2","merge_1","cross_2","cross_1","cross_0","default"],
+                        default="default", help="interaction of different scenarios")
+    parser.add_argument("--run_type", type=str,
+                        choices=["random", "ga"],
+                        default="random", help="interaction of different scenarios")
     args = parser.parse_args()
 
     if args.scenario_type=="change_lane":
-        filename="USA_US101-23_1_T-1.xml"
+        filename="USA_US101new-23_1_T-1.xml"
     elif args.scenario_type=="crossroad":
         filename="DEU_VilaVelha-92_1_T-10.xml"
     elif args.scenario_type=="single_straight":
-        filename="USA_new-66_1_T-10.xml"
+        filename="USA_new3-66_1_T-10.xml"
+    elif args.scenario_type=="roundabout":
+        filename="DEU_Heilbronnnew-267_1_T-5.xml"
+    elif args.scenario_type=="T-intersection":
+        filename="DEU_Salzwedel-107_1_T-7.xml"
 
+    config.ScenarioGeneratorConfig.interaction_type=args.interaction_type
+    config.ScenarioGeneratorConfig.run_type = args.run_type
     #clear last result
     #clear_result("./rob_result/"+args.scenario_type)
-
-    best_scenario, best_problem_set = get_init_scenario(args.scenario_type)
+    print(args.scenario_type,filename)
+    best_scenario, best_problem_set = get_init_scenario(args.scenario_type,filename)
     #mark1
     scenario_generator = ScenarioGenerator(best_scenario)
     max_steps = scenario_generator.config.max_time_step
@@ -489,7 +502,7 @@ if __name__ == "__main__":
         results.append(current_result)
 
     utils.save_as_csv(results, filename, result_name)
-    plot(args.scenario_type)
+    # plot(args.scenario_type)
     # utils.save_for_stl(results, filename, result_name)
     lanelet_network:LaneletNetwork = best_scenario.lanelet_network
 
@@ -501,9 +514,9 @@ if __name__ == "__main__":
     print(f"Most critical key - criticality: {critical_key} - {best_criticality}, sim_nr: {result_iteration}")
 
     xml_path=write_scenario(filename, best_result.simulation_state_map, best_result.scenario, best_result.problem_set,
-                   critical_key, result_name)
+                   result_name)
 
-    save_for_stl( filename,args.scenario_type, args.run_time, xml_path)
+    save_for_stl( filename,args.scenario_type, args.run_time, xml_path,lanelet_network)
 
 
     if args.run_result:

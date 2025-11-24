@@ -27,16 +27,16 @@ from utils import SimulationResult, PlanningStatus, create_cc_scenario, get_cmap
     save_for_stl, clear_result
 from plot import plot
 
-stl_filename_1="/rob_save21-run_time[1].csv"
-stl_filename_2="/rob_save22-run_time[1].csv"
+stl_filename_1="/rob_save9-run_time[1].csv"
+stl_filename_2="/rob_save10-run_time[1].csv"
 
 
 
-def run_commonroad(vinit, start, acc):
+def run_commonroad():
     global filename
     global scenario_type
 
-    result_init = get_init_scenario(args.scenario_type, vinit, start, acc, filename)
+    result_init = get_init_scenario(args.scenario_type,  filename)
     if result_init is False:
         return False
     best_scenario, best_problem_set = result_init
@@ -48,14 +48,17 @@ def run_commonroad(vinit, start, acc):
 
     # simulate base scenario to find starting values
     best_result = simulate(best_scenario, best_problem_set, args.scenario_type, args.run_time, max_steps=max_steps)
-    # max_avg_danger, max_danger, max_interactions, max_avg_pp_id, max_danger_pp_id = utils.compute_criticality_metrics(
-    #     best_result)
-    # best_criticality_pp_id, best_criticality = utils.get_criticality_metric(avg_danger=max_avg_danger,
-    #                                                                         max_danger=max_danger,
-    #                                                                         max_interactions=max_interactions,
-    #                                                                         max_avg_pp_id=max_avg_pp_id,
-    #                                                                         max_danger_pp_id=max_danger_pp_id,
-    #                                                                         mode=args.criticality_mode)
+    max_avg_danger, max_danger, max_interactions, max_avg_pp_id, max_danger_pp_id = utils.compute_criticality_metrics(
+        best_result)
+    best_criticality_pp_id, best_criticality = utils.get_criticality_metric(avg_danger=max_avg_danger,
+                                                                            max_danger=max_danger,
+                                                                            max_interactions=max_interactions,
+                                                                            max_avg_pp_id=max_avg_pp_id,
+                                                                            max_danger_pp_id=max_danger_pp_id,
+                                                                            mode=args.criticality_mode)
+
+    best_result.overall_critically=best_criticality
+    best_result.simulation_number=0
     # save gif of initial simulation
     sim_filename = filename.split('.')[0] + "_sim_0"
     save_images_as_gif(best_result.images, result_name, sim_filename)
@@ -93,6 +96,7 @@ def run_commonroad(vinit, start, acc):
 def function_a(parameters):
     global stl_filename_1
     global stl_filename_2
+    global scenario_type
     """
     模拟函数a，接收参数，返回两个随时间变化的结果
     """
@@ -107,10 +111,14 @@ def function_a(parameters):
 
     acc=[acc1,acc2]
 
-    if run_commonroad(vinit, start, acc) == False:
-        return False
+    config.ScenarioGeneratorConfig.vinit = vinit
+    config.ScenarioGeneratorConfig.acc = acc
+    config.ScenarioGeneratorConfig.start = start
 
-    result_path = "./rob_result/crossroad/" + config.ScenarioGeneratorConfig.file_vinit
+    if run_commonroad() == False:
+        return False
+#TODO
+    result_path = "./rob_result/"+scenario_type+"/" + config.ScenarioGeneratorConfig.file_vinit
     result1 = pd.read_csv(result_path + stl_filename_1)
     result2 = pd.read_csv(result_path + stl_filename_2)
 
@@ -148,11 +156,11 @@ class MultiObjectiveProblem(ElementwiseProblem):
             if result is False:
                 # 如果function_a返回False，直接给予惩罚
                 #function1
-                # out["F"] = [0, 0]  # 严重惩罚
+                out["F"] = [0, 0]  # 严重惩罚
                 #function2
                 # out["F"] = [10, 10]
                 #fucntion4
-                out["F"] = [0, 0, 0]
+                # out["F"] = [0, 0, 0]
                 return
         except (IndexError, TypeError) as e:
             # 捕获IndexError，直接给予惩罚
@@ -195,11 +203,11 @@ class MultiObjectiveProblem(ElementwiseProblem):
 
         #function1
         # 返回两个目标值（注意：pymoo默认是最小化，所以这里取负号来转换为最大化）
-        # out["F"] = [-positive_count, -positive_magnitude]
+        out["F"] = [-positive_count, -positive_magnitude]
         #function2
         # out["F"] = [-positive_count_1, -positive_count_2]
         #function3
-        out["F"] = [-positive_magnitude_1, -positive_magnitude_2]
+        # out["F"] = [-positive_magnitude_1, -positive_magnitude_2]
 
 
 
@@ -250,7 +258,7 @@ def get_pareto_front_and_best(res):
     Object_1 = -F[:, 0]  # 第一个目标：正数时间点数量
     Object_2 = -F[:, 1]  # 第二个目标：正数时间点数量
     #function4
-    Object_3 = -F[:, 2]  # 第3个目标：平均正数幅度
+    # Object_3 = -F[:, 2]  # 第3个目标：平均正数幅度
 
     # 找到最佳折衷解（基于两个目标的乘积）
     scores = Object_1 * Object_2
@@ -264,6 +272,7 @@ def get_pareto_front_and_best(res):
 def save_results_to_excel(res, best_individual, filename="pymoo_optimization_results.xlsx"):
     global stl_filename_1
     global stl_filename_2
+    global scenario_type
     """将优化结果保存到Excel文件"""
 
     X, F, _, best_index, Object_1, Object_2 = get_pareto_front_and_best(res)
@@ -271,7 +280,7 @@ def save_results_to_excel(res, best_individual, filename="pymoo_optimization_res
     # 创建数据框存储帕累托前沿解
     pareto_data = []
     for i, (ind, ob_1, ob_2) in enumerate(zip(X, Object_1, Object_2)):
-        result_path = "./rob_result/crossroad/" + str(ind[0]+ind[1]+ind[2]+ind[3]+ind[4]+ind[5])
+        result_path = "./rob_result/"+scenario_type+"/" + str(ind[0]+ind[1]+ind[2]+ind[3]+ind[4]+ind[5])
         try:
             result1 = pd.read_csv(result_path + stl_filename_1)
             time_step = len(result1)
@@ -305,7 +314,7 @@ def save_results_to_excel(res, best_individual, filename="pymoo_optimization_res
             pareto_df.to_excel(writer, sheet_name='pareto_front_solution', index=False)
 
         # 获取最佳解的时间序列
-        result_path = "./rob_result/crossroad/" + str(best_individual[0]+best_individual[1]+best_individual[2]+best_individual[3]+best_individual[4]+best_individual[5])
+        result_path = "./rob_result/"+scenario_type+"/" + str(best_individual[0]+best_individual[1]+best_individual[2]+best_individual[3]+best_individual[4]+best_individual[5])
         try:
             result1 = pd.read_csv(result_path + stl_filename_1)
             result2 = pd.read_csv(result_path + stl_filename_2)
@@ -382,8 +391,7 @@ def analyze_results(res, save_excel=True, excel_filename="pymoo_optimization_res
 if __name__ == "__main__":
     global filename
     global scenario_type
-    global stl_filename_1
-    global stl_filename_2
+
 
     parser = argparse.ArgumentParser("run_multi_motion_planner_system")
     parser.add_argument("--run_result", type=bool, nargs='?', const=False, default=False,
@@ -394,27 +402,40 @@ if __name__ == "__main__":
                         choices=["max_danger", "avg_danger", "random", "max_interactions"],
                         default="max_danger", help="Select a rating mode for simulations")
     parser.add_argument("--scenario_type", type=str,
-                        choices=["change_lane", "crossroad", "single_straight"],
+                        choices=["change_lane", "crossroad", "single_straight", "roundabout", "T-intersection"],
                         default="change_lane", help="Select a scenarios type for simulations")
     parser.add_argument("--run_time", type=int, nargs='*', default=0,
                         help="run time.")
+    parser.add_argument("--interaction_type", type=str,
+                        choices=["merge_2", "merge_1", "cross_2", "cross_1", "cross_0", "default"],
+                        default="default", help="interaction of different scenarios")
+    parser.add_argument("--run_type", type=str,
+                        choices=["random", "ga"],
+                        default="random", help="interaction of different scenarios")
     args = parser.parse_args()
+
+    config.ScenarioGeneratorConfig.interaction_type = args.interaction_type
+    config.ScenarioGeneratorConfig.run_type = args.run_type
 
     scenario_type = args.scenario_type
 
     if args.scenario_type == "change_lane":
-        filename = "USA_US101-23_1_T-1.xml"
+        filename = "USA_US101new-23_1_T-1.xml"
     elif args.scenario_type == "crossroad":
         filename = "DEU_VilaVelha-92_1_T-10.xml"
     elif args.scenario_type == "single_straight":
-        filename = "USA_new-66_1_T-10.xml"
+        filename = "USA_new3-66_1_T-10.xml"
+    elif args.scenario_type == "roundabout":
+        filename = "DEU_Heilbronnnew-267_1_T-5.xml"
+    elif args.scenario_type == "T-intersection":
+        filename = "DEU_Salzwedel-107_1_T-7.xml"
 
     print("开始使用pymoo进行多目标优化...")
 
     # 运行pymoo优化
     result = run_pymoo_optimization(
-        pop_size=30,
-        generations=50
+        pop_size=5,
+        generations=2
     )
 
     # 分析结果
@@ -422,7 +443,7 @@ if __name__ == "__main__":
 
     # 验证最佳解
     print("\n验证最佳解:")
-    result_path = "./rob_result/crossroad/" + str(best_solution[0]+best_solution[1]+best_solution[2]+best_solution[3]+best_solution[4]+best_solution[5])
+    result_path = "./rob_result/"+scenario_type+"/" + str(best_solution[0]+best_solution[1]+best_solution[2]+best_solution[3]+best_solution[4]+best_solution[5])
     try:
         result1 = np.array(pd.read_csv(result_path + stl_filename_1))
         result2 = np.array(pd.read_csv(result_path + stl_filename_2))

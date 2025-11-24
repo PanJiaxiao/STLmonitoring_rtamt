@@ -6,6 +6,7 @@ import random
 import math
 import operator
 
+
 import networkx as nx
 
 from commonroad.planning.goal import GoalRegion
@@ -28,6 +29,7 @@ from shapely.geometry import LineString, Point, Polygon
 from commonroad_route_planner.route_planner import RoutePlanner
 from tensorflow_core.python import empty
 
+import config
 from validation.validator import cut, get_successor_lanelets ,get_straight_lanelets,get_predecessor_lanelets_notmerge,get_successor_lanelets_notmerge
 from config import ScenarioGeneratorConfig
 import utils
@@ -40,7 +42,7 @@ income_list=[1584,37,1586,39]
 #stl=[21,22]
 goal_id=40
 # goal_id=[40,1587]
-start_id=[37,1584]
+start_id=[]
 
 
 class ScenarioGenerator:
@@ -48,6 +50,8 @@ class ScenarioGenerator:
         self.config: ScenarioGeneratorConfig = ScenarioGeneratorConfig()
         self.scenario = scenario
         self.lanelet_network = scenario.lanelet_network
+
+
     #generate income
     def gen_income(self,scenario: Scenario,lan_id):
         # global income_list
@@ -55,123 +59,231 @@ class ScenarioGenerator:
         crossroad_income.clear()
         # for i in income_list:
             #print("incom_list",i)
+        # for i in lan_id:
         lan=scenario.lanelet_network.find_lanelet_by_id(lan_id)
         lan_center=lan.center_vertices.tolist()
         #print("lan_center",lan_center)
         crossroad_income=crossroad_income+lan_center
-    #mark5
-    def generate(self, scenario: Scenario, problem_set: PlanningProblemSet,scenario_type,vinit, start,acc):
+
+    def gen_start_and_goal_id(self,scenario_type,interaction_type):
         global goal_id
         global start_id
+
+        if scenario_type=="crossroad":
+            if interaction_type=="merge_2":
+                print("#####arrive startgen")
+                goal_id=[40,40]
+                start_id=[1586,1584]
+            elif interaction_type=="merge_1":
+                start_id=[1584,37]
+                goal_id=[40,40]
+            elif interaction_type=="cross_2":
+                start_id=[37,1584]
+                goal_id=[1583,40]
+            elif interaction_type=="cross_1":
+                start_id=[37,1584]
+                goal_id = [1583,1587]
+            elif interaction_type=="cross_0":
+                start_id = [1584, 37]
+                goal_id = [1587, 40]
+        elif scenario_type=="single_straight":
+            start_id = [91, 91]
+            goal_id = [91, 91]
+        elif scenario_type == "change_lane":
+            start_id = [137148, 137143]
+            goal_id = [137143, 137148]
+        elif scenario_type == "roundabout":
+            if interaction_type=="merge_1":
+                start_id=[12451,3802]
+                goal_id=[3471,3471]
+            elif interaction_type=="cross_0":
+                start_id = [4822, 3802]
+                goal_id = [11467, 3471]
+        if scenario_type == "T-intersection":
+            if interaction_type == "merge_2":
+                goal_id = [616, 616]
+                start_id = [581, 583]
+            elif interaction_type == "merge_1":
+                start_id = [617,581]
+                goal_id = [584,584]
+            elif interaction_type == "cross_2":
+                start_id = [581, 617]
+                goal_id = [616, 584]
+            elif interaction_type == "cross_1":
+                start_id = [617,583]
+                goal_id = [584,580]
+
+
+    #mark5
+    def generate(self, scenario: Scenario, problem_set: PlanningProblemSet,scenario_type):
+        global goal_id
+        global start_id
+        self.gen_start_and_goal_id(scenario_type,config.ScenarioGeneratorConfig.interaction_type)
+        vinit=config.ScenarioGeneratorConfig.vinit
+        start=config.ScenarioGeneratorConfig.start
+        acc=config.ScenarioGeneratorConfig.acc
         if scenario_type=="change_lane":
-            remove_lanelet=[]
-            remove_lanelet.append(scenario.lanelet_network.find_lanelet_by_id(144))
-            remove_lanelet.append(scenario.lanelet_network.find_lanelet_by_id(146))
-            remove_lanelet.append(scenario.lanelet_network.find_lanelet_by_id(133))
-            remove_lanelet.append(scenario.lanelet_network.find_lanelet_by_id(134))
-            remove_lanelet.append(scenario.lanelet_network.find_lanelet_by_id(136))
-            remove_lanelet.append(scenario.lanelet_network.find_lanelet_by_id(55137153))
-            remove_lanelet.append(scenario.lanelet_network.find_lanelet_by_id(137142))
-            scenario.remove_lanelet(remove_lanelet)
-            #config中的pp数量
-            first_lanlets=[]
-            seconde_lanlets=[]
-            for i in range(self.config.amount_pp):
-                lanelet = random.choice(scenario.lanelet_network.lanelets)
-                #补全道路
-                full_lanelets = get_predecessor_lanelets_notmerge(
-                    lanelet,scenario.lanelet_network)
-                succ_lanelets = get_successor_lanelets_notmerge(
-                    lanelet, scenario.lanelet_network)
-                full_lanelets.append(lanelet)
-                full_lanelets.extend(succ_lanelets)
-                #TODO: fix here to used in multi-branch road situation!!!
-                #获得一条直行道路
-                straight_lanets=full_lanelets
-                #保证两次道路选择不同
-                if i==1:
-                    while(lanelet in first_lanlets):
-                        lanelet = random.choice(scenario.lanelet_network.lanelets)
-                    seconde_lanlets=get_predecessor_lanelets_notmerge(lanelet, scenario.lanelet_network)
-                    seconde_succ_lanelets = get_successor_lanelets_notmerge(
-                        lanelet, scenario.lanelet_network)
-                    seconde_lanlets.append(lanelet)
-                    seconde_lanlets.extend(seconde_succ_lanelets)
-                    #TODO: fix here to used in multi-branch road situation!!!
-                    # seconde_lanlets=get_straight_lanelets(lanelet,seconde_lanlets,scenario.lanelet_network)
-                    #选取目标区域
-                    #依次为两条道路选取
-                    #pp1，选取pp2的道路为ga
-                    goal_area = self.get_possible_goal_for_lanelet(random.choice(seconde_lanlets))
-                    goal = self.generate_goal(goal_area)
-                    id = 998 + i
-                    init_state = self.get_random_init_state(random.choice(first_lanlets))
-                    new_pp = PlanningProblem(id, init_state, goal)
-                    problem_set.add_planning_problem(new_pp)
-                    #pp2,选取pp1的道路为ga
-                    goal_area = self.get_possible_goal_for_lanelet(random.choice(first_lanlets))
+            if config.ScenarioGeneratorConfig.run_type == "random":
+                #config中的pp数量
+                print("arrive_random_init")
+                first_lanlets=scenario.lanelet_network.find_lanelet_by_id(137148)
+                seconde_lanlets=scenario.lanelet_network.find_lanelet_by_id(137143)
+                for i in range(self.config.amount_pp):
+                    if i==0:
+                        goal_area = self.get_possible_goal_for_lanelet(seconde_lanlets)
+                        init_state = self.get_random_init_state(first_lanlets)
+                    else :
+                        goal_area = self.get_possible_goal_for_lanelet(first_lanlets)
+                        init_state = self.get_random_init_state(seconde_lanlets)
                     goal = self.generate_goal(goal_area)
                     id = 999 + i
-                    init_state = self.get_random_init_state(random.choice(seconde_lanlets))
+                    new_pp = PlanningProblem(id, init_state, goal)
+                    problem_set.add_planning_problem(new_pp)
+            else:
+                for i in range(self.config.amount_pp):
+
+                    goal_area = self.get_possible_goal_for_lanelet(scenario.lanelet_network.find_lanelet_by_id(goal_id[i]))
+
+                    goal = self.generate_goal(goal_area)
+
+                    id = 999 + i
+                    #TODO
+                    init_state = self.get_ga_init_state(scenario,vinit[i], start[i],start_id[i],acc[i])
+                    new_pp = PlanningProblem(id, init_state, goal)
+                    problem_set.add_planning_problem(new_pp)
+        elif scenario_type=="crossroad":
+            if config.ScenarioGeneratorConfig.run_type=="random":
+                for i in range(self.config.amount_pp):
+
+                    #stl{21,22}-one goal
+                    goal_area = self.get_possible_goal_for_lanelet(scenario.lanelet_network.find_lanelet_by_id(goal_id[i]))
+
+                    goal = self.generate_goal(goal_area)
+
+                    id = 999 + i
+                    #TODO
+                    lanelet=scenario.lanelet_network.find_lanelet_by_id(start_id[i])
+                    init_state = self.get_random_init_state(lanelet)
+                    new_pp = PlanningProblem(id, init_state, goal)
+                    problem_set.add_planning_problem(new_pp)
+                # incoming_map = scenario.lanelet_network.intersections[0].map_incoming_lanelets
+                # first_id = []
+                # for i in range(self.config.amount_pp):
+                #     incoming_id = random.sample(list(incoming_map), 1)
+                #     while incoming_id in first_id:
+                #         incoming_id = random.sample(list(incoming_map), 1)
+                #     first_id.append(incoming_id)
+                #     incoming_ele = incoming_map[incoming_id[0]]
+                #     lanelet = scenario.lanelet_network.find_lanelet_by_id(incoming_id[0])
+                #     # TODO diff start area
+                #     goal_lanelets = incoming_ele.successors_right | incoming_ele.successors_left | incoming_ele.successors_straight
+                #     #set().pop radom throw out
+                #     goal_lanelet_id = goal_lanelets.pop()
+                #     goal_lanelet = scenario.lanelet_network.find_lanelet_by_id(goal_lanelet_id)
+                #     succ_lanelets = get_successor_lanelets_notmerge(
+                #         goal_lanelet, scenario.lanelet_network)
+                #     goal_area = self.get_possible_goal_for_lanelet(random.choice(succ_lanelets))
+                #     goal = self.generate_goal(goal_area)
+                #     id = 999 + i
+                #
+                #     init_state = self.get_random_init_state(lanelet)
+                #     new_pp = PlanningProblem(id, init_state, goal)
+                #     problem_set.add_planning_problem(new_pp)
+            else:
+                for i in range(self.config.amount_pp):
+
+                    #stl{21,22}-one goal
+                    goal_area = self.get_possible_goal_for_lanelet(scenario.lanelet_network.find_lanelet_by_id(goal_id[i]))
+
+                    goal = self.generate_goal(goal_area)
+
+                    id = 999 + i
+                    #TODO
+                    init_state = self.get_ga_init_state(scenario,vinit[i], start[i],start_id[i],acc[i])
+                    new_pp = PlanningProblem(id, init_state, goal)
+                    problem_set.add_planning_problem(new_pp)
+
+        elif scenario_type == "single_straight":
+            if config.ScenarioGeneratorConfig.run_type=="random":
+                #a_bef_b
+                for i in range(self.config.amount_pp):
+                    lanelet =scenario.lanelet_network.find_lanelet_by_id(91)
+                    # a must before b
+                    init_state= self.get_random_init_state(lanelet)
+                    goal_area = self.get_possible_goal_for_lanelet(lanelet)
+                    goal = self.generate_goal(goal_area)
+                    id = 999 + i
 
                     new_pp = PlanningProblem(id, init_state, goal)
                     problem_set.add_planning_problem(new_pp)
-                else:
-                    first_lanlets=straight_lanets
-
-        elif scenario_type=="crossroad":
-            incoming_map=scenario.lanelet_network.intersections[0].map_incoming_lanelets
-            #print(incoming_map)
-            #print(list(incoming_map))
-            first_id=[]
-            for i in range(self.config.amount_pp):
-
-                #lan_id=crossroad_outcome[end[i]]
-                #stl{21,22}-one goal
-                goal_area = self.get_possible_goal_for_lanelet(scenario.lanelet_network.find_lanelet_by_id(goal_id))
-                # goal_area = self.get_possible_goal_for_lanelet(scenario.lanelet_network.find_lanelet_by_id(goal_id[i]))
-
-                goal = self.generate_goal(goal_area)
-                #print("goal############",goal_area)
-                id = 999 + i
-                #TODO
-                init_state = self.get_random_init_state(scenario,vinit[i], start[i],start_id[i],acc[i])
-                new_pp = PlanningProblem(id, init_state, goal)
-                problem_set.add_planning_problem(new_pp)
-
-        elif scenario_type == "single_straight":
-            first_lanelet=[]
-            same_goalarea=[]
-            lanelet = random.choice(scenario.lanelet_network.lanelets)
-            for i in range(self.config.amount_pp):
-
-                # lanelet = random.choice(scenario.lanelet_network.lanelets)
-                #first
-                while len(first_lanelet)==0 and len(lanelet.successor)==0:
-                    lanelet = random.choice(scenario.lanelet_network.lanelets)
-                #seconde
-                # while lanelet in first_lanelet:
-                #     lanelet = random.choice(scenario.lanelet_network.lanelets)
-                #a must before b
-                if i==0:
-                    pre_lanelets=get_successor_lanelets_notmerge(lanelet, scenario.lanelet_network)
-                    first_lanelet.append(lanelet)
-                    first_lanelet.extend(pre_lanelets)
-                    #same goal
-                    goal_area = self.get_possible_goal_for_lanelet(random.choice(pre_lanelets))
+            else:
+                for i in range(self.config.amount_pp):
+                    # stl{21,22}-one goal
+                    goal_area = self.get_possible_goal_for_lanelet(
+                        scenario.lanelet_network.find_lanelet_by_id(goal_id[i]))
                     goal = self.generate_goal(goal_area)
-                    same_goalarea.append(goal)
-                else:
-                    goal = same_goalarea[0]
-                # goal_area = self.get_possible_goal_for_lanelet(random.choice(scenario.lanelet_network.lanelets))
-                # goal = self.generate_goal(goal_area)
-                id = 999 + i
-                init_state = self.get_random_init_state(lanelet)
-                new_pp = PlanningProblem(id, init_state, goal)
-                problem_set.add_planning_problem(new_pp)
+                    id = 999 + i
+                    # TODO
+                    init_state = self.get_ga_init_state(scenario, vinit[i], start[i], start_id[i], acc[i])
+                    new_pp = PlanningProblem(id, init_state, goal)
+                    problem_set.add_planning_problem(new_pp)
 
+        elif scenario_type == "roundabout":
+            if config.ScenarioGeneratorConfig.run_type=="random":
+                for i in range(self.config.amount_pp):
+                    # stl{21,22}-one goal
+                    goal_area = self.get_possible_goal_for_lanelet(
+                        scenario.lanelet_network.find_lanelet_by_id(goal_id[i]))
 
+                    goal = self.generate_goal(goal_area)
 
+                    id = 999 + i
+                    # TODO
+                    lanelet=scenario.lanelet_network.find_lanelet_by_id(start_id[i])
+                    init_state = self.get_random_init_state(lanelet)
+                    new_pp = PlanningProblem(id, init_state, goal)
+                    problem_set.add_planning_problem(new_pp)
+            else:
+                for i in range(self.config.amount_pp):
+
+                    #stl{21,22}-one goal
+                    goal_area = self.get_possible_goal_for_lanelet(scenario.lanelet_network.find_lanelet_by_id(goal_id[i]))
+
+                    goal = self.generate_goal(goal_area)
+
+                    id = 999 + i
+                    #TODO
+                    init_state = self.get_ga_init_state(scenario,vinit[i], start[i],start_id[i],acc[i])
+                    new_pp = PlanningProblem(id, init_state, goal)
+                    problem_set.add_planning_problem(new_pp)
+        elif scenario_type == "T-intersection":
+            if config.ScenarioGeneratorConfig.run_type=="random":
+                for i in range(self.config.amount_pp):
+                    # stl{21,22}-one goal
+                    goal_area = self.get_possible_goal_for_lanelet(
+                        scenario.lanelet_network.find_lanelet_by_id(goal_id[i]))
+
+                    goal = self.generate_goal(goal_area)
+
+                    id = 999 + i
+                    # TODO
+                    lanelet=scenario.lanelet_network.find_lanelet_by_id(start_id[i])
+                    init_state = self.get_random_init_state(lanelet)
+                    new_pp = PlanningProblem(id, init_state, goal)
+                    problem_set.add_planning_problem(new_pp)
+            else:
+                for i in range(self.config.amount_pp):
+
+                    #stl{21,22}-one goal
+                    goal_area = self.get_possible_goal_for_lanelet(scenario.lanelet_network.find_lanelet_by_id(goal_id[i]))
+
+                    goal = self.generate_goal(goal_area)
+
+                    id = 999 + i
+                    #TODO
+                    init_state = self.get_ga_init_state(scenario,vinit[i], start[i],start_id[i],acc[i])
+                    new_pp = PlanningProblem(id, init_state, goal)
+                    problem_set.add_planning_problem(new_pp)
         return scenario, problem_set
 
     def get_dynamic_obstacle(self,scenario:Scenario,straight_lanets:List[Lanelet]):
@@ -369,45 +481,45 @@ class ScenarioGenerator:
         problem_set.planning_problem_dict.pop(pp_id_to_remove.planning_problem_id)
 
     #mark6
-    def get_random_init_state(self,scenario: Scenario,vint,index,lan_id,acc):
+
+    def get_random_init_state(self, lanelet: Lanelet):
+        # mandatory fields for init State: [position, velocity, orientation, yaw_rate, slip_angle, time_step]
+        #random
+        velocity = random.uniform(
+            self.config.min_init_velocity, self.config.max_init_velocity)
+
+        acceleration = random.uniform(
+            self.config.min_init_acceleration, self.config.max_init_acceleration)
+
+        random_index = random.choice(range(len(lanelet.center_vertices) - 1))
+        position = lanelet.center_vertices[random_index]
+
+        # TODO might be out of bounds
+        next_point = lanelet.center_vertices[random_index + 1]
+        orientation = get_orientation_by_coords(
+            (position[0], position[1]), (next_point[0], next_point[1]))
+
+        yaw_rate = 0.0
+        slip_angle = 0.0
+
+        return State(velocity=velocity, orientation=orientation, time_step=0, position=position,acceleration=acceleration, yaw_rate=yaw_rate,
+                     slip_angle=slip_angle)
+
+    def get_ga_init_state(self,scenario: Scenario,vint,index,lan_id,acc):
         global crossroad_income
         global income_list
         # mandatory fields for init State: [position, velocity, orientation, yaw_rate, slip_angle, time_step]
-        # velocity = random.uniform(
-        #     self.config.min_init_velocity, self.config.max_init_velocity)
 
         velocity=vint
         acceleration=acc
 
-        #random_index = random.choice(range(len(lanelet.center_vertices) - 1))
-        #position = lanelet.center_vertices[random_index]
-        #print("cross_income",crossroad_income)
         self.gen_income(scenario,lan_id)
-        #crossroad stl={21,22}
-        # lanelet_list=scenario.lanelet_network.find_lanelet_by_position([crossroad_income[int(index*len(crossroad_income))]])
-        # #print("list", lanelet_list)
-        # lanelet_id = list(filter(lambda x: x in lanelet_list[0], income_list))
-        # lanelet=scenario.lanelet_network.find_lanelet_by_id(lanelet_id[0])
-
-        # position=np.array(crossroad_income[int(index*len(crossroad_income))])
 
         #fix the start
-        # crossroad stl={21,22}
         lanelet = scenario.lanelet_network.find_lanelet_by_id(lan_id)
         #index[0,1];crossroad_incomde depends on the lan_id
         position = np.array(crossroad_income[int(index * len(crossroad_income))])
-        # print("crossroad_income",crossroad_income)
-        # print("position&&&&&&&&&&&&&&",int(index*len(crossroad_income)))
-        # TODO might be out of bounds
-        # next_point=np.array(crossroad_income[int(index*len(crossroad_income))+1])
-
-        # TODO might be out of bounds
-        # next_point = lanelet.center_vertices[random_index + 1]
-        # print("position", lanelet)
         orientation =utils.orientation_by_position(lanelet,position)
-        # print("prientation",orientation)
-        # orientation = get_orientation_by_coords(
-        #      (position[0], position[1]), (next_point[0], next_point[1]))
 
         yaw_rate = 0.0
         slip_angle = 0.0
