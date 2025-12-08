@@ -679,55 +679,55 @@ def save_as_csv(simulation_results: List[SimulationResult], filename: str, sim_n
 #TODO rewrite function for read data from xml in one time
 def save_for_stl( filename: str, scenario_type,
                  run_time,xml_path,laneletnetwork:LaneletNetwork):
-    print("Arrive stl!!!!")
+    # print("Arrive stl!!!!")
     if scenario_type == "change_lane":
         stl_dict = {
             # basic movenment
-            "stl_1": {"phi_str": "(va_acc >= 0.01) and (abs(yr_a) >= 0.01)",
+            "stl_1": {"phi_str": "(va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_2": {"phi_str": "(vb_acc >= 0.01) and (abs(yr_b) >= 0.01)",
+            "stl_2": {"phi_str": "(vb_acc >= 0.001) and (abs(yr_b) >= 0.001)",
                       "signal_str": "vb_acc,yr_b"},
-            "stl_3": {"phi_str": "(va_acc < 0.01) and (abs(yr_a) >= 0.01)",
+            "stl_3": {"phi_str": "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_4": {"phi_str": "(vb_acc < 0.01) and (abs(yr_b) >= 0.01)",
+            "stl_4": {"phi_str": "(vb_acc < 0.001) and (abs(yr_b) >= 0.001)",
                       "signal_str": "vb_acc,yr_b"},
-            "stl_5": {"phi_str": "(va_acc >= 0.01) and (abs(yr_a) < 0.01)",
+            "stl_5": {"phi_str": "(va_acc >= 0.001) and (abs(yr_a) < 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_6": {"phi_str": "(vb_acc >= 0.01) and (abs(yr_b) < 0.01)",
+            "stl_6": {"phi_str": "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                       "signal_str": "vb_acc,yr_b"},
-            "stl_7": {"phi_str": "(va_acc < 0.01) and (abs(yr_a) < 0.01)",
+            "stl_7": {"phi_str": "(va_acc < 0.001) and (abs(yr_a) < 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_8": {"phi_str": "(vb_acc < 0.01) and (abs(yr_b) < 0.01)",
+            "stl_8": {"phi_str": "(vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                       "signal_str": "vb_acc,yr_b"},
             # basic interaction
             "stl_9": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001)) and ((vb_acc >= 0.01) and (abs(yr_b) >= 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001)) and ((vb_acc >= 0.001) and (abs(yr_b) >= 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_10": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001)) and ((vb_acc < 0.01) and (abs(yr_b) >= 0.01)) or ((vb_acc >= 0.01) and (abs(yr_b) >= 0.01)) and ((va_acc < 0.01) and (abs(yr_a) >= 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001)) and ((vb_acc < 0.001) and (abs(yr_b) >= 0.001)) or ((vb_acc >= 0.001) and (abs(yr_b) >= 0.001)) and ((va_acc < 0.001) and (abs(yr_a) >= 0.001))",
                 "signal_str": "vb_acc,yr_b,va_acc,yr_a"},
             "stl_11": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc < 0.01) and (abs(yr_b) >= 0.01) and (va_acc >= 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc < 0.001) and (abs(yr_b) >= 0.001) and (va_acc >= 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_12": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc >= 0.01) and (abs(yr_b) >= 0.01) and (va_acc < 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc >= 0.001) and (abs(yr_b) >= 0.001) and (va_acc < 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_13": {
-                "phi_str": "(va_acc < 0.01) and (abs(yr_a) >= 0.001) and ((vb_acc < 0.01) and (abs(yr_b) >= 0.01))",
+                "phi_str": "(va_acc < 0.001) and (abs(yr_a) >= 0.001) and ((vb_acc < 0.001) and (abs(yr_b) >= 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_14": {
-                "phi_str": "((va_acc < 0.01) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.01) and (abs(yr_b) < 0.01)) or (vb_acc < 0.01) and (abs(yr_b) >= 0.01) and (va_acc >= 0.01) and (abs(yr_a) < 0.01)",
+                "phi_str": "((va_acc < 0.001) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.001) and (abs(yr_b) < 0.001)) or (vb_acc < 0.001) and (abs(yr_b) >= 0.001) and (va_acc >= 0.001) and (abs(yr_a) < 0.001)",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_15": {
-                "phi_str": "((va_acc < 0.01) and (abs(yr_a) >= 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc < 0.01) and (abs(yr_b) >= 0.01) and (va_acc < 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc < 0.001) and (abs(yr_a) >= 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc < 0.001) and (abs(yr_b) >= 0.001) and (va_acc < 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_16": {
-                "phi_str": "(va_acc >= 0.01) and (abs(yr_a) < 0.001) and (vb_acc >= 0.01) and (abs(yr_b) < 0.01)",
+                "phi_str": "(va_acc >= 0.001) and (abs(yr_a) < 0.001) and (vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_17": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) < 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc >= 0.01) and (abs(yr_b) < 0.01) and (va_acc < 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) < 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc >= 0.001) and (abs(yr_b) < 0.001) and (va_acc < 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
-            "stl_18": {"phi_str": "(va_acc < 0.01) and (abs(yr_a) < 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)",
+            "stl_18": {"phi_str": "(va_acc < 0.001) and (abs(yr_a) < 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)",
                        "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
 
             # interaction under scenrio
@@ -748,127 +748,127 @@ def save_for_stl( filename: str, scenario_type,
                 "signal_str": "lan_o_a,distance,vb_acc,lan_o_b,va,vb"},
             # a车不加速，b车加速
             "stl_23": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b<0.01) and (distance<15) and (va_acc<0.01) and (lan_o_a<0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b<0.01) and (distance<15) and (va_acc<0.001) and (lan_o_a<0.01)",
                 "signal_str": "lan_o_b,distance,va_acc,lan_o_a,va,vb"},
             "stl_24": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a<0.01) and (distance<15) and (vb_acc>=0.01) and (lan_o_b<0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a<0.01) and (distance<15) and (vb_acc>=0.001) and (lan_o_b<0.01)",
                 "signal_str": "lan_o_a,distance,vb_acc,lan_o_b,va,vb"},
             # ab车不加速
             "stl_25": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b<0.01) and (distance<15) and (va_acc<0.01) and (lan_o_a<0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b<0.01) and (distance<15) and (va_acc<0.001) and (lan_o_a<0.01)",
                 "signal_str": "lan_o_b,distance,va_acc,lan_o_a,va,vb"},
             "stl_26": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a<0.01) and (distance<15) and (vb_acc<0.01) and (lan_o_b<0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a<0.01) and (distance<15) and (vb_acc<0.001) and (lan_o_b<0.01)",
                 "signal_str": "lan_o_a,distance,vb_acc,lan_o_b,va,vb"},
             # 单车（a车）变道
             # a车加速，b车不加速
             "stl_27": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b<0.01) and (distance<15) and (va_acc>=0.01) and (lan_o_a>=0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b<0.01) and (distance<15) and (va_acc>=0.001) and (lan_o_a>=0.01)",
                 "signal_str": "lan_o_b,distance,va_acc,lan_o_a,va,vb"},
             "stl_28": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc<0.01) and (lan_o_b<0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc<0.001) and (lan_o_b<0.01)",
                 "signal_str": "lan_o_a,distance,vb_acc,lan_o_b,va,vb"},
             # ab车加速
             "stl_29": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b<0.01) and (distance<15) and (va_acc>=0.01) and (lan_o_a>=0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b<0.01) and (distance<15) and (va_acc>=0.001) and (lan_o_a>=0.01)",
                 "signal_str": "lan_o_b,distance,va_acc,lan_o_a,va,vb"},
             "stl_30": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc>=0.01) and (lan_o_b<0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc>=0.001) and (lan_o_b<0.01)",
                 "signal_str": "lan_o_a,distance,vb_acc,lan_o_b,va,vb"},
             # a车不加速，b车加速
             "stl_31": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b<0.01) and (distance<15) and (va_acc<0.01) and (lan_o_a>=0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b<0.01) and (distance<15) and (va_acc<0.001) and (lan_o_a>=0.01)",
                 "signal_str": "lan_o_b,distance,va_acc,lan_o_a,va,vb"},
             "stl_32": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc>=0.01) and (lan_o_b<0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc>=0.001) and (lan_o_b<0.01)",
                 "signal_str": "lan_o_a,distance,vb_acc,lan_o_b,va,vb"},
             # ab车不加速
             "stl_33": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b<0.01) and (distance<15) and (va_acc<0.01) and (lan_o_a>=0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b<0.01) and (distance<15) and (va_acc<0.001) and (lan_o_a>=0.01)",
                 "signal_str": "lan_o_b,distance,va_acc,lan_o_a,va,vb"},
             "stl_34": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc<0.01) and (lan_o_b<0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc<0.001) and (lan_o_b<0.01)",
                 "signal_str": "lan_o_a,distance,vb_acc,lan_o_b,va,vb"},
             # 两车都变道
             # a车加速，b车不加速
             "stl_35": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b>=0.01) and (distance<15) and (va_acc>=0.01) and (lan_o_a>=0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b>=0.01) and (distance<15) and (va_acc>=0.001) and (lan_o_a>=0.01)",
                 "signal_str": "lan_o_b,distance,va_acc,lan_o_a,va,vb"},
             "stl_36": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc<0.01) and (lan_o_b>=0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc<0.001) and (lan_o_b>=0.01)",
                 "signal_str": "lan_o_a,distance,vb_acc,lan_o_b,va,vb"},
             # ab车加速
             "stl_37": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b>=0.01) and (distance<15) and (va_acc>=0.01) and (lan_o_a>=0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b>=0.01) and (distance<15) and (va_acc>=0.001) and (lan_o_a>=0.01)",
                 "signal_str": "lan_o_b,distance,va_acc,lan_o_a,va,vb"},
             "stl_38": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc>=0.01) and (lan_o_b>=0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc>=0.001) and (lan_o_b>=0.01)",
                 "signal_str": "lan_o_a,distance,vb_acc,lan_o_b,va,vb"},
             # a车不加速，b车加速
             "stl_39": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b>=0.01) and (distance<15) and (va_acc<0.01) and (lan_o_a>=0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b>=0.01) and (distance<15) and (va_acc<0.001) and (lan_o_a>=0.01)",
                 "signal_str": "lan_o_b,distance,va_acc,lan_o_a,va,vb"},
             "stl_40": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc>=0.01) and (lan_o_b>=0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc>=0.001) and (lan_o_b>=0.01)",
                 "signal_str": "lan_o_a,distance,vb_acc,lan_o_b,va,vb"},
             # ab车不加速
             "stl_41": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b>=0.01) and (distance<15) and (va_acc<0.01) and (lan_o_a>=0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_b>=0.01) and (distance<15) and (va_acc<0.001) and (lan_o_a>=0.01)",
                 "signal_str": "lan_o_b,distance,va_acc,lan_o_a,va,vb"},
             "stl_42": {
-                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc<0.01) and (lan_o_b>=0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (lan_o_a>=0.01) and (distance<15) and (vb_acc<0.001) and (lan_o_b>=0.01)",
                 "signal_str": "lan_o_a,distance,vb_acc,lan_o_b,va,vb"},
 
         }
-    elif scenario_type == "crossroad":
+    elif scenario_type == "crossroad" and config.ScenarioGeneratorConfig.stl_type=="multi":
         # not add forward and backward constrane
         stl_dict = {
             # basic movenment
-            "stl_1": {"phi_str": "(va_acc >= 0.01) and (abs(yr_a) >= 0.01)",
+            "stl_1": {"phi_str": "(va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_2": {"phi_str": "(vb_acc >= 0.01) and (abs(yr_b) >= 0.01)",
+            "stl_2": {"phi_str": "(vb_acc >= 0.001) and (abs(yr_b) >= 0.001)",
                       "signal_str": "vb_acc,yr_b"},
-            "stl_3": {"phi_str": "(va_acc < 0.01) and (abs(yr_a) >= 0.01)",
+            "stl_3": {"phi_str": "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_4": {"phi_str": "(vb_acc < 0.01) and (abs(yr_b) >= 0.01)",
+            "stl_4": {"phi_str": "(vb_acc < 0.001) and (abs(yr_b) >= 0.001)",
                       "signal_str": "vb_acc,yr_b"},
-            "stl_5": {"phi_str": "(va_acc >= 0.01) and (abs(yr_a) < 0.01)",
+            "stl_5": {"phi_str": "(va_acc >= 0.001) and (abs(yr_a) < 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_6": {"phi_str": "(vb_acc >= 0.01) and (abs(yr_b) < 0.01)",
+            "stl_6": {"phi_str": "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                       "signal_str": "vb_acc,yr_b"},
-            "stl_7": {"phi_str": "(va_acc < 0.01) and (abs(yr_a) < 0.01)",
+            "stl_7": {"phi_str": "(va_acc < 0.001) and (abs(yr_a) < 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_8": {"phi_str": "(vb_acc < 0.01) and (abs(yr_b) < 0.01)",
+            "stl_8": {"phi_str": "(vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                       "signal_str": "vb_acc,yr_b"},
             # basic interaction
             "stl_9": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001)) and ((vb_acc >= 0.01) and (abs(yr_b) >= 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001)) and ((vb_acc >= 0.001) and (abs(yr_b) >= 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_10": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001)) and ((vb_acc < 0.01) and (abs(yr_b) >= 0.01)) or ((vb_acc >= 0.01) and (abs(yr_b) >= 0.01)) and ((va_acc < 0.01) and (abs(yr_a) >= 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001)) and ((vb_acc < 0.001) and (abs(yr_b) >= 0.001)) or ((vb_acc >= 0.001) and (abs(yr_b) >= 0.001)) and ((va_acc < 0.001) and (abs(yr_a) >= 0.001))",
                 "signal_str": "vb_acc,yr_b,va_acc,yr_a"},
             "stl_11": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc < 0.01) and (abs(yr_b) >= 0.01) and (va_acc >= 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc < 0.001) and (abs(yr_b) >= 0.001) and (va_acc >= 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_12": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc >= 0.01) and (abs(yr_b) >= 0.01) and (va_acc < 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc >= 0.001) and (abs(yr_b) >= 0.001) and (va_acc < 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_13": {
-                "phi_str": "(va_acc < 0.01) and (abs(yr_a) >= 0.001) and ((vb_acc < 0.01) and (abs(yr_b) >= 0.01))",
+                "phi_str": "(va_acc < 0.001) and (abs(yr_a) >= 0.001) and ((vb_acc < 0.001) and (abs(yr_b) >= 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_14": {
-                "phi_str": "((va_acc < 0.01) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.01) and (abs(yr_b) < 0.01)) or (vb_acc < 0.01) and (abs(yr_b) >= 0.01) and (va_acc >= 0.01) and (abs(yr_a) < 0.01)",
+                "phi_str": "((va_acc < 0.001) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.001) and (abs(yr_b) < 0.001)) or (vb_acc < 0.001) and (abs(yr_b) >= 0.001) and (va_acc >= 0.001) and (abs(yr_a) < 0.001)",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_15": {
-                "phi_str": "((va_acc < 0.01) and (abs(yr_a) >= 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc < 0.01) and (abs(yr_b) >= 0.01) and (va_acc < 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc < 0.001) and (abs(yr_a) >= 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc < 0.001) and (abs(yr_b) >= 0.001) and (va_acc < 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_16": {
-                "phi_str": "(va_acc >= 0.01) and (abs(yr_a) < 0.001) and (vb_acc >= 0.01) and (abs(yr_b) < 0.01)",
+                "phi_str": "(va_acc >= 0.001) and (abs(yr_a) < 0.001) and (vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_17": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) < 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc >= 0.01) and (abs(yr_b) < 0.01) and (va_acc < 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) < 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc >= 0.001) and (abs(yr_b) < 0.001) and (va_acc < 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
-            "stl_18": {"phi_str": "(va_acc < 0.01) and (abs(yr_a) < 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)",
+            "stl_18": {"phi_str": "(va_acc < 0.001) and (abs(yr_a) < 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                        "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             # interaction under scenrio
             #(abs(va*vb)>0.0):两车都在前进
@@ -877,294 +877,298 @@ def save_for_stl( filename: str, scenario_type,
             #双车转弯
             #两车加速
             "stl_19": {
-                "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                "(va_acc >= 0.01) and (abs(yr_a) >= 0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and "
+                "(va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_20": {
-                "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                "(vb_acc >= 0.01) and (abs(yr_b) >= 0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and "
+                "(vb_acc >= 0.001) and (abs(yr_b) >= 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             #双车转弯
             #一车不加速、一车加速
             "stl_21": {
-                "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                "(va_acc < 0.01) and (abs(yr_a) >= 0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_22": {
-                "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                "(vb_acc >= 0.01) and (abs(yr_b) >= 0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc >= 0.001) and (abs(yr_b) >= 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             #双车转弯
             #两车不加速
             "stl_23": {
-                "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                "(va_acc < 0.01) and (abs(yr_a) >= 0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and "
+                "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_24": {
-                "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                "(vb_acc < 0.01) and (abs(yr_b) >= 0.01)",
+                "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and "
+                "(vb_acc < 0.001) and (abs(yr_b) >= 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             #转弯、加速
             #直行、加速
             "stl_25": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and"
-                " (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and"
+                " (va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_26": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and "
+                "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             #转弯、加速
             #直行、不加速
             "stl_27": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                "(va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and "
+                "(va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_28": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                "(vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and "
+                "(vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,vb_acc,orientation_b,orientation_a"},
             #转弯、不加速
             #直行、加速
             "stl_29": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                "(va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and "
+                "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_30": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and "
+                "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             #转弯、不加速
             #直行、不加速
             "stl_31": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_32": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             #交叉道
             # 双车转弯
             # 两车加速
             "stl_33": {
-                "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                "(va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and "
+                "(va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_34": {
-                "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                "(vb_acc >= 0.01) and (abs(yr_b) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and "
+                "(vb_acc >= 0.001) and (abs(yr_b) >= 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 双车转弯
             # a车不加速，b加速
             "stl_35": {
-                "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                "(va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and "
+                "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_36": {
-                "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                "(vb_acc >= 0.01) and (abs(yr_b) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and "
+                "(vb_acc >= 0.001) and (abs(yr_b) >= 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 双车转弯
             # 两车不加速
             "stl_37": {
-                "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                "(va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and "
+                "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_38": {
-                "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                "(vb_acc < 0.01) and (abs(yr_b) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and "
+                "(vb_acc < 0.001) and (abs(yr_b) >= 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             #转弯、加速
             #直行、加速
             "stl_39": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
-                "(va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
+                "(va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_40": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
-                "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
+                "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             #转弯、不加速
             #直行、加速
             "stl_41": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
-                "(va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
+                "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_42": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
-                "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
+                "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             #转弯、不加速
             #直行、不加速
             "stl_43": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
-                "(va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
+                "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_44": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
-                "(vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
+                "(vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             #两车直行
             #两车加速
             "stl_45": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                "(va_acc >= 0.01) and (abs(yr_a) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and "
+                "(va_acc >= 0.001) and (abs(yr_a) < 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_46": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and "
+                "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             #两车直行
             #a不加速，b车加速
             "stl_47": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                "(va_acc < 0.01) and (abs(yr_a) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and "
+                "(va_acc < 0.001) and (abs(yr_a) < 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_48": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and "
+                "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             #两车直行
             #a不加速，b车不加速
             "stl_49": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                "(va_acc < 0.01) and (abs(yr_a) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and "
+                "(va_acc < 0.001) and (abs(yr_a) < 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_50": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                "(vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) < 0.001) and (distance<20) and (abs(orientation_a-orientation_b)>=1.5708) and "
+                "(vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
 
         }
+    elif scenario_type == "crossroad" and config.ScenarioGeneratorConfig.stl_type=="single":
+        stl_dict = {
+            "stl_21": {
+                "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<20) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.001) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.001)",
+                "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a,vb_acc"}
+        }
     elif scenario_type == "single_straight":
         stl_dict = {
-            "stl_1": {"phi_str": "(va_acc>0.01)",
+            "stl_1": {"phi_str": "(va_acc>0.001)",
                       "signal_str": "va_acc"},
-            "stl_2": {"phi_str": "(va_acc<-0.01)",
+            "stl_2": {"phi_str": "(va_acc<-0.001)",
                       "signal_str": "va_acc"},
-            "stl_3": {"phi_str": "((va_acc<0.01) and (va_acc>-0.01))",
+            "stl_3": {"phi_str": "((va_acc<0.001) and (va_acc>-0.001))",
                       "signal_str": "va_acc"},
-            "stl_4": {"phi_str": "vb_acc>0.01",
+            "stl_4": {"phi_str": "vb_acc>0.001",
                       "signal_str": "vb_acc"},
-            "stl_5": {"phi_str": "vb_acc<-0.01",
+            "stl_5": {"phi_str": "vb_acc<-0.001",
                       "signal_str": "vb_acc"},
-            "stl_6": {"phi_str": "(vb_acc<0.01 and vb_acc>-0.01)",
+            "stl_6": {"phi_str": "(vb_acc<0.001 and vb_acc>-0.001)",
                       "signal_str": "vb_acc"},
-            "stl_7": {"phi_str": "(va_acc>0.01) and (vb_acc>0.01)",
+            "stl_7": {"phi_str": "(va_acc>0.001) and (vb_acc>0.001)",
                       "signal_str": "va_acc,vb_acc"},
-            "stl_8": {"phi_str": "(va_acc>0.01) and (vb_acc<-0.01)",
+            "stl_8": {"phi_str": "(va_acc>0.001) and (vb_acc<-0.001)",
                       "signal_str": "va_acc,vb_acc"},
-            "stl_9": {"phi_str": "(va_acc>0.01) and ((vb_acc<0.01 and vb_acc>-0.01))",
+            "stl_9": {"phi_str": "(va_acc>0.001) and ((vb_acc<0.001 and vb_acc>-0.001))",
                       "signal_str": "va_acc,vb_acc"},
-            "stl_10": {"phi_str": "(va_acc<-0.01) and (vb_acc<-0.01)",
+            "stl_10": {"phi_str": "(va_acc<-0.001) and (vb_acc<-0.001)",
                       "signal_str": "va_acc,vb_acc"},
-            "stl_11": {"phi_str": "(va_acc>0.01) and (vb_acc<-0.01)",
+            "stl_11": {"phi_str": "(va_acc>0.001) and (vb_acc<-0.001)",
                       "signal_str": "va_acc,vb_acc"},
-            "stl_12": {"phi_str": "((va_acc<0.01 and va_acc>-0.01)) and ((vb_acc<0.01 and vb_acc>-0.01))",
+            "stl_12": {"phi_str": "((va_acc<0.001 and va_acc>-0.001)) and ((vb_acc<0.001 and vb_acc>-0.001))",
                       "signal_str": "va_acc,vb_acc"},
             "stl_13": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (va_acc>0.01)) or ((distance<15) and (a_bef_b<=0) and (vb_acc>0.01))",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (va_acc>0.001)) or ((distance<15) and (a_bef_b<=0) and (vb_acc>0.001))",
                 "signal_str": "a_bef_b,distance,va_acc,vb_acc,va,vb"},
             "stl_14": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (vb_acc>0.01) ) or ((distance<15) and (a_bef_b<=0) and (va_acc>0.01) )",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (vb_acc>0.001) ) or ((distance<15) and (a_bef_b<=0) and (va_acc>0.001) )",
                 "signal_str": "a_bef_b,distance,va_acc,vb_acc,va,vb"},
             "stl_15": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (va_acc>0.01) ) or ((distance<15) and (a_bef_b<=0) and (vb_acc>0.01) )",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (va_acc>0.001) ) or ((distance<15) and (a_bef_b<=0) and (vb_acc>0.001) )",
                 "signal_str": "a_bef_b,distance,va_acc,vb_acc,va,vb"},
             "stl_16": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (vb_acc<-0.01)) or ((distance<15) and (a_bef_b<=0) and (va_acc<-0.01))",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (vb_acc<-0.001)) or ((distance<15) and (a_bef_b<=0) and (va_acc<-0.001))",
                 "signal_str": "a_bef_b,distance,vb_acc,va_acc,va,vb"},
             "stl_17": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (va_acc>0.01) ) or ((distance<15) and (a_bef_b<=0) and (vb_acc>0.01) )",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (va_acc>0.001) ) or ((distance<15) and (a_bef_b<=0) and (vb_acc>0.001) )",
                 "signal_str": "a_bef_b,distance,va_acc,vb_acc,va,vb"},
             "stl_18": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and ((vb_acc<0.01 and vb_acc>-0.01)))  or ((distance<15) and (a_bef_b<=0) and ((va_acc<0.01 and va_acc>-0.01))) ",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and ((vb_acc<0.001 and vb_acc>-0.001)))  or ((distance<15) and (a_bef_b<=0) and ((va_acc<0.001 and va_acc>-0.001))) ",
                 "signal_str": "a_bef_b,distance,vb_acc,va_acc,va,vb"},
             "stl_19": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (va_acc<-0.01)) or ((distance<15) and (a_bef_b<=0) and (vb_acc<-0.01))",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (va_acc<-0.001)) or ((distance<15) and (a_bef_b<=0) and (vb_acc<-0.001))",
                 "signal_str": "a_bef_b,distance,va_acc,vb_acc,va,vb"},
             "stl_20": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (vb_acc>0.01)) or ((distance<15) and (a_bef_b<=0) and (va_acc>0.01))  ",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (vb_acc>0.001)) or ((distance<15) and (a_bef_b<=0) and (va_acc>0.001))  ",
                 "signal_str": "a_bef_b,distance,vb_acc,va_acc,va,vb"},
             "stl_21": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (va_acc<-0.01)) or ((distance<15) and (a_bef_b<=0) and (vb_acc<-0.01))",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (va_acc<-0.001)) or ((distance<15) and (a_bef_b<=0) and (vb_acc<-0.001))",
                 "signal_str": "a_bef_b,distance,va_acc,vb_acc,va,vb"},
             "stl_22": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (vb_acc<-0.01)) or ((distance<15) and (a_bef_b<=0) and (va_acc<-0.01)) ",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (vb_acc<-0.001)) or ((distance<15) and (a_bef_b<=0) and (va_acc<-0.001)) ",
                 "signal_str": "a_bef_b,distance,vb_acc,va_acc,va,vb"},
             "stl_23": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (va_acc<-0.01)) or ((distance<15) and (a_bef_b<=0) and (vb_acc<-0.01))",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (va_acc<-0.001)) or ((distance<15) and (a_bef_b<=0) and (vb_acc<-0.001))",
                 "signal_str": "a_bef_b,distance,va_acc,vb_acc,va,vb"},
             "stl_24": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and ((vb_acc<0.01 and vb_acc>-0.01)) ) or ((distance<15) and (a_bef_b<=0) and ((va_acc<0.01 and va_acc>-0.01)) )",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and ((vb_acc<0.001 and vb_acc>-0.001)) ) or ((distance<15) and (a_bef_b<=0) and ((va_acc<0.001 and va_acc>-0.001)) )",
                 "signal_str": "a_bef_b,distance,vb_acc,va_acc,va,vb"},
             "stl_25": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and ((va_acc<0.01 and va_acc>-0.01))) or ((distance<15) and (a_bef_b<=0) and ((vb_acc<0.01 and vb_acc>-0.01))) ",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and ((va_acc<0.001 and va_acc>-0.001))) or ((distance<15) and (a_bef_b<=0) and ((vb_acc<0.001 and vb_acc>-0.001))) ",
                 "signal_str": "a_bef_b,distance,va_acc,vb_acc,va,vb"},
             "stl_26": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (vb_acc>0.01)) or ((distance<15) and (a_bef_b<=0) and (va_acc>0.01)) ",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (vb_acc>0.001)) or ((distance<15) and (a_bef_b<=0) and (va_acc>0.001)) ",
                 "signal_str": "a_bef_b,distance,vb_acc,va_acc,va,vb"},
             "stl_27": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and ((va_acc<0.01 and va_acc>-0.01))) or ((distance<15) and (a_bef_b<=0) and ((vb_acc<0.01 and vb_acc>-0.01))) ",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and ((va_acc<0.001 and va_acc>-0.001))) or ((distance<15) and (a_bef_b<=0) and ((vb_acc<0.001 and vb_acc>-0.001))) ",
                 "signal_str": "a_bef_b,distance,va_acc,vb_acc,va,vb"},
             "stl_28": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (vb_acc<-0.01)) or ((distance<15) and (a_bef_b<=0) and (va_acc<-0.01) )",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and (vb_acc<-0.001)) or ((distance<15) and (a_bef_b<=0) and (va_acc<-0.001) )",
                 "signal_str": "a_bef_b,distance,vb_acc,va_acc,va,vb"},
             "stl_29": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and ((va_acc<0.01 and va_acc>-0.01)))  or ((distance<15) and (a_bef_b<=0) and ((vb_acc<0.01 and vb_acc>-0.01))) ",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and ((va_acc<0.001 and va_acc>-0.001)))  or ((distance<15) and (a_bef_b<=0) and ((vb_acc<0.001 and vb_acc>-0.001))) ",
                 "signal_str": "a_bef_b,distance,va_acc,vb_acc,va,vb"},
             "stl_30": {
-                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and ((vb_acc<0.01 and vb_acc>-0.01)))  or ((distance<15) and (a_bef_b<=0) and ((va_acc<0.01 and va_acc>-0.01)))",
+                "phi_str": "(abs(va*vb)>0.0) and ((distance<15) and (a_bef_b>0) and ((vb_acc<0.001 and vb_acc>-0.001)))  or ((distance<15) and (a_bef_b<=0) and ((va_acc<0.001 and va_acc>-0.001)))",
                 "signal_str": "a_bef_b,distance,vb_acc,va_acc,va,vb"}
 
         }
     elif scenario_type == "roundabout":
         stl_dict = {
             # basic movenment
-            "stl_1": {"phi_str": "(va_acc >= 0.01) and (abs(yr_a) >= 0.01)",
+            "stl_1": {"phi_str": "(va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_2": {"phi_str": "(vb_acc >= 0.01) and (abs(yr_b) >= 0.01)",
+            "stl_2": {"phi_str": "(vb_acc >= 0.001) and (abs(yr_b) >= 0.001)",
                       "signal_str": "vb_acc,yr_b"},
-            "stl_3": {"phi_str": "(va_acc < 0.01) and (abs(yr_a) >= 0.01)",
+            "stl_3": {"phi_str": "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_4": {"phi_str": "(vb_acc < 0.01) and (abs(yr_b) >= 0.01)",
+            "stl_4": {"phi_str": "(vb_acc < 0.001) and (abs(yr_b) >= 0.001)",
                       "signal_str": "vb_acc,yr_b"},
-            "stl_5": {"phi_str": "(va_acc >= 0.01) and (abs(yr_a) < 0.01)",
+            "stl_5": {"phi_str": "(va_acc >= 0.001) and (abs(yr_a) < 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_6": {"phi_str": "(vb_acc >= 0.01) and (abs(yr_b) < 0.01)",
+            "stl_6": {"phi_str": "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                       "signal_str": "vb_acc,yr_b"},
-            "stl_7": {"phi_str": "(va_acc < 0.01) and (abs(yr_a) < 0.01)",
+            "stl_7": {"phi_str": "(va_acc < 0.001) and (abs(yr_a) < 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_8": {"phi_str": "(vb_acc < 0.01) and (abs(yr_b) < 0.01)",
+            "stl_8": {"phi_str": "(vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                       "signal_str": "vb_acc,yr_b"},
             # basic interaction
             "stl_9": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001)) and ((vb_acc >= 0.01) and (abs(yr_b) >= 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001)) and ((vb_acc >= 0.001) and (abs(yr_b) >= 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_10": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001)) and ((vb_acc < 0.01) and (abs(yr_b) >= 0.01)) or ((vb_acc >= 0.01) and (abs(yr_b) >= 0.01)) and ((va_acc < 0.01) and (abs(yr_a) >= 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001)) and ((vb_acc < 0.001) and (abs(yr_b) >= 0.001)) or ((vb_acc >= 0.001) and (abs(yr_b) >= 0.001)) and ((va_acc < 0.001) and (abs(yr_a) >= 0.001))",
                 "signal_str": "vb_acc,yr_b,va_acc,yr_a"},
             "stl_11": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc < 0.01) and (abs(yr_b) >= 0.01) and (va_acc >= 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc < 0.001) and (abs(yr_b) >= 0.001) and (va_acc >= 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_12": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc >= 0.01) and (abs(yr_b) >= 0.01) and (va_acc < 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc >= 0.001) and (abs(yr_b) >= 0.001) and (va_acc < 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_13": {
-                "phi_str": "(va_acc < 0.01) and (abs(yr_a) >= 0.001) and ((vb_acc < 0.01) and (abs(yr_b) >= 0.01))",
+                "phi_str": "(va_acc < 0.001) and (abs(yr_a) >= 0.001) and ((vb_acc < 0.001) and (abs(yr_b) >= 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_14": {
-                "phi_str": "((va_acc < 0.01) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.01) and (abs(yr_b) < 0.01)) or (vb_acc < 0.01) and (abs(yr_b) >= 0.01) and (va_acc >= 0.01) and (abs(yr_a) < 0.01)",
+                "phi_str": "((va_acc < 0.001) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.001) and (abs(yr_b) < 0.001)) or (vb_acc < 0.001) and (abs(yr_b) >= 0.001) and (va_acc >= 0.001) and (abs(yr_a) < 0.001)",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_15": {
-                "phi_str": "((va_acc < 0.01) and (abs(yr_a) >= 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc < 0.01) and (abs(yr_b) >= 0.01) and (va_acc < 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc < 0.001) and (abs(yr_a) >= 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc < 0.001) and (abs(yr_b) >= 0.001) and (va_acc < 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_16": {
-                "phi_str": "(va_acc >= 0.01) and (abs(yr_a) < 0.001) and (vb_acc >= 0.01) and (abs(yr_b) < 0.01)",
+                "phi_str": "(va_acc >= 0.001) and (abs(yr_a) < 0.001) and (vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_17": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) < 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc >= 0.01) and (abs(yr_b) < 0.01) and (va_acc < 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) < 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc >= 0.001) and (abs(yr_b) < 0.001) and (va_acc < 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
-            "stl_18": {"phi_str": "(va_acc < 0.01) and (abs(yr_a) < 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)",
+            "stl_18": {"phi_str": "(va_acc < 0.001) and (abs(yr_a) < 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                        "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             # interaction under scenrio
 
@@ -1179,121 +1183,121 @@ def save_for_stl( filename: str, scenario_type,
             # b车直行、加速  
             "stl_19": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and"
-                           " (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                           " (va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_20": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                           "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # a车转弯、加速
             # b车直行、不加速
             "stl_21": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                           "(va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_22": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                           "(vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,vb_acc,orientation_b,orientation_a"},
             # 转弯、不加速
             # 直行、加速
             "stl_23": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                           "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_24": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                           "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 转弯、不加速
             # 直行、不加速
             "stl_25": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_26": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 交叉道
             # 两车直行
             # 两车加速
             "stl_27": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                           "(va_acc >= 0.01) and (abs(yr_a) < 0.001)",
+                           "(va_acc >= 0.001) and (abs(yr_a) < 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_28": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                           "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                           "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 两车直行
             # a不加速，b车加速
             "stl_29": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                           "(va_acc < 0.01) and (abs(yr_a) < 0.001)",
+                           "(va_acc < 0.001) and (abs(yr_a) < 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_30": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                           "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                           "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 两车直行
             # a不加速，b车不加速
             "stl_31": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                           "(va_acc < 0.01) and (abs(yr_a) < 0.001)",
+                           "(va_acc < 0.001) and (abs(yr_a) < 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_32": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                           "(vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                           "(vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
 
         }
     elif scenario_type == "T-intersection":
         stl_dict = {
             # basic movenment
-            "stl_1": {"phi_str": "(va_acc >= 0.01) and (abs(yr_a) >= 0.01)",
+            "stl_1": {"phi_str": "(va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_2": {"phi_str": "(vb_acc >= 0.01) and (abs(yr_b) >= 0.01)",
+            "stl_2": {"phi_str": "(vb_acc >= 0.001) and (abs(yr_b) >= 0.001)",
                       "signal_str": "vb_acc,yr_b"},
-            "stl_3": {"phi_str": "(va_acc < 0.01) and (abs(yr_a) >= 0.01)",
+            "stl_3": {"phi_str": "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_4": {"phi_str": "(vb_acc < 0.01) and (abs(yr_b) >= 0.01)",
+            "stl_4": {"phi_str": "(vb_acc < 0.001) and (abs(yr_b) >= 0.001)",
                       "signal_str": "vb_acc,yr_b"},
-            "stl_5": {"phi_str": "(va_acc >= 0.01) and (abs(yr_a) < 0.01)",
+            "stl_5": {"phi_str": "(va_acc >= 0.001) and (abs(yr_a) < 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_6": {"phi_str": "(vb_acc >= 0.01) and (abs(yr_b) < 0.01)",
+            "stl_6": {"phi_str": "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                       "signal_str": "vb_acc,yr_b"},
-            "stl_7": {"phi_str": "(va_acc < 0.01) and (abs(yr_a) < 0.01)",
+            "stl_7": {"phi_str": "(va_acc < 0.001) and (abs(yr_a) < 0.001)",
                       "signal_str": "va_acc,yr_a"},
-            "stl_8": {"phi_str": "(vb_acc < 0.01) and (abs(yr_b) < 0.01)",
+            "stl_8": {"phi_str": "(vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                       "signal_str": "vb_acc,yr_b"},
             # basic interaction
             "stl_9": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001)) and ((vb_acc >= 0.01) and (abs(yr_b) >= 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001)) and ((vb_acc >= 0.001) and (abs(yr_b) >= 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_10": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001)) and ((vb_acc < 0.01) and (abs(yr_b) >= 0.01)) or ((vb_acc >= 0.01) and (abs(yr_b) >= 0.01)) and ((va_acc < 0.01) and (abs(yr_a) >= 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001)) and ((vb_acc < 0.001) and (abs(yr_b) >= 0.001)) or ((vb_acc >= 0.001) and (abs(yr_b) >= 0.001)) and ((va_acc < 0.001) and (abs(yr_a) >= 0.001))",
                 "signal_str": "vb_acc,yr_b,va_acc,yr_a"},
             "stl_11": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc < 0.01) and (abs(yr_b) >= 0.01) and (va_acc >= 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc < 0.001) and (abs(yr_b) >= 0.001) and (va_acc >= 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_12": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) >= 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc >= 0.01) and (abs(yr_b) >= 0.01) and (va_acc < 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) >= 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc >= 0.001) and (abs(yr_b) >= 0.001) and (va_acc < 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_13": {
-                "phi_str": "(va_acc < 0.01) and (abs(yr_a) >= 0.001) and ((vb_acc < 0.01) and (abs(yr_b) >= 0.01))",
+                "phi_str": "(va_acc < 0.001) and (abs(yr_a) >= 0.001) and ((vb_acc < 0.001) and (abs(yr_b) >= 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_14": {
-                "phi_str": "((va_acc < 0.01) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.01) and (abs(yr_b) < 0.01)) or (vb_acc < 0.01) and (abs(yr_b) >= 0.01) and (va_acc >= 0.01) and (abs(yr_a) < 0.01)",
+                "phi_str": "((va_acc < 0.001) and (abs(yr_a) >= 0.001) and (vb_acc >= 0.001) and (abs(yr_b) < 0.001)) or (vb_acc < 0.001) and (abs(yr_b) >= 0.001) and (va_acc >= 0.001) and (abs(yr_a) < 0.001)",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_15": {
-                "phi_str": "((va_acc < 0.01) and (abs(yr_a) >= 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc < 0.01) and (abs(yr_b) >= 0.01) and (va_acc < 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc < 0.001) and (abs(yr_a) >= 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc < 0.001) and (abs(yr_b) >= 0.001) and (va_acc < 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_16": {
-                "phi_str": "(va_acc >= 0.01) and (abs(yr_a) < 0.001) and (vb_acc >= 0.01) and (abs(yr_b) < 0.01)",
+                "phi_str": "(va_acc >= 0.001) and (abs(yr_a) < 0.001) and (vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             "stl_17": {
-                "phi_str": "((va_acc >= 0.01) and (abs(yr_a) < 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)) or ((vb_acc >= 0.01) and (abs(yr_b) < 0.01) and (va_acc < 0.01) and (abs(yr_a) < 0.01))",
+                "phi_str": "((va_acc >= 0.001) and (abs(yr_a) < 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)) or ((vb_acc >= 0.001) and (abs(yr_b) < 0.001) and (va_acc < 0.001) and (abs(yr_a) < 0.001))",
                 "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
-            "stl_18": {"phi_str": "(va_acc < 0.01) and (abs(yr_a) < 0.001) and (vb_acc < 0.01) and (abs(yr_b) < 0.01)",
+            "stl_18": {"phi_str": "(va_acc < 0.001) and (abs(yr_a) < 0.001) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                        "signal_str": "va_acc,yr_a,vb_acc,yr_b"},
             # interaction under scenrio
 
@@ -1307,70 +1311,70 @@ def save_for_stl( filename: str, scenario_type,
             # 两车加速
             "stl_19": {
                 "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(va_acc >= 0.01) and (abs(yr_a) >= 0.01)",
+                           "(va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_20": {
                 "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(vb_acc >= 0.01) and (abs(yr_b) >= 0.01)",
+                           "(vb_acc >= 0.001) and (abs(yr_b) >= 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 双车转弯
             # 一车不加速、一车加速
             "stl_21": {
                 "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(va_acc < 0.01) and (abs(yr_a) >= 0.01)",
+                           "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_22": {
                 "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(vb_acc >= 0.01) and (abs(yr_b) >= 0.01)",
+                           "(vb_acc >= 0.001) and (abs(yr_b) >= 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 双车转弯
             # 两车不加速
             "stl_23": {
                 "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_b) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(va_acc < 0.01) and (abs(yr_a) >= 0.01)",
+                           "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_24": {
                 "phi_str": "(abs(va*vb)>0.0) and (yr_b*yr_a<0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(vb_acc < 0.01) and (abs(yr_b) >= 0.01)",
+                           "(vb_acc < 0.001) and (abs(yr_b) >= 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
 
             # 转弯、加速
             # 直行、加速
             "stl_25": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and"
-                           " (va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                           " (va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_26": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                           "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 转弯、加速
             # 直行、不加速
             "stl_27": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                           "(va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_28": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                           "(vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,vb_acc,orientation_b,orientation_a"},
             # 转弯、不加速
             # 直行、加速
             "stl_29": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                           "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_30": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and "
-                           "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                           "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 转弯、不加速
             # 直行、不加速
             "stl_31": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and (va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_32": {
-                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)<1.5708) and (vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
 
             # 交叉道
@@ -1378,61 +1382,61 @@ def save_for_stl( filename: str, scenario_type,
             # 两车加速
             "stl_33": {
                 "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                           "(va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                           "(va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_34": {
                 "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                           "(vb_acc >= 0.01) and (abs(yr_b) >= 0.001)",
+                           "(vb_acc >= 0.001) and (abs(yr_b) >= 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 双车转弯
             # a车不加速，b加速
             "stl_35": {
                 "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                           "(va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                           "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_36": {
                 "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                           "(vb_acc >= 0.01) and (abs(yr_b) >= 0.001)",
+                           "(vb_acc >= 0.001) and (abs(yr_b) >= 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 双车转弯
             # 两车不加速
             "stl_37": {
                 "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_b) >= 0.001)and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                           "(va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                           "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_38": {
                 "phi_str": "(abs(va*vb)>0.0) and (yr_a*yr_b>0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and "
-                           "(vb_acc < 0.01) and (abs(yr_b) >= 0.001)",
+                           "(vb_acc < 0.001) and (abs(yr_b) >= 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 转弯、加速
             # 直行、加速
             "stl_39": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
-                           "(va_acc >= 0.01) and (abs(yr_a) >= 0.001)",
+                           "(va_acc >= 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_40": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
-                           "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                           "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 转弯、不加速
             # 直行、加速
             "stl_41": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
-                           "(va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                           "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_42": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
-                           "(vb_acc >= 0.01) and (abs(yr_b) < 0.001)",
+                           "(vb_acc >= 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
             # 转弯、不加速
             # 直行、不加速
             "stl_43": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_b) < 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
-                           "(va_acc < 0.01) and (abs(yr_a) >= 0.001)",
+                           "(va_acc < 0.001) and (abs(yr_a) >= 0.001)",
                 "signal_str": "va,vb,yr_b,distance,yr_a,va_acc,orientation_b,orientation_a"},
             "stl_44": {
                 "phi_str": "(abs(va*vb)>0.0) and (abs(yr_a) >= 0.001) and (distance<15) and (abs(orientation_a-orientation_b)>=1.5708) and (abs(orientation_a-orientation_b)<=3.1416) and "
-                           "(vb_acc < 0.01) and (abs(yr_b) < 0.001)",
+                           "(vb_acc < 0.001) and (abs(yr_b) < 0.001)",
                 "signal_str": "va,vb,yr_a,distance,yr_b,vb_acc,orientation_b,orientation_a"},
 
         }
@@ -1467,6 +1471,8 @@ def save_for_stl( filename: str, scenario_type,
         data_1=dynamic_obstacles[0].state_at_time(t)
         data_2=dynamic_obstacles[1].state_at_time(t)
         #print("arrive t")
+        if data_1.velocity<0.001 or data_2.velocity<0.001:
+            break
         for index, stl_index in enumerate(stl_dict, start=1):
             #print("arrive index")
             phi_str = stl_dict[stl_index]["phi_str"]

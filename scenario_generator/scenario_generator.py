@@ -71,9 +71,9 @@ class ScenarioGenerator:
 
         if scenario_type=="crossroad":
             if interaction_type=="merge_2":
-                print("#####arrive startgen")
-                goal_id=[40,40]
-                start_id=[1586,1584]
+                # print("#####arrive startgen")
+                goal_id=[36,36]
+                start_id=[1584,1586]
             elif interaction_type=="merge_1":
                 start_id=[1584,37]
                 goal_id=[40,40]

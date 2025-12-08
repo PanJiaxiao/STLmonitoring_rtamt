@@ -27,8 +27,8 @@ from utils import SimulationResult, PlanningStatus, create_cc_scenario, get_cmap
     save_for_stl, clear_result
 from plot import plot
 
-stl_filename_1="/rob_save9-run_time[1].csv"
-stl_filename_2="/rob_save10-run_time[1].csv"
+stl_filename_1="/rob_save23-run_time[1].csv"
+stl_filename_2="/rob_save24-run_time[1].csv"
 
 
 
@@ -104,6 +104,7 @@ def function_a(parameters):
 
     config.ScenarioGeneratorConfig.file_vinit = str(vinit1+start1+acc1+vinit2+start2+acc2)
 
+    print("ga_id:", config.ScenarioGeneratorConfig.file_vinit)
     print("para@@@@@@", parameters)
 
     vinit = [vinit1, vinit2]
@@ -203,9 +204,9 @@ class MultiObjectiveProblem(ElementwiseProblem):
 
         #function1
         # 返回两个目标值（注意：pymoo默认是最小化，所以这里取负号来转换为最大化）
-        out["F"] = [-positive_count, -positive_magnitude]
+        # out["F"] = [-positive_count, -positive_magnitude]
         #function2
-        # out["F"] = [-positive_count_1, -positive_count_2]
+        out["F"] = [-positive_count_1, -positive_count_2]
         #function3
         # out["F"] = [-positive_magnitude_1, -positive_magnitude_2]
 
@@ -412,10 +413,14 @@ if __name__ == "__main__":
     parser.add_argument("--run_type", type=str,
                         choices=["random", "ga"],
                         default="random", help="interaction of different scenarios")
+    parser.add_argument("--stl_type", type=str,
+                        choices=["single", "multi"],
+                        default="multi", help="single view or multi view")
     args = parser.parse_args()
 
     config.ScenarioGeneratorConfig.interaction_type = args.interaction_type
     config.ScenarioGeneratorConfig.run_type = args.run_type
+    config.ScenarioGeneratorConfig.stl_type = args.stl_type
 
     scenario_type = args.scenario_type
 
@@ -434,28 +439,28 @@ if __name__ == "__main__":
 
     # 运行pymoo优化
     result = run_pymoo_optimization(
-        pop_size=5,
-        generations=2
+        pop_size=30,
+        generations=10
     )
 
     # 分析结果
-    pareto_front, best_solution, saved_file = analyze_results(result)
-
-    # 验证最佳解
-    print("\n验证最佳解:")
-    result_path = "./rob_result/"+scenario_type+"/" + str(best_solution[0]+best_solution[1]+best_solution[2]+best_solution[3]+best_solution[4]+best_solution[5])
-    try:
-        result1 = np.array(pd.read_csv(result_path + stl_filename_1))
-        result2 = np.array(pd.read_csv(result_path + stl_filename_2))
-
-        print("index:", str(
-            best_solution[0] + best_solution[1] + best_solution[2] + best_solution[3] + best_solution[4] +
-            best_solution[5]))
-
-        print(f"结果1 > 0 的时间点: {np.sum(result1 > 0)}/{len(result1)}")
-        print(f"结果2 > 0 的时间点: {np.sum(result2 > 0)}/{len(result1)}")
-        print(f"结果1 > 0 的平均幅度: {np.mean(result1[result1 > 0]) if np.any(result1 > 0) else 0:.3f}")
-        print(f"结果2 > 0 的平均幅度: {np.mean(result2[result2 > 0]) if np.any(result2 > 0) else 0:.3f}")
-        print(f"两个结果都 > 0 的时间点: {np.sum((result1 > 0) & (result2 > 0))}/{len(result1)}")
-    except Exception as e:
-        print(f"Error validating best solution: {e}")
+    # pareto_front, best_solution, saved_file = analyze_results(result)
+    #
+    # # 验证最佳解
+    # print("\n验证最佳解:")
+    # result_path = "./rob_result/"+scenario_type+"/" + str(best_solution[0]+best_solution[1]+best_solution[2]+best_solution[3]+best_solution[4]+best_solution[5])
+    # try:
+    #     result1 = np.array(pd.read_csv(result_path + stl_filename_1))
+    #     result2 = np.array(pd.read_csv(result_path + stl_filename_2))
+    #
+    #     print("index:", str(
+    #         best_solution[0] + best_solution[1] + best_solution[2] + best_solution[3] + best_solution[4] +
+    #         best_solution[5]))
+    #
+    #     print(f"结果1 > 0 的时间点: {np.sum(result1 > 0)}/{len(result1)}")
+    #     print(f"结果2 > 0 的时间点: {np.sum(result2 > 0)}/{len(result1)}")
+    #     print(f"结果1 > 0 的平均幅度: {np.mean(result1[result1 > 0]) if np.any(result1 > 0) else 0:.3f}")
+    #     print(f"结果2 > 0 的平均幅度: {np.mean(result2[result2 > 0]) if np.any(result2 > 0) else 0:.3f}")
+    #     print(f"两个结果都 > 0 的时间点: {np.sum((result1 > 0) & (result2 > 0))}/{len(result1)}")
+    # except Exception as e:
+    #     print(f"Error validating best solution: {e}")

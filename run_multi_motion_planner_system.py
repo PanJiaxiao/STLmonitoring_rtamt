@@ -85,7 +85,7 @@ validator = ScenarioValidator()
 
 #mark2
 def get_init_scenario(scenario_type,filename):
-    print("filename",filename)
+    # print("filename",filename)
     scenario_path = os.path.join(base_dir, filename)
     files = sorted(glob.glob(scenario_path))
 
@@ -101,7 +101,7 @@ def get_init_scenario(scenario_type,filename):
 
     # generate new scenario until it is valid
     #mark3 在此处重写pp
-    print(scenario_type)
+    # print(scenario_type)
     scenario, problem_set = prepare_scenario(crfr, validator,scenario_type)
     no_scenario_found = scenario is None or problem_set is None
     if no_scenario_found or (
