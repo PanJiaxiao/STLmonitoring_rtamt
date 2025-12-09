@@ -397,10 +397,14 @@ if __name__ == "__main__":
     parser.add_argument("--run_type", type=str,
                         choices=["random", "ga"],
                         default="random", help="interaction of different scenarios")
+    parser.add_argument("--stl_type", type=str,
+                        choices=["single", "multi"],
+                        default="multi", help="single view or multi view")
     args = parser.parse_args()
 
     config.ScenarioGeneratorConfig.interaction_type = args.interaction_type
     config.ScenarioGeneratorConfig.run_type = args.run_type
+    config.ScenarioGeneratorConfig.stl_type = args.stl_type
 
     scenario_type = args.scenario_type
 

@@ -75,8 +75,8 @@ class ScenarioGenerator:
                 goal_id=[36,36]
                 start_id=[1584,1586]
             elif interaction_type=="merge_1":
-                start_id=[1584,37]
-                goal_id=[40,40]
+                start_id=[39,1586]
+                goal_id=[36,36]
             elif interaction_type=="cross_2":
                 start_id=[37,1584]
                 goal_id=[1583,40]

@@ -1,6 +1,9 @@
+import copy
 import time
 import os
 from copy import deepcopy
+from pathlib import Path
+
 
 from commonroad.planning.planning_problem import PlanningProblem
 from commonroad.scenario.scenario import Scenario
@@ -15,6 +18,7 @@ from commonroad.visualization.mp_renderer import MPRenderer
 
 import config
 from predictor import Predictor
+import utils
 
 # *************************
 # Planner Configurations
@@ -75,8 +79,23 @@ class PlanningGenerator:
         # initialize route planner get reference path
         route_planner = RoutePlanner(scenario, self.planning_problem)
         # TODO sometimes list index out fo range: IndexError
-        self.ref_path = route_planner.plan_routes().retrieve_first_route().reference_path
+        sample_path = Path(__file__).parent / "data.txt"
+        if sample_path.exists():
+            try:
+                self.ref_path = route_planner.plan_routes().retrieve_first_route().reference_path
+            except IndexError:
+                #get ref_path from Deserialization
+                print("IndexError")
+                self.ref_path = utils.load_json_file_to_numpy(sample_path)
+        else:
+            self.ref_path = route_planner.plan_routes().retrieve_first_route().reference_path
+            temp= copy.deepcopy(self.ref_path)
+            temp=temp.tolist()
 
+            json_str = utils.serialize_to_json(temp)
+            out = utils.save_json_to_txt(json_str, sample_path, pretty=True )
+
+        # print(self.ref_path,"########################")
         self.planner.set_reference_path(self.ref_path)
 
     def update_collision_checker(self, updated_cc):

@@ -27,8 +27,8 @@ from utils import SimulationResult, PlanningStatus, create_cc_scenario, get_cmap
     save_for_stl, clear_result
 from plot import plot
 
-stl_filename_1="/rob_save23-run_time[1].csv"
-stl_filename_2="/rob_save24-run_time[1].csv"
+stl_filename_1="/rob_save24-run_time[1].csv"
+stl_filename_2="/rob_save25-run_time[1].csv"
 
 
 
@@ -206,9 +206,9 @@ class MultiObjectiveProblem(ElementwiseProblem):
         # 返回两个目标值（注意：pymoo默认是最小化，所以这里取负号来转换为最大化）
         # out["F"] = [-positive_count, -positive_magnitude]
         #function2
-        out["F"] = [-positive_count_1, -positive_count_2]
+        # out["F"] = [-positive_count_1, -positive_count_2]
         #function3
-        # out["F"] = [-positive_magnitude_1, -positive_magnitude_2]
+        out["F"] = [-positive_magnitude_1, -positive_magnitude_2]
 
 
 
