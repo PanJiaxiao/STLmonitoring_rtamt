@@ -733,3 +733,1065 @@ Found valid initial Scenario after 0 tries
 goal reached - id: 1000, steps: 102
 goal reached - id: 999, steps: 140
 Overall steps: 142
+ga_id: 8.753666232439834
+para@@@@@@ [2.60769921e+00 4.28250352e-01 6.94400158e-01 4.48507562e+00
+ 2.21887754e-03 5.36022015e-01]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 15.775374432632825
+para@@@@@@ [5.63797677 0.56885144 0.68394775 7.93169693 0.57276038 0.38014117]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 49
+goal reached - id: 999, steps: 73
+Overall steps: 75
+ga_id: 15.38207582113467
+para@@@@@@ [5.63797677 0.55006088 0.33381331 7.88088488 0.59919881 0.38014117]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 51
+goal reached - id: 999, steps: 70
+Overall steps: 72
+ga_id: 8.203639084776384
+para@@@@@@ [2.34271826 0.41241513 0.32781482 4.53484101 0.04995346 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 98
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.747941816906147
+para@@@@@@ [2.42890948 0.40976819 0.34311761 5.01255146 0.42367366 0.12992141]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 73
+goal reached - id: 999, steps: 133
+Overall steps: 135
+ga_id: 15.68038301930175
+para@@@@@@ [5.79867565 0.56885144 0.68394775 7.93169693 0.57974522 0.11746604]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 50
+goal reached - id: 999, steps: 69
+Overall steps: 71
+ga_id: 8.727232621444836
+para@@@@@@ [2.61400657 0.41405599 0.69440016 4.48507562 0.04995346 0.46974083]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 8.480995701763401
+para@@@@@@ [2.00666063 0.42825035 0.97515924 4.48507562 0.04995346 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 100
+goal reached - id: 999, steps: 155
+Overall steps: 157
+ga_id: 11.939056165237844
+para@@@@@@ [6.01553245 0.41405599 0.68304843 4.48507562 0.15504179 0.18630189]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 66
+goal reached - id: 1000, steps: 100
+Overall steps: 102
+ga_id: 8.81516088010097
+para@@@@@@ [2.61208235 0.42822226 0.69440016 4.48751321 0.0570465  0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 12.980889956196222
+para@@@@@@ [5.991324   0.51245994 0.31437921 5.60894039 0.13882813 0.41495828]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 67
+goal reached - id: 1000, steps: 82
+Overall steps: 84
+ga_id: 12.262582893317312
+para@@@@@@ [2.61400657 0.41405599 0.70304073 7.93910344 0.05647976 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 61
+goal reached - id: 999, steps: 126
+Overall steps: 128
+ga_id: 14.462201612266837
+para@@@@@@ [6.44251088 0.51488911 0.94459476 5.51933024 0.90340192 0.1374747 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 52
+goal reached - id: 999, steps: 64
+Overall steps: 66
+ga_id: 8.624469022200955
+para@@@@@@ [2.39592232 0.42409689 0.68375893 4.53484101 0.04995346 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 97
+goal reached - id: 999, steps: 141
+Overall steps: 143
+ga_id: 13.823753925623963
+para@@@@@@ [5.73127425 0.51488911 0.97568372 5.56103022 0.90340192 0.1374747 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 52
+goal reached - id: 999, steps: 70
+Overall steps: 72
+ga_id: 15.85091983948988
+para@@@@@@ [5.63797677 0.56897393 0.69795574 7.98629382 0.5795784  0.38014117]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 50
+goal reached - id: 999, steps: 73
+Overall steps: 75
+ga_id: 14.076075441609358
+para@@@@@@ [6.04141583 0.52985799 0.94459476 5.51933024 0.90340192 0.1374747 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 52
+goal reached - id: 999, steps: 66
+Overall steps: 68
+ga_id: 8.995585358772018
+para@@@@@@ [2.3865872  0.75886791 0.80533249 4.48507562 0.02382574 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 103
+goal reached - id: 1000, steps: 115
+Overall steps: 117
+ga_id: 9.034554111045747
+para@@@@@@ [2.57607179 0.42961251 0.95198538 4.46123657 0.04558529 0.57006258]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 13.843560255667585
+para@@@@@@ [5.73127425 0.51488911 0.92436775 5.63215252 0.90340192 0.1374747 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 51
+goal reached - id: 999, steps: 70
+Overall steps: 72
+ga_id: 14.673209039618461
+para@@@@@@ [6.79071476 0.51488911 0.69457603 5.63215252 0.90340192 0.1374747 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 51
+Overall steps: 53
+ga_id: 11.084924531809
+para@@@@@@ [2.61695632 0.51488911 0.95109556 5.53385006 0.92505925 0.54307423]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 52
+goal reached - id: 999, steps: 125
+Overall steps: 127
+ga_id: 9.861378945308042
+para@@@@@@ [3.17257689 0.58135893 0.97001999 4.58316774 0.23984776 0.31440764]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 88
+goal reached - id: 999, steps: 117
+Overall steps: 119
+ga_id: 15.034303337960814
+para@@@@@@ [5.64544035 0.56885144 0.68394775 7.93169693 0.08690084 0.11746604]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 70
+Overall steps: 72
+ga_id: 11.46965839670118
+para@@@@@@ [2.61400657 0.42825035 0.69440016 7.18887445 0.04995346 0.49417341]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 65
+goal reached - id: 999, steps: 125
+Overall steps: 127
+ga_id: 8.737690904139745
+para@@@@@@ [2.39592232 0.42409689 0.32781482 4.48490621 0.56905426 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 81
+goal reached - id: 999, steps: 135
+Overall steps: 137
+    5 |     150 |       7 |  0.00000E+00 |            f
+ga_id: 13.636719953443038
+para@@@@@@ [5.73127425 0.51488911 0.69353718 5.65614279 0.90340192 0.1374747 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 51
+goal reached - id: 999, steps: 70
+Overall steps: 72
+ga_id: 13.497385202848992
+para@@@@@@ [6.12045799 0.41504583 0.69500551 5.52730924 0.20982261 0.52974402]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 65
+goal reached - id: 1000, steps: 75
+Overall steps: 77
+ga_id: 8.57839113686316
+para@@@@@@ [2.38981364 0.42409689 0.69300204 4.45578519 0.04550344 0.57018993]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 100
+goal reached - id: 999, steps: 141
+Overall steps: 143
+ga_id: 8.742657588862793
+para@@@@@@ [2.57504033 0.42825035 0.69440016 4.4606975  0.04824706 0.53602218]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.427945009186152
+para@@@@@@ [2.62363526 0.41405599 0.33845604 4.48507562 0.0308257  0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 13.196146207232536
+para@@@@@@ [5.56090813 0.51488911 0.92436775 5.62380287 0.03508525 0.5370931 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 71
+goal reached - id: 1000, steps: 81
+Overall steps: 83
+ga_id: 13.282348222412702
+para@@@@@@ [5.73127425 0.42350834 0.69624516 5.39044386 0.90340192 0.1374747 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 53
+goal reached - id: 999, steps: 70
+Overall steps: 72
+ga_id: 13.799642806070496
+para@@@@@@ [6.00419204 0.51491312 0.70219908 5.53385006 0.92312905 0.12135944]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 52
+goal reached - id: 999, steps: 66
+Overall steps: 68
+ga_id: 8.45881949418519
+para@@@@@@ [2.34559345 0.41405599 0.69440016 4.48507562 0.04995346 0.46974083]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 98
+goal reached - id: 999, steps: 141
+Overall steps: 143
+ga_id: 9.064532622593637
+para@@@@@@ [2.57607179 0.42961251 0.95198538 4.46123657 0.0755638  0.57006258]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.812648079815613
+para@@@@@@ [2.60769921 0.41432318 0.69440016 4.48507562 0.07512301 0.5360269 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 14.533024629289988
+para@@@@@@ [6.52681916 0.5182227  0.94459476 5.51933024 0.90340192 0.12065586]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 52
+goal reached - id: 999, steps: 63
+Overall steps: 65
+ga_id: 9.188077967668766
+para@@@@@@ [2.63241783 0.4084394  0.98647223 4.09381985 0.90340192 0.16352674]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 68
+goal reached - id: 999, steps: 124
+Overall steps: 126
+ga_id: 9.053623943362645
+para@@@@@@ [2.60769921 0.42825035 0.945444   4.46108535 0.07512301 0.53602201]
+Found valid initial Scenario after 0 tries
+Overall steps: 75
+ga_id: 9.871345374572666
+para@@@@@@ [2.93663778 0.51389927 0.94397837 4.47709662 0.85610488 0.14362845]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 62
+goal reached - id: 999, steps: 113
+Overall steps: 115
+ga_id: 9.2318075404149
+para@@@@@@ [2.73338522 0.42961251 0.94271306 4.54029239 0.0500353  0.53576905]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 108
+goal reached - id: 1000, steps: 121
+Overall steps: 123
+ga_id: 9.058613031174673
+para@@@@@@ [2.60873067 0.42961251 0.95198538 4.48561469 0.04677355 0.53589624]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 99
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 9.27585785257458
+para@@@@@@ [2.61400657 0.41405599 0.69440016 4.49342527 0.92369015 0.13627971]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 62
+goal reached - id: 999, steps: 125
+Overall steps: 127
+ga_id: 9.185635747554306
+para@@@@@@ [2.61208235 0.51960303 0.97349425 4.48751321 0.0570465  0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.892567397270543
+para@@@@@@ [2.41222581 0.42407288 0.93198971 4.53484101 0.05354157 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 97
+goal reached - id: 999, steps: 137
+Overall steps: 139
+ga_id: 8.214757403400876
+para@@@@@@ [2.39592232 0.42409689 0.32781482 4.48490621 0.04612076 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 98
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.920101942544646
+para@@@@@@ [2.61400657 0.42798316 0.69440016 4.48507562 0.16274491 0.53589152]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 8.691810724931587
+para@@@@@@ [2.54132288 0.4107224  0.69440016 4.48507562 0.00756479 0.55272488]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 97
+goal reached - id: 999, steps: 136
+Overall steps: 138
+ga_id: 13.040998047790387
+para@@@@@@ [5.71310016 0.5205057  0.68119103 5.54035129 0.04995346 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 71
+goal reached - id: 1000, steps: 82
+Overall steps: 84
+ga_id: 12.665932593426106
+para@@@@@@ [5.7286584  0.42935664 0.95140512 4.46123657 0.89713863 0.19813723]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 62
+goal reached - id: 999, steps: 73
+Overall steps: 75
+ga_id: 12.55098090907148
+para@@@@@@ [4.9855726  0.51488911 0.92436775 5.08527483 0.90340192 0.1374747 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 56
+goal reached - id: 999, steps: 75
+Overall steps: 77
+ga_id: 10.201044479188734
+para@@@@@@ [2.57902637 0.51514497 0.94517502 5.63215252 0.02014368 0.50940191]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 81
+goal reached - id: 999, steps: 126
+Overall steps: 128
+ga_id: 14.486748470254245
+para@@@@@@ [6.44251088 0.51488911 0.94459476 5.51933024 0.92794877 0.1374747 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 52
+goal reached - id: 999, steps: 64
+Overall steps: 66
+ga_id: 12.863287247814734
+para@@@@@@ [5.94653709 0.51488911 0.92613505 4.46855408 0.90340192 0.10377   ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 62
+goal reached - id: 999, steps: 71
+Overall steps: 73
+ga_id: 9.779293651689757
+para@@@@@@ [2.41309798 0.42825035 0.69263112 5.64867406 0.04995346 0.54668668]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 81
+goal reached - id: 999, steps: 134
+Overall steps: 136
+    6 |     180 |      11 |  0.00000E+00 |            f
+ga_id: 9.161118778465823
+para@@@@@@ [2.61400657 0.42798316 0.94577991 4.48445825 0.15299937 0.53589152]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.417214056522834
+para@@@@@@ [2.62363526 0.41032683 0.33845604 4.48507377 0.02382574 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.995810117094992
+para@@@@@@ [2.41222581 0.51464766 0.94465765 4.53484101 0.05354157 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 97
+goal reached - id: 999, steps: 137
+Overall steps: 139
+ga_id: 8.418093949104048
+para@@@@@@ [2.6137842  0.41405599 0.33845604 4.48507562 0.0308257  0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 100
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 9.033973498402249
+para@@@@@@ [2.57607179 0.42961251 0.95198538 4.46065596 0.04558529 0.57006258]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 143
+Overall steps: 145
+ga_id: 8.599605796602356
+para@@@@@@ [2.3942718  0.42825035 0.70998911 4.48507562 0.04612251 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 100
+goal reached - id: 999, steps: 141
+Overall steps: 143
+ga_id: 14.113573183921304
+para@@@@@@ [6.01809741 0.51488911 0.92753138 5.53385006 0.92572559 0.19347963]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 52
+goal reached - id: 999, steps: 68
+Overall steps: 70
+ga_id: 9.023764307536736
+para@@@@@@ [2.57607179 0.39291502 0.95146002 4.45769111 0.0755638  0.57006258]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 148
+Overall steps: 150
+ga_id: 8.789483786437346
+para@@@@@@ [2.60769921 0.39116377 0.69440016 4.48507562 0.07512301 0.53602201]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 100
+goal reached - id: 999, steps: 147
+Overall steps: 149
+ga_id: 8.906188962916596
+para@@@@@@ [2.61400657 0.41405599 0.69440016 4.48507562 0.16274491 0.53590571]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 13.726778971288395
+para@@@@@@ [6.54882329 0.51488911 0.94459476 5.51933024 0.060768   0.13837357]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 64
+goal reached - id: 1000, steps: 83
+Overall steps: 85
+ga_id: 8.888038250757724
+para@@@@@@ [2.41222581 0.42407288 0.93198971 4.53484101 0.04901242 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 97
+goal reached - id: 999, steps: 137
+Overall steps: 139
+ga_id: 8.943906318506148
+para@@@@@@ [2.70623198 0.42961251 0.70058151 4.46185394 0.0755638  0.57006258]
+Found valid initial Scenario after 0 tries
+Overall steps: 54
+ga_id: 9.189366746893521
+para@@@@@@ [2.61208235 0.52333219 0.97349425 4.48751506 0.0570465  0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 14.358958892442388
+para@@@@@@ [6.44251088 0.42431433 0.93192682 5.51933024 0.90340192 0.1374747 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 52
+goal reached - id: 999, steps: 64
+Overall steps: 66
+ga_id: 9.025823279214027
+para@@@@@@ [2.62385763 0.41405599 0.69440016 4.59486818 0.16274491 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 96
+goal reached - id: 999, steps: 144
+Overall steps: 146
+ga_id: 8.863371920564763
+para@@@@@@ [2.60769921 0.42825035 0.69440016 4.48507562 0.07512301 0.57282357]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.81322869245911
+para@@@@@@ [2.60769921 0.41432318 0.69440016 4.48565623 0.07512301 0.5360269 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.422734168064741
+para@@@@@@ [2.61565709 0.42409689 0.31222586 4.48490621 0.04995171 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 99
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.814791942676417
+para@@@@@@ [2.61400657 0.42825035 0.70665765 4.48507562 0.04490534 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 13.593778953800724
+para@@@@@@ [5.49722845 0.51488911 0.97620908 5.56457569 0.90340192 0.1374747 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 52
+goal reached - id: 999, steps: 72
+Overall steps: 74
+ga_id: 8.755927460236904
+para@@@@@@ [2.61400657 0.41405599 0.69440016 4.48507562 0.04995346 0.49843567]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 8.788376257914301
+para@@@@@@ [2.57504033 0.46987527 0.70066121 4.4606975  0.04608907 0.53601288]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 9.194184834872233
+para@@@@@@ [2.51985215 0.41405599 0.33845604 4.48507562 0.9017461  0.53499894]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 62
+goal reached - id: 999, steps: 129
+Overall steps: 131
+ga_id: 8.54885150100887
+para@@@@@@ [2.34390263 0.41432318 0.69440016 4.48507562 0.07512301 0.5360269 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 97
+goal reached - id: 999, steps: 141
+Overall steps: 143
+ga_id: 9.156223400563196
+para@@@@@@ [2.57607179 0.42961251 0.95198538 4.58320863 0.04558529 0.56975981]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.866926667866009
+para@@@@@@ [2.61400657 0.41405599 0.69440016 4.48507562 0.04995346 0.60943487]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 14.365081754074499
+para@@@@@@ [6.44251088 0.51488911 0.94459476 5.39735819 0.92794877 0.13778004]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 53
+goal reached - id: 999, steps: 64
+Overall steps: 66
+ga_id: 9.057360216988306
+para@@@@@@ [2.62196492 0.42961251 0.99353148 4.42886024 0.04541246 0.53797861]
+Found valid initial Scenario after 0 tries
+Overall steps: 67
+ga_id: 8.311773619595538
+para@@@@@@ [2.57774213 0.41405599 0.26704699 4.46094957 0.02399857 0.56798038]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 99
+goal reached - id: 999, steps: 147
+Overall steps: 149
+    7 |     210 |      14 |  0.00000E+00 |            f
+ga_id: 9.134961191183375
+para@@@@@@ [2.57607179 0.42961251 0.94607    4.46123657 0.15032448 0.57164585]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.760875165564116
+para@@@@@@ [2.61400657e+00 4.28250352e-01 6.94400158e-01 4.48507562e+00
+ 3.24606017e-03 5.35896406e-01]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 8.69606391050502
+para@@@@@@ [2.57332947 0.41405599 0.69440016 4.46321998 0.04995346 0.50110486]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 9.17217120013993
+para@@@@@@ [2.62363526 0.51552234 0.98121588 4.48507562 0.0308257  0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 147
+Overall steps: 149
+ga_id: 8.886766356884527
+para@@@@@@ [2.60773191 0.42776765 0.66755474 4.48507562 0.16274491 0.53589152]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.417268510027336
+para@@@@@@ [2.62363526 0.41038127 0.33845604 4.48507379 0.02382574 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.821659113710647
+para@@@@@@ [2.60769921 0.4299706  0.70924505 4.48507562 0.05364662 0.53602201]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.785904135600887
+para@@@@@@ [2.62363526 0.41405599 0.70386126 4.48507562 0.02337961 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 138
+Overall steps: 140
+ga_id: 8.819029247995067
+para@@@@@@ [2.61408038 0.41432318 0.69440016 4.48507562 0.07512301 0.5360269 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 9.037552008757244
+para@@@@@@ [2.61400657 0.42401381 0.93168543 4.48426236 0.04769233 0.53589152]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.802074891288125
+para@@@@@@ [2.62363526 0.41402621 0.71261571 4.48507562 0.0308257  0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 138
+Overall steps: 140
+ga_id: 12.819127858279131
+para@@@@@@ [5.88316452 0.42825035 0.69440016 4.44069359 0.83659723 0.53602201]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 62
+goal reached - id: 999, steps: 71
+Overall steps: 73
+ga_id: 8.783713338338321
+para@@@@@@ [2.62363526 0.41405599 0.70122433 4.48507562 0.02382574 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 138
+Overall steps: 140
+ga_id: 8.876695849842953
+para@@@@@@ [2.41222581 0.51464766 0.94465765 4.41572675 0.05354157 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 112
+goal reached - id: 999, steps: 161
+Overall steps: 163
+ga_id: 9.16545088588579
+para@@@@@@ [2.61400657 0.42798316 0.95169529 4.48445825 0.15299937 0.53430825]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 9.867219436604131
+para@@@@@@ [2.60769921 0.42825035 0.69440016 5.55173727 0.04911043 0.53602201]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 82
+goal reached - id: 999, steps: 125
+Overall steps: 127
+ga_id: 14.547902218022031
+para@@@@@@ [6.48447717 0.51488911 0.94459476 5.54118588 0.92794877 0.13480653]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 52
+goal reached - id: 999, steps: 67
+Overall steps: 69
+ga_id: 13.072286094122067
+para@@@@@@ [5.73127425 0.41342275 0.32568225 5.56103022 0.90340192 0.1374747 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 52
+goal reached - id: 999, steps: 71
+Overall steps: 73
+ga_id: 8.624682506321303
+para@@@@@@ [2.61397387 0.41453869 0.69440016 4.29061988 0.07512301 0.5360269 ]
+Found valid initial Scenario after 0 tries
+Overall steps: 107
+ga_id: 8.420890602357549
+para@@@@@@ [2.62363526 0.41400155 0.33845604 4.4850756  0.02382574 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.899196574355232
+para@@@@@@ [2.41222581 0.42407288 0.91714249 4.53484101 0.07501796 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 97
+goal reached - id: 999, steps: 137
+Overall steps: 139
+ga_id: 8.918467638659415
+para@@@@@@ [2.73908601 0.41405599 0.69440016 4.48507562 0.04995346 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 106
+goal reached - id: 1000, steps: 123
+Overall steps: 125
+ga_id: 8.541244458958156
+para@@@@@@ [2.61400657 0.41405599 0.32899494 4.48507562 0.16321493 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 100
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.934966877802177
+para@@@@@@ [2.6076254  0.41405599 0.69440016 4.48507562 0.197904   0.53590571]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 9.011605100921885
+para@@@@@@ [2.41222581 0.42804224 0.9460842  4.5350369  0.15431954 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 97
+goal reached - id: 999, steps: 137
+Overall steps: 139
+ga_id: 7.884283743479994
+para@@@@@@ [2.11244661e+00 4.28280132e-01 3.20240491e-01 4.48507562e+00
+ 2.21887754e-03 5.36022015e-01]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 100
+goal reached - id: 999, steps: 150
+Overall steps: 152
+ga_id: 9.83373899847412
+para@@@@@@ [2.45796697 0.51488911 0.97568372 5.60541225 0.14231224 0.1374747 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 82
+goal reached - id: 999, steps: 131
+Overall steps: 133
+ga_id: 8.410389887848421
+para@@@@@@ [2.62363526 0.41032683 0.33163187 4.48507377 0.02382574 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 149
+Overall steps: 151
+ga_id: 9.313563938775754
+para@@@@@@ [2.61208235 0.52125819 0.97349425 4.48506508 0.04958586 0.67207821]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.988851782334223
+para@@@@@@ [3.18374906 0.41240083 0.33845604 4.48752375 0.0308257  0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 106
+goal reached - id: 1000, steps: 117
+Overall steps: 119
+    8 |     240 |       2 |  1.000000000 |        ideal
+ga_id: 8.8076564231264
+para@@@@@@ [2.61408043 0.42825035 0.69440016 4.48507562 0.04995346 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 8.820830466707779
+para@@@@@@ [2.61422854 0.42825035 0.69440016 4.48507562 0.06285378 0.53602201]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 8.3946635390779
+para@@@@@@ [2.61400657 0.41405599 0.2956755  4.48507562 0.04995346 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.814003496892527
+para@@@@@@ [2.60769921 0.41432318 0.69440016 4.48507562 0.07660168 0.53590365]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.76569496145393
+para@@@@@@ [2.61400657e+00 4.28250352e-01 6.99219954e-01 4.48507562e+00
+ 3.24606017e-03 5.35896406e-01]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 9.161430592124745
+para@@@@@@ [2.62443692 0.51552234 0.95380034 4.48507562 0.04557337 0.53702201]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 147
+Overall steps: 149
+ga_id: 9.210431849955341
+para@@@@@@ [2.61208235 0.42923146 0.97349425 4.48507559 0.04958586 0.66096235]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.906179758281569
+para@@@@@@ [2.61400657 0.41405599 0.69440016 4.48507562 0.16274491 0.53589651]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 9.178114575886003
+para@@@@@@ [2.62389021 0.51552234 0.9869043  4.48507562 0.0308257  0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 147
+Overall steps: 149
+ga_id: 8.796230919201403
+para@@@@@@ [2.61400657 0.42798316 0.69440016 4.4850663  0.03888321 0.53589152]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 9.037220065049079
+para@@@@@@ [2.57607179 0.42878491 0.95198538 4.46090003 0.04954298 0.56993499]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.578939177853284
+para@@@@@@ [2.62363526 0.41405599 0.46269841 4.48526599 0.05738713 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.826785156274887
+para@@@@@@ [2.60769921 0.42846012 0.69440016 4.48507562 0.07512301 0.53602704]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 9.435411539426223
+para@@@@@@ [2.88239936 0.42960641 0.9516949  4.48445962 0.15217547 0.53507577]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 100
+goal reached - id: 999, steps: 138
+Overall steps: 140
+ga_id: 8.81895538921052
+para@@@@@@ [2.61400652 0.41432318 0.69440016 4.48507562 0.07512301 0.5360269 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 8.925841862702756
+para@@@@@@ [2.60747724 0.42798316 0.69440016 4.48507562 0.17501416 0.53589152]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.82666963921879
+para@@@@@@ [2.62363526 0.41405599 0.73718067 4.48507562 0.0308257  0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 138
+Overall steps: 140
+ga_id: 8.875340432766041
+para@@@@@@ [2.41222581 0.51464766 0.94465765 4.41572675 0.0520629  0.53601965]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 112
+goal reached - id: 999, steps: 161
+Overall steps: 163
+ga_id: 9.214182450985264
+para@@@@@@ [2.61208235 0.52333219 0.96841004 4.48751506 0.08694641 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 9.045294718337901
+para@@@@@@ [2.57527013 0.42961251 0.97940092 4.46123657 0.03083762 0.56893698]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.84569649239757
+para@@@@@@ [2.60769921e+00 5.20277081e-01 6.94400158e-01 4.48506511e+00
+ 2.21887754e-03 5.36036054e-01]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.906188860856913
+para@@@@@@ [2.61400657 0.41405599 0.69440016 4.48507562 0.16274491 0.53590561]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 8.766655784870094
+para@@@@@@ [2.61375162 0.42825035 0.65372833 4.48507562 0.04995346 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 9.16142548350873
+para@@@@@@ [2.61400657 0.42401381 0.93168543 4.48427167 0.17155649 0.53589152]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 9.31089798477242
+para@@@@@@ [2.61208235 0.52208579 0.97349425 4.48540162 0.04562817 0.67220581]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 9.158883944780204
+para@@@@@@ [2.61208235 0.51960303 0.97349425 4.48732284 0.03048507 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 8.800912698345911
+para@@@@@@ [2.61408038 0.39621165 0.69440016 4.48507562 0.07512301 0.53602188]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 100
+goal reached - id: 999, steps: 147
+Overall steps: 149
+ga_id: 9.062964754346687
+para@@@@@@ [2.57607179 0.42798925 0.95198577 4.46123519 0.07638769 0.56929506]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 9.136130355052927
+para@@@@@@ [2.62363526 0.51552234 0.9451243  4.48512635 0.0308257  0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 147
+Overall steps: 149
+ga_id: 8.948335471605214
+para@@@@@@ [2.41222581 0.51464766 0.98074923 4.41567601 0.05354157 0.57149519]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 113
+goal reached - id: 999, steps: 161
+Overall steps: 163
+    9 |     270 |       6 |  0.00000E+00 |            f
+ga_id: 8.438497543117908
+para@@@@@@ [2.61159249 0.40972773 0.35330354 4.48540162 0.04654354 0.53192861]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.886448207457239
+para@@@@@@ [2.41901739 0.51552234 0.9530665  4.4162466  0.04557337 0.53702201]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 112
+goal reached - id: 1000, steps: 126
+Overall steps: 128
+ga_id: 8.783160405283414
+para@@@@@@ [2.61408043 0.42279622 0.69440016 4.48507562 0.03091157 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 8.510431565858369
+para@@@@@@ [2.62363526 0.41420646 0.33845604 4.48507557 0.07751576 0.57154248]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 9.137853746110434
+para@@@@@@ [2.62502304 0.51576792 0.94521434 4.48512635 0.0308257  0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 147
+Overall steps: 149
+ga_id: 8.635207882980177
+para@@@@@@ [2.61400657 0.41356763 0.68137178 4.48507562 0.04891173 0.39227455]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 98
+goal reached - id: 999, steps: 136
+Overall steps: 138
+ga_id: 8.739298060758536
+para@@@@@@ [2.60757720e+00 4.13966421e-01 6.94400158e-01 4.48507562e+00
+ 2.25068456e-03 5.36027981e-01]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 9.038416600685604
+para@@@@@@ [2.62443692 0.41465385 0.95380034 4.48507562 0.02342787 0.53702201]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 147
+Overall steps: 149
+ga_id: 9.211215885315292
+para@@@@@@ [2.62389021 0.51465042 0.99826224 4.48507562 0.05331413 0.53602327]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 147
+Overall steps: 149
+ga_id: 9.061624235970362
+para@@@@@@ [2.61408038 0.4141859  0.93713243 4.48507562 0.07512301 0.5360269 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 139
+Overall steps: 141
+ga_id: 9.438184209214858
+para@@@@@@ [2.57607179 0.51968235 0.95198538 4.77096672 0.04954298 0.56993499]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 92
+goal reached - id: 999, steps: 130
+Overall steps: 132
+ga_id: 9.298582019220149
+para@@@@@@ [2.62412511 0.52273933 0.96755982 4.48507379 0.02291037 0.6761736 ]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 99
+goal reached - id: 999, steps: 149
+Overall steps: 151
+ga_id: 9.150322817433576
+para@@@@@@ [2.61764534 0.51464766 0.94539149 4.48455577 0.0520629  0.53601965]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 101
+goal reached - id: 999, steps: 144
+Overall steps: 146
+ga_id: 9.196667217982945
+para@@@@@@ [2.62363526 0.52097648 0.98121588 4.48507562 0.04986758 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 147
+Overall steps: 149
+ga_id: 8.6341573125716
+para@@@@@@ [2.61408038 0.41044355 0.69440016 4.48507382 0.02143317 0.40872623]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 98
+goal reached - id: 999, steps: 136
+Overall steps: 138
+ga_id: 9.151709608712903
+para@@@@@@ [2.45056363 0.52101262 0.97340421 4.48506508 0.04958586 0.67207821]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 154
+Overall steps: 156
+ga_id: 8.060820600431146
+para@@@@@@ [2.62363526 0.41405599 0.33845604 4.12495116 0.02382574 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 108
+goal reached - id: 999, steps: 148
+Overall steps: 150
+ga_id: 8.803544126443974
+para@@@@@@ [2.61208235 0.42971982 0.99050758 3.94685288 0.16341915 0.66096235]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 118
+goal reached - id: 1000, steps: 131
+Overall steps: 133
+ga_id: 8.807967892737096
+para@@@@@@ [2.61412859 0.42833992 0.69440016 4.48507562 0.05013317 0.53589044]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 8.543959047308972
+para@@@@@@ [2.62363526 0.51492448 0.33845604 4.48507562 0.04597124 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.923115398637373
+para@@@@@@ [2.41222581 0.51551959 0.94465765 4.41572675 0.09909281 0.53589279]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 112
+goal reached - id: 999, steps: 161
+Overall steps: 163
+ga_id: 8.94043373951949
+para@@@@@@ [2.6076254  0.41405599 0.69440016 4.48507562 0.20337086 0.53590571]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 91
+goal reached - id: 999, steps: 125
+Overall steps: 127
+ga_id: 8.918512001236067
+para@@@@@@ [2.61400657 0.42812044 0.70303585 4.48445825 0.15299937 0.53589152]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 9.222609201037304
+para@@@@@@ [2.61208235 0.43036075 0.97349425 4.48500778 0.04958586 0.67207821]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 8.879253083481899
+para@@@@@@ [2.61400657 0.51255139 0.69921995 4.48512609 0.03245266 0.53589641]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 142
+Overall steps: 144
+ga_id: 9.165814562784881
+para@@@@@@ [2.61093975 0.52196744 0.95245991 4.46080568 0.04957921 0.57006258]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 114
+goal reached - id: 1000, steps: 131
+Overall steps: 133
+ga_id: 9.130488178032717
+para@@@@@@ [2.73138823e+00 4.31221304e-01 9.45124297e-01 4.48507588e+00
+ 1.78206351e-03 5.35896406e-01]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 106
+goal reached - id: 1000, steps: 123
+Overall steps: 125
+ga_id: 9.190231696545927
+para@@@@@@ [2.57721438 0.43683147 0.97301972 4.48549597 0.04559194 0.67207821]
+Found valid initial Scenario after 0 tries
+goal reached - id: 999, steps: 115
+goal reached - id: 1000, steps: 131
+Overall steps: 133
+ga_id: 9.309862711338296
+para@@@@@@ [2.61208235 0.52126077 0.97349425 4.48540162 0.04554461 0.67207911]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 140
+Overall steps: 142
+ga_id: 9.314599212209878
+para@@@@@@ [2.61208235 0.52208321 0.97349425 4.48506508 0.04966941 0.67220491]
+Found valid initial Scenario after 0 tries
+goal reached - id: 1000, steps: 102
+goal reached - id: 999, steps: 140
+Overall steps: 142
+   10 |     300 |      14 |  0.00000E+00 |            f
+
+最佳个体参数: [2.62363526 0.51552234 0.98121588 4.48507562 0.0308257  0.53589641]
+目标值 - 正数时间点数: 22.0
+结果已保存到Excel文件: pymoo_optimization_results.xlsx
