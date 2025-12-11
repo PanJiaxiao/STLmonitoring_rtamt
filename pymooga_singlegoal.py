@@ -26,7 +26,7 @@ from commonroad.scenario.lanelet import LaneletNetwork
 from utils import SimulationResult, PlanningStatus, create_cc_scenario, get_cmap, prepare_scenario, write_scenario, \
     save_for_stl, clear_result
 from plot import plot
-stl_filename_1="/rob_save0-run_time[1].csv"
+stl_filename_1="/rob_save3-run_time[1].csv"
 # stl_filename_2="/rob_save22-run_time[1].csv"
 
 
@@ -193,8 +193,8 @@ class MultiObjectiveProblem(ElementwiseProblem):
         #function1
         # 返回两个目标值（注意：pymoo默认是最小化，所以这里取负号来转换为最大化）
 
-        # out["F"] = [-positive_count]
-        out["F"] = [-positive_magnitude]
+        out["F"] = [-positive_count]
+        # out["F"] = [-positive_magnitude]
 
 
 def run_pymoo_optimization(pop_size=2, generations=5):

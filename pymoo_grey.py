@@ -28,8 +28,8 @@ from utils import SimulationResult, PlanningStatus, create_cc_scenario, get_cmap
 from plot import plot
 from monitor.stlgroup_monitor import robust_combined_measure
 
-stl_filename_1="/rob_save19-run_time[1].csv"
-stl_filename_2="/rob_save20-run_time[1].csv"
+stl_filename_1="/rob_save24-run_time[1].csv"
+stl_filename_2="/rob_save25-run_time[1].csv"
 
 
 
@@ -186,7 +186,7 @@ class MultiObjectiveProblem(ElementwiseProblem):
         #function1
         # 如果没有同时大于0的时刻，给予惩罚
         if positive_count == 0:
-            out["F"] = [0]  # 严重惩罚
+            out["F"] = [10]  # 严重惩罚
 
             return
 
@@ -209,7 +209,7 @@ class MultiObjectiveProblem(ElementwiseProblem):
             positive_magnitude =positive_magnitude-10.0
             part_count = part_count - 10.0
 
-        out["F"] = [-positive_count]
+        out["F"] = [-part_count]
         # out["F"] = [-positive_count, -positive_magnitude]
         #function2
         # out["F"] = [-positive_count_1, -positive_count_2]
